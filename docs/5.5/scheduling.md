@@ -1,7 +1,3 @@
----
-layout: post
-title: scheduling
----
 # Task Scheduling
 
 - [Introduction](#introduction)
@@ -71,7 +67,7 @@ You may define all of your scheduled tasks in the `schedule` method of the `App\
 <a name="scheduling-artisan-commands"></a>
 ### Scheduling Artisan Commands
 
-In addition to scheduling Closure calls, you may also schedule [Artisan commands](/docs/{{version}}/artisan) and operating system commands. For example, you may use the `command` method to schedule an Artisan command using either the command's name or class:
+In addition to scheduling Closure calls, you may also schedule [Artisan commands](/laravel_tw/docs/5.5/artisan) and operating system commands. For example, you may use the `command` method to schedule an Artisan command using either the command's name or class:
 
     $schedule->command('emails:send --force')->daily();
 
@@ -80,7 +76,7 @@ In addition to scheduling Closure calls, you may also schedule [Artisan commands
 <a name="scheduling-queued-jobs"></a>
 ### Scheduling Queued Jobs
 
-The `job` method may be used to schedule a [queued job](/docs/{{version}}/queues). This method provides a convenient way to schedule jobs without using the `call` method to manually create Closures to queue the job:
+The `job` method may be used to schedule a [queued job](/laravel_tw/docs/5.5/queues). This method provides a convenient way to schedule jobs without using the `call` method to manually create Closures to queue the job:
 
     $schedule->job(new Heartbeat)->everyFiveMinutes();
 
@@ -182,12 +178,12 @@ By default, scheduled tasks will be run even if the previous instance of the tas
 
     $schedule->command('emails:send')->withoutOverlapping();
 
-In this example, the `emails:send` [Artisan command](/docs/{{version}}/artisan) will be run every minute if it is not already running. The `withoutOverlapping` method is especially useful if you have tasks that vary drastically in their execution time, preventing you from predicting exactly how long a given task will take.
+In this example, the `emails:send` [Artisan command](/laravel_tw/docs/5.5/artisan) will be run every minute if it is not already running. The `withoutOverlapping` method is especially useful if you have tasks that vary drastically in their execution time, preventing you from predicting exactly how long a given task will take.
 
 <a name="maintenance-mode"></a>
 ### Maintenance Mode
 
-Laravel's scheduled tasks will not run when Laravel is in [maintenance mode](/docs/{{version}}/configuration#maintenance-mode), since we don't want your tasks to interfere with any unfinished maintenance you may be performing on your server. However, if you would like to force a task to run even in maintenance mode, you may use the `evenInMaintenanceMode` method:
+Laravel's scheduled tasks will not run when Laravel is in [maintenance mode](/laravel_tw/docs/5.5/configuration#maintenance-mode), since we don't want your tasks to interfere with any unfinished maintenance you may be performing on your server. However, if you would like to force a task to run even in maintenance mode, you may use the `evenInMaintenanceMode` method:
 
     $schedule->command('emails:send')->evenInMaintenanceMode();
 
@@ -206,7 +202,7 @@ If you would like to append the output to a given file, you may use the `appendO
              ->daily()
              ->appendOutputTo($filePath);
 
-Using the `emailOutputTo` method, you may e-mail the output to an e-mail address of your choice. Before e-mailing the output of a task, you should configure Laravel's [e-mail services](/docs/{{version}}/mail):
+Using the `emailOutputTo` method, you may e-mail the output to an e-mail address of your choice. Before e-mailing the output of a task, you should configure Laravel's [e-mail services](/laravel_tw/docs/5.5/mail):
 
     $schedule->command('foo')
              ->daily()
