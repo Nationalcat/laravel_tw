@@ -1,3 +1,7 @@
+---
+layout: post
+title: scout
+---
 # Laravel Scout
 
 - [Introduction](#introduction)
