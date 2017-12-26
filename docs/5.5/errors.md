@@ -1,7 +1,3 @@
----
-layout: post
-title: errors
----
 # 錯誤與日誌
 
 - [介紹](#introduction)
@@ -207,12 +203,12 @@ Laravel 提供立即可用的日誌模式，支援寫入日誌資訊到 `single`
 
 Laravel 很容易為各種的 HTTP 狀態碼設計所要顯示的自訂錯誤頁面。例如，如果你希望自訂 HTTP 404 錯誤代碼頁面，而去建立 `resources/views/errors/404.blade.php`。這個檔案會為應用程式產生所有的 404 錯誤代碼而服務。在這個目錄中的視圖應該命名與 HTTP 狀態碼一致。透過 `abort` 函式發出的 `HttpException` 實例會作為 `$exception` 變數傳入視圖：
 
-    <h2>{{ $exception->getMessage() }}</h2>
+    <h2>{% raw %} {{ $exception->getMessage() }} {% endraw %}</h2>
 
 <a name="logging"></a>
 ## 日誌
 
-Laravel 在強大的 [Monolog](https://github.com/seldaek/monolog) 函式庫上提供了一個簡單的抽象層。預設的 Laravel 已設定好在 `storage/logs` 目錄中建立日誌檔案。你可以使用 `Log` [facade](/docs/{{version}}/facades) 撰寫資訊到日誌中：
+Laravel 在強大的 [Monolog](https://github.com/seldaek/monolog) 函式庫上提供了一個簡單的抽象層。預設的 Laravel 已設定好在 `storage/logs` 目錄中建立日誌檔案。你可以使用 `Log` [facade](/laravel_tw/docs/5.5/facades) 撰寫資訊到日誌中：
 
     <?php
 
