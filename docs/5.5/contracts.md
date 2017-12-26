@@ -1,3 +1,7 @@
+---
+layout: post
+title: contracts
+---
 # Contracts
 
 - [介紹](#introduction)
