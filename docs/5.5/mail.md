@@ -1,3 +1,7 @@
+---
+layout: post
+title: mail
+---
 # Mail
 
 - [Introduction](#introduction)
