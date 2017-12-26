@@ -1,3 +1,7 @@
+---
+layout: post
+title: deployment
+---
 # 部署
 
 - [介紹](#introduction)
