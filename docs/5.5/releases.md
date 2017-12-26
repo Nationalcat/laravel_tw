@@ -1,3 +1,7 @@
+---
+layout: post
+title: releases
+---
 # Release Notes
 
 - [Versioning Scheme](#versioning-scheme)
