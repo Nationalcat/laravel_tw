@@ -1,3 +1,7 @@
+---
+layout: post
+title: responses
+---
 # HTTP Responses
 
 - [Creating Responses](#creating-responses)
