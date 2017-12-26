@@ -1,7 +1,3 @@
----
-layout: post
-title: controller
----
 # 控制器
 
 - [介紹](#introduction)
@@ -103,7 +99,7 @@ title: controller
 <a name="controller-middleware"></a>
 ## 控制器的中介層
 
-[中介層](/docs/{{version}}/middleware) 可以被分配在路由檔案中的控制器路由：
+[中介層](/laravel_tw/docs/5.5/middleware) 可以被分配在路由檔案中的控制器路由：
 
     Route::get('profile', 'UserController@show')->middleware('auth');
 
@@ -180,7 +176,7 @@ DELETE    | `/photos/{photo}`      | destroy      | photos.destroy
 
 由於 HTML 表單不能建立 `PUT`、`PATCH` 或 `DELETE` 請求，你會需要新增一個隱藏的 `_method` 字段來偽造一些 HTTP 動詞操作。`method_field` 輔助函式協助你建立這個字段：
 
-    {{ method_field('PUT') }}
+    {% raw %} {{ method_field('PUT') }} {% endraw %}
 
 <a name="restful-partial-resource-routes"></a>
 ### 部分資源路由
@@ -272,7 +268,7 @@ DELETE    | `/photos/{photo}`      | destroy      | photos.destroy
 
 #### 建構子注入
 
-Laravel 的[服務容器](/docs/{{version}}/container)是用來解析 Laravel 所有的控制器。因此，在建構子中，你可以對控制器可能需要的任何依賴使用型別提示。被宣告的依賴將會自動解析與注入到控制器實例中：
+Laravel 的[服務容器](/laravel_tw/docs/5.5/container)是用來解析 Laravel 所有的控制器。因此，在建構子中，你可以對控制器可能需要的任何依賴使用型別提示。被宣告的依賴將會自動解析與注入到控制器實例中：
 
     <?php
 
@@ -299,7 +295,7 @@ Laravel 的[服務容器](/docs/{{version}}/container)是用來解析 Laravel �
         }
     }
 
-當然，你也可以對任何的 [Laravel contract](/docs/{{version}}/contracts) 使用型別提示。若容器能夠解析它，你就可以使用型別提示。根據你的應用，將你的依賴注入到控制器藉此提供更好的可測試性。
+當然，你也可以對任何的 [Laravel contract](/laravel_tw/docs/5.5/contracts) 使用型別提示。若容器能夠解析它，你就可以使用型別提示。根據你的應用，將你的依賴注入到控制器藉此提供更好的可測試性。
 
 #### 方法注入
 
