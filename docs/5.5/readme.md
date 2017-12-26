@@ -1,7 +1,3 @@
----
-layout: post
-title: readme
----
 # Laravel 文件
 
 ## 貢獻指南
