@@ -1,3 +1,7 @@
+---
+layout: post
+title: routing
+---
 # Routing
 
 - [Basic Routing](#basic-routing)
