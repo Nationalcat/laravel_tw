@@ -1,7 +1,3 @@
----
-layout: post
-title: database
----
 # 資料庫：入門
 
 - [介紹](#introduction)
@@ -15,7 +11,7 @@ title: database
 <a name="introduction"></a>
 ## 介紹
 
-Laravel 使用原生 SQL 和[流暢的查詢產生器](/docs/{{version}}/queries)，以及 [Eloquent ORM](/docs/{{version}}/eloquent) 讓操作各種後端資料庫非常的容易。目前 Laravel 支援四種資料庫：
+Laravel 使用原生 SQL 和[流暢的查詢產生器](/laravel_tw/docs/5.5/queries)，以及 [Eloquent ORM](/laravel_tw/docs/5.5/eloquent) 讓操作各種後端資料庫非常的容易。目前 Laravel 支援四種資料庫：
 
 <div class="content-list" markdown="1">
 - MySQL
@@ -29,7 +25,7 @@ Laravel 使用原生 SQL 和[流暢的查詢產生器](/docs/{{version}}/queries
 
 資料庫的設定檔放在你應用程式的 `config/database.php`。在這個設定檔內你可以定義所有的資料庫連接，以及指定預設使用哪個連接。在這個檔案內提供了大多數支援的資料庫系統範例。
 
-預設來說，Laravel 的[環境設定](/docs/{{version}}/installation#environment-configuration)範例是使用 [Laravel Homestead](/docs/{{version}}/homestead)，在開發 Laravel 時，這是相當便利的本機虛擬機器。當然，你可以因應需求隨時修改你本機端的資料庫設定。
+預設來說，Laravel 的[環境設定](/laravel_tw/docs/5.5/installation#environment-configuration)範例是使用 [Laravel Homestead](/laravel_tw/docs/5.5/homestead)，在開發 Laravel 時，這是相當便利的本機虛擬機器。當然，你可以因應需求隨時修改你本機端的資料庫設定。
 
 #### SQLite 設定
 
@@ -155,7 +151,7 @@ Laravel 使用原生 SQL 和[流暢的查詢產生器](/docs/{{version}}/queries
 <a name="listening-for-query-events"></a>
 ### 監聽查詢事件
 
-如果你希望能夠接收到應用程式的每一筆 SQL 查詢，你可以使用 `listen` 方法。這個方法對於記錄查詢跟除錯非常有用你可以在[服務容器](/docs/{{version}}/providers)註冊你的查詢監聽器：
+如果你希望能夠接收到應用程式的每一筆 SQL 查詢，你可以使用 `listen` 方法。這個方法對於記錄查詢跟除錯非常有用你可以在[服務容器](/laravel_tw/docs/5.5/providers)註冊你的查詢監聽器：
 
     <?php
 
@@ -226,4 +222,4 @@ Laravel 使用原生 SQL 和[流暢的查詢產生器](/docs/{{version}}/queries
 
     DB::commit();
 
-> {tip} `DB` facade 的交易方法控制[查詢建構器](/docs/{{version}}/queries)和 [Eloquent ORM](/docs/{{version}}/eloquent) 的交易。
+> {tip} `DB` facade 的交易方法控制[查詢建構器](/laravel_tw/docs/5.5/queries)和 [Eloquent ORM](/laravel_tw/docs/5.5/eloquent) 的交易。
