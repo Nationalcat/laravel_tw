@@ -1,7 +1,3 @@
----
-layout: post
-title: upgrade
----
 # Upgrade Guide
 
 - [Upgrading To 5.5.0 From 5.4](#upgrade-5.5.0)
@@ -348,7 +344,7 @@ When allowing the dynamic `__call` method to share variables with a view, these 
 
 The `maximumVotes` variable may be accessed in the template like so:
 
-    {{ $maximumVotes }}
+    {% raw %} {{ $maximumVotes }} {% endraw %}
 
 #### `@php` Blade Directive
 
