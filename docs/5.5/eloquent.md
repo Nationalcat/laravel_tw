@@ -1,7 +1,3 @@
----
-layout: post
-title: eloquent
----
 # Eloquent：入門
 
 - [介紹](#introduction)
@@ -31,18 +27,18 @@ title: eloquent
 
 Laravel 的 Eloquent ORM 提供了漂亮、簡潔的 ActiveRecord 實作來和資料庫互動。每個資料庫表有一個對應的「模型」可以用來跟資料表互動。你可以透過模型查詢資料表內的資料，以及新增記錄到資料表中。
 
-在開始之前，一定要在 `config/database.php` 中設定一個資料庫連接。更多資料庫的設定資訊，請查看[資料庫設定](/docs/{{version}}/database#configuration)。
+在開始之前，一定要在 `config/database.php` 中設定一個資料庫連接。更多資料庫的設定資訊，請查看[資料庫設定](/laravel_tw/docs/5.5/database#configuration)。
 
 <a name="defining-models"></a>
 ## 定義模型
 
 開始之前，讓我們先建立一個 Eloquent 模型。模型通常放在 `app` 目錄，不過你可以自由地把他們放在任何可以透過你的 `composer.json` 自動載入的地方。所有的 Eloquent 模型都繼承 `Illuminate\Database\Eloquent\Model` 類別。
 
-建立模型實例的最簡單的方法是使用 [Artisan 指令](/docs/{{version}}/artisan)的 `make:model`：
+建立模型實例的最簡單的方法是使用 [Artisan 指令](/laravel_tw/docs/5.5/artisan)的 `make:model`：
 
     php artisan make:model User
 
-假設當你產生一個模型時，想要產生一個[資料庫遷移](/docs/{{version}}/schema#database-migrations)，可以使用 `--migration` 或 `-m` 選項：
+假設當你產生一個模型時，想要產生一個[資料庫遷移](/laravel_tw/docs/5.5/schema#database-migrations)，可以使用 `--migration` 或 `-m` 選項：
 
     php artisan make:model User --migration
 
@@ -161,7 +157,7 @@ Eloquent 也會假設每個資料表有一個主鍵欄位叫做 `id`。你可以
 <a name="retrieving-models"></a>
 ## 取得模型
 
-一旦你建立了一個模型並且將模型[關聯到資料表](/docs/{{version}}/schema)，你就可以從資料庫中取得資料。把每個 Eloquent 模型想像成強大的[查詢建構器](/docs/{{version}}/queries)，讓你可以流暢地查詢與模型關聯的資料表。例如：
+一旦你建立了一個模型並且將模型[關聯到資料表](/laravel_tw/docs/5.5/schema)，你就可以從資料庫中取得資料。把每個 Eloquent 模型想像成強大的[查詢建構器](/laravel_tw/docs/5.5/queries)，讓你可以流暢地查詢與模型關聯的資料表。例如：
 
     <?php
 
@@ -175,19 +171,19 @@ Eloquent 也會假設每個資料表有一個主鍵欄位叫做 `id`。你可以
 
 #### 新增額外的限制
 
-Eloquent 的 `all` 方法會回傳在模型資料表中所有的結果。由於每個 Eloquent 模型可以當作一個[查詢建構器](/docs/{{version}}/queries)，所以你可以在查詢中增加規則，然後透過 `get` 方法來取得結果：
+Eloquent 的 `all` 方法會回傳在模型資料表中所有的結果。由於每個 Eloquent 模型可以當作一個[查詢建構器](/laravel_tw/docs/5.5/queries)，所以你可以在查詢中增加規則，然後透過 `get` 方法來取得結果：
 
     $flights = App\Flight::where('active', 1)
                    ->orderBy('name', 'desc')
                    ->take(10)
                    ->get();
 
-> {tip} 由於 Eloquent 模型是查詢建構器，應該檢閱所有[查詢建構器](/docs/{{version}}/queries)可用的方法。你可以在你的 Eloquent 查詢中使用這其中的任何方法。
+> {tip} 由於 Eloquent 模型是查詢建構器，應該檢閱所有[查詢建構器](/laravel_tw/docs/5.5/queries)可用的方法。你可以在你的 Eloquent 查詢中使用這其中的任何方法。
 
 <a name="collections"></a>
 ### 集合
 
-像是 `all` 和 `get` 能夠取得多個結果的 Eloquent 方法，會回傳 `Illuminate\Database\Eloquent\Collection` 實例。`Collection` 類別為處理你的 Eloquent 結果提供[各種有用的方法](/docs/{{version}}/eloquent-collections#available-methods)：
+像是 `all` 和 `get` 能夠取得多個結果的 Eloquent 方法，會回傳 `Illuminate\Database\Eloquent\Collection` 實例。`Collection` 類別為處理你的 Eloquent 結果提供[各種有用的方法](/laravel_tw/docs/5.5/eloquent-collections#available-methods)：
 
     $flights = $flights->reject(function ($flight) {
         return $flight->cancelled;
@@ -252,7 +248,7 @@ Eloquent 的 `all` 方法會回傳在模型資料表中所有的結果。由於�
 <a name="retrieving-aggregates"></a>
 ### 取得 Aggregate
 
-你也可以使用[查詢建構器](/docs/{{version}}/queries)提供的 `count`、`sum`、`max` 和其他 [aggregate 方法](/docs/{{version}}/queries#aggregates)。這些方法會回傳確切的純量值，而不是完整的模型實例：
+你也可以使用[查詢建構器](/laravel_tw/docs/5.5/queries)提供的 `count`、`sum`、`max` 和其他 [aggregate 方法](/laravel_tw/docs/5.5/queries#aggregates)。這些方法會回傳確切的純量值，而不是完整的模型實例：
 
     $count = App\Flight::where('active', 1)->count();
 
@@ -468,7 +464,7 @@ Eloquent 的 `all` 方法會回傳在模型資料表中所有的結果。由於�
         protected $dates = ['deleted_at'];
     }
 
-當然，你應該新增 `deleted_at` 欄位到你的資料表。Laravel [schema 建構器](/docs/{{version}}/migrations)具有一個輔助函式來建立這個欄位：
+當然，你應該新增 `deleted_at` 欄位到你的資料表。Laravel [schema 建構器](/laravel_tw/docs/5.5/migrations)具有一個輔助函式來建立這個欄位：
 
     Schema::table('flights', function ($table) {
         $table->softDeletes();
@@ -493,7 +489,7 @@ Eloquent 的 `all` 方法會回傳在模型資料表中所有的結果。由於�
                     ->where('account_id', 1)
                     ->get();
 
-`withTrashed` 方法也可以被用在 [Eloquent 的關聯](/docs/{{version}}/eloquent-relationships)查詢上：
+`withTrashed` 方法也可以被用在 [Eloquent 的關聯](/laravel_tw/docs/5.5/eloquent-relationships)查詢上：
 
     $flight->history()->withTrashed()->get();
 
@@ -517,7 +513,7 @@ Eloquent 的 `all` 方法會回傳在模型資料表中所有的結果。由於�
             ->where('airline_id', 1)
             ->restore();
 
-像是 `withTrashed` 方法，`restore` 方法也可被用在 [Eloquent 關聯](/docs/{{version}}/eloquent-relationships)上：
+像是 `withTrashed` 方法，`restore` 方法也可被用在 [Eloquent 關聯](/laravel_tw/docs/5.5/eloquent-relationships)上：
 
     $flight->history()->restore();
 
@@ -722,7 +718,7 @@ Eloquent 模型可以讓你觸發下列模型的生命週期幾個時間點的�
 
 從資料庫中取得已存在的資料時，會觸發 `retrieved` 事件。當新的資料被第一次儲存時，會觸發 `creating` 和 `created` 事件。如果資料已經存在於資料庫，並呼叫 `save`，就會觸發 `updating` 和 `updated` 事件。然而，這兩種案例都會觸發 `saving` 和 `saved` 事件。
 
-開始之前，在你的 Eloquent 模型上定義 `$dispatchesEvents` 屬性，它會映射 Eloquent 模型的生命週期到你的[事件類別](/docs/{{version}}/events):
+開始之前，在你的 Eloquent 模型上定義 `$dispatchesEvents` 屬性，它會映射 Eloquent 模型的生命週期到你的[事件類別](/laravel_tw/docs/5.5/events):
 
     <?php
 
