@@ -1,3 +1,7 @@
+---
+layout: post
+title: encryption
+---
 # 加密
 
 - [介紹](#introduction)
