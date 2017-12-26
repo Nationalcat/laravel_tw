@@ -1,3 +1,7 @@
+---
+layout: post
+title: artisan
+---
 # Artisan 指令列
 
 - [介紹](#introduction)
