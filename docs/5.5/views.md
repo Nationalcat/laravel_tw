@@ -1,7 +1,3 @@
----
-layout: post
-title: views
----
 # Views
 
 - [建立視圖](#creating-views)
@@ -12,7 +8,7 @@ title: views
 <a name="creating-views"></a>
 ## 建立視圖
 
-> {tip} 想要找到更多如何撰寫 Blade 模板的資訊嗎？查看完整的 [Blade 文件](/docs/{{version}}/blade)來入門。
+> {tip} 想要找到更多如何撰寫 Blade 模板的資訊嗎？查看完整的 [Blade 文件](/laravel_tw/docs/5.5/blade)來入門。
 
 視圖包含應用程式用到的 HTML，它能夠將呈現邏輯從控制器和應用程式邏輯分離出來。視圖被存在 `resources/views` 目錄下。一個簡單的視圖看起來可能像這樣：
 
@@ -20,7 +16,7 @@ title: views
 
     <html>
         <body>
-            <h1>Hello, {{ $name }}</h1>
+            <h1>Hello, {% raw %} {{ $name }} {% endraw %}</h1>
         </body>
     </html>
 
@@ -30,7 +26,7 @@ title: views
         return view('greeting', ['name' => 'James']);
     });
 
-如你所見，`view` 輔助函式的第一個參數會對應到 `resources/views` 目錄下視圖檔案的名稱；傳遞到 `view` 輔助函式的第二個參數，是一個能夠在視圖內取用的資料陣列。在這個例子中，我們傳遞 `name` 這個變數，然後在視圖裡面我們使用 [Blade 語法](/docs/{{version}}/blade)來顯示。
+如你所見，`view` 輔助函式的第一個參數會對應到 `resources/views` 目錄下視圖檔案的名稱；傳遞到 `view` 輔助函式的第二個參數，是一個能夠在視圖內取用的資料陣列。在這個例子中，我們傳遞 `name` 這個變數，然後在視圖裡面我們使用 [Blade 語法](/laravel_tw/docs/5.5/blade)來顯示。
 
 當然，視圖檔案也可以被存放在 `resources/views` 的子目錄下。`.` （小數點）的表示法可以被用來表示在子目錄內的視圖檔案。舉例來說，如果你的視圖檔案儲存在 `resources/views/admin/profile.blade.php`，你可以用以下的程式碼來回傳：
 
@@ -52,7 +48,7 @@ Using the `first` method, you may create the first view that exists in a given a
 
     return view()->first(['custom.admin', 'admin'], $data);
 
-Of course, you may also call this method via the `View` [facade](/docs/{{version}}/facades):
+Of course, you may also call this method via the `View` [facade](/laravel_tw/docs/5.5/facades):
 
     use Illuminate\Support\Facades\View;
 
@@ -108,7 +104,7 @@ Of course, you may also call this method via the `View` [facade](/docs/{{version
 
 視圖組件就是在視圖被渲染前，會呼叫的回呼或類別方法。如果你想在每次渲染某些視圖時綁定資料，視圖組件可以把這樣的程式邏輯組織在同一個地方。
 
-舉例來說，讓我們在[服務提供者](/docs/{{version}}/providers)內註冊視圖組件。我們將使用 View facade 來取得底層 `Illuminate\Contracts\View\Factory` contract 實作。請注意，Laravel 沒有預設的目錄來放置視圖組件。你可以自由的把它們放在你想要的地方。舉例來說，你可以建立一個 `app/Http/ViewComposers` 目錄：
+舉例來說，讓我們在[服務提供者](/laravel_tw/docs/5.5/providers)內註冊視圖組件。我們將使用 View facade 來取得底層 `Illuminate\Contracts\View\Factory` contract 實作。請注意，Laravel 沒有預設的目錄來放置視圖組件。你可以自由的把它們放在你想要的地方。舉例來說，你可以建立一個 `app/Http/ViewComposers` 目錄：
 
     <?php
 
@@ -194,7 +190,7 @@ Of course, you may also call this method via the `View` [facade](/docs/{{version
 
 在視圖被渲染之前，視圖組件的 `compose` 方法會被呼叫，並傳入一個 `Illuminate\View\View` 實例。你可以使用 `with` 方法把資料綁定到視圖。
 
-> {tip} 所有的視圖組件都會被[服務容器](/docs/{{version}}/container)解析，所以你可以在視圖組件的建構子中，使用型別提示來自動注入你所需的任何相依物件。
+> {tip} 所有的視圖組件都會被[服務容器](/laravel_tw/docs/5.5/container)解析，所以你可以在視圖組件的建構子中，使用型別提示來自動注入你所需的任何相依物件。
 
 #### 在多個視圖中附加同一個視圖組件
 
