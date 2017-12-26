@@ -1,3 +1,7 @@
+---
+layout: post
+title: billing
+---
 # Laravel Cashier
 
 - [Introduction](#introduction)
