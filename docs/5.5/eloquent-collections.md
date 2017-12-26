@@ -1,3 +1,7 @@
+---
+layout: post
+title: eloquent-collections
+---
 # Eloquent: 集合
 
 - [介紹](#introduction)
