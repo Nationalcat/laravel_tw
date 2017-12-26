@@ -1,3 +1,7 @@
+---
+layout: post
+title: documentation
+---
 - ## 前言
     - [發行說明](/laravel_tw/docs/5.5/releases)
     - [升級導引](/laravel_tw/docs/5.5/upgrade)
