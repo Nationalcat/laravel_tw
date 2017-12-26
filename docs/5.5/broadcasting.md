@@ -1,7 +1,3 @@
----
-layout: post
-title: broadcasting
----
 # 廣播系統
 
 - [介紹](#introduction)
@@ -36,14 +32,14 @@ title: broadcasting
 
 在許多現代網頁應用程式中，WebSocket 被用來實作 realtime 與即時更新的使用者介面。當伺服器在更新某些資料時，會透過 WebSocket 的連線去處理使用者的訊息。相較於不斷地輪詢來取得後端資料的方式，這提供了更強大、更有效率的方式。
 
-為了協助你建立這些類型的應用程式，Laravel 讓你可以輕鬆的廣播你的[事件](/docs/{{version}}/events)到 WebSocket 連線。Laravel 允許你在廣播事件時，在伺服器端和客戶端的 JavaScript 應用程式之間共用相同的事件名稱。
+為了協助你建立這些類型的應用程式，Laravel 讓你可以輕鬆的廣播你的[事件](/laravel_tw/docs/5.5/events)到 WebSocket 連線。Laravel 允許你在廣播事件時，在伺服器端和客戶端的 JavaScript 應用程式之間共用相同的事件名稱。
 
-> {tip} 再深入了解廣播之前，確認你已經讀過所有關於 Laravel 的[事件與監聽器](/docs/{{version}}/events)的文件。
+> {tip} 再深入了解廣播之前，確認你已經讀過所有關於 Laravel 的[事件與監聽器](/laravel_tw/docs/5.5/events)的文件。
 
 <a name="configuration"></a>
 ### 設定
 
-所有關於事件廣播設定都存放在 `config/broadcasting.php` 這個設定檔。Laravel 支援幾個廣播用的驅動：[Pusher](https://pusher.com)、[Redis](/docs/{{version}}/redis) 和用來本機開發與除錯的 `log`。此外，你可以使用 `null` 來禁用所有的廣播器。在 `config/broadcasting.php` 中，每個驅動的設定都有附上設定的範例供你參考。
+所有關於事件廣播設定都存放在 `config/broadcasting.php` 這個設定檔。Laravel 支援幾個廣播用的驅動：[Pusher](https://pusher.com)、[Redis](/laravel_tw/docs/5.5/redis) 和用來本機開發與除錯的 `log`。此外，你可以使用 `null` 來禁用所有的廣播器。在 `config/broadcasting.php` 中，每個驅動的設定都有附上設定的範例供你參考。
 
 #### 廣播的服務提供者
 
@@ -53,7 +49,7 @@ title: broadcasting
 
 [Laravel Echo](#installing-laravel-echo) 會需要存取當前 session 的 CSRF token 。你應該確認你的 `head` HTML 標籤裡是否有放入 `meta` 標籤來設定 CSRF token：
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{% raw %} {{ csrf_token() }} {% endraw %}">
 
 <a name="driver-prerequisites"></a>
 ### 驅動需求
@@ -96,7 +92,7 @@ Redis 廣播器會使用 Redis 發佈/訂閱 功能來廣播訊息。然而，�
 
 你將需要引入 Socket.IO JavaScript 客戶端函式庫到你應用程式的 HTML `head` 標籤。當啟動 Socket.IO 伺服器時，它會自動公開客戶端的 JavaScript 函式庫的 URL。例如，如果你執行的 Socket.IO 和網頁在同一個網域，你可以像下面這樣來讓前端存取你的 Socket.IO 的 JavaScript 函式庫：
 
-    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+    <script src="//{% raw %} {{ Request::getHost() }} {% endraw %}:6001/socket.io/socket.io.js"></script>
 
 接著，你會需要指定 `socket.io` 和 `host` 連線來實例化 Echo。
 
@@ -111,7 +107,7 @@ Redis 廣播器會使用 Redis 發佈/訂閱 功能來廣播訊息。然而，�
 
 #### Queue 先決條件
 
-在廣播事件之前，你也許會需要設定和執行[隊列監聽器](/docs/{{version}}/queues)。所有的事件廣播都會透過隊列任務，使你的程式回應時間不會受到太嚴重的影響。
+在廣播事件之前，你也許會需要設定和執行[隊列監聽器](/laravel_tw/docs/5.5/queues)。所有的事件廣播都會透過隊列任務，使你的程式回應時間不會受到太嚴重的影響。
 
 <a name="concept-overview"></a>
 ## 概念簡述
@@ -232,7 +228,7 @@ Laravel 的事件廣播允許你使用基於驅動的 WebSockets 將後端的 La
         }
     }
 
-然後，你只需要和平常一樣[觸發事件](/docs/{{version}}/events)。一旦事件被觸發，[隊列任務](/docs/{{version}}/queues)會通過你指定的廣播驅動自動廣播事件。
+然後，你只需要和平常一樣[觸發事件](/laravel_tw/docs/5.5/events)。一旦事件被觸發，[隊列任務](/laravel_tw/docs/5.5/queues)會通過你指定的廣播驅動自動廣播事件。
 
 <a name="broadcast-name"></a>
 ### 廣播名稱
@@ -349,7 +345,7 @@ Laravel 的事件廣播允許你使用基於驅動的 WebSockets 將後端的 La
 
 #### 授權回呼模型綁定
 
-就像 HTTP 路由，頻道路由也可以利用隱式和顯示[路由模型綁定](/docs/{{version}}/routing#route-model-binding)。舉例來說，相對於接收字串或數字的 Order ID，你可以請求實際的 `Order` 模型實例：
+就像 HTTP 路由，頻道路由也可以利用隱式和顯示[路由模型綁定](/laravel_tw/docs/5.5/routing#route-model-binding)。舉例來說，相對於接收字串或數字的 Order ID，你可以請求實際的 `Order` 模型實例：
 
     use App\Order;
 
@@ -551,7 +547,7 @@ Presence 可以像私人或是公開頻道一樣接收事件。使用一個聊�
 <a name="notifications"></a>
 ## 通知
 
-事件廣播搭配[通知系統](/docs/{{version}}/notifications)，可讓你的 JavaScript 應用程式在不需要重新整理頁面得情況下接收新的通知。首先，請先閱讀使用[廣播通知頻道](/docs/{{version}}/notifications#broadcast-notifications)的文件。
+事件廣播搭配[通知系統](/laravel_tw/docs/5.5/notifications)，可讓你的 JavaScript 應用程式在不需要重新整理頁面得情況下接收新的通知。首先，請先閱讀使用[廣播通知頻道](/laravel_tw/docs/5.5/notifications#broadcast-notifications)的文件。
 
 如果你已設定通知系統到廣播頻道，你就可以使用 Echo 的 `notification` 方法來監聽廣播事件。但請記得，頻道名稱應該與接收通知的實例之類別名稱一致：
 
