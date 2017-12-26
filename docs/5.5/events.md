@@ -1,7 +1,3 @@
----
-layout: post
-title: events
----
 # 事件
 
 - [介紹](#introduction)
@@ -78,7 +74,7 @@ Laravel 應用程式中引入的 `EventServiceProvider` 提供一個便捷的地
 <a name="defining-events"></a>
 ## 定義事件
 
-事件類別是保存與事件相關的資訊的資料容器。例如，假設我們產生的 `OrderShipped` 事件要去接收 [Eloquent ORM](/docs/{{version}}/eloquent) 物件：
+事件類別是保存與事件相關的資訊的資料容器。例如，假設我們產生的 `OrderShipped` 事件要去接收 [Eloquent ORM](/laravel_tw/docs/5.5/eloquent) 物件：
 
     <?php
 
@@ -142,7 +138,7 @@ Laravel 應用程式中引入的 `EventServiceProvider` 提供一個便捷的地
         }
     }
 
-> {tip} 事件監聽器也可以在建構子上注入任何需要的依賴。所有的事件監聽器都會透過 Laravel [服務容器](/docs/{{version}}/container)來解析，所以依賴才會被自動注入。
+> {tip} 事件監聽器也可以在建構子上注入任何需要的依賴。所有的事件監聽器都會透過 Laravel [服務容器](/laravel_tw/docs/5.5/container)來解析，所以依賴才會被自動注入。
 
 #### 停止一個事件的傳播
 
@@ -151,7 +147,7 @@ Laravel 應用程式中引入的 `EventServiceProvider` 提供一個便捷的地
 <a name="queued-event-listeners"></a>
 ## 隊列事件監聽器
 
-使用隊列監聽器會是有助於你的隊列要執行一個要處理很久的任務，像是發送電子郵件或發出 HTTP 請求。在使用隊列監聽器之前，請先確認你的[隊列設定](/docs/{{version}}/queues)，並在你的伺服器或本機開發環境啟動隊列監聽器。
+使用隊列監聽器會是有助於你的隊列要執行一個要處理很久的任務，像是發送電子郵件或發出 HTTP 請求。在使用隊列監聽器之前，請先確認你的[隊列設定](/laravel_tw/docs/5.5/queues)，並在你的伺服器或本機開發環境啟動隊列監聽器。
 
 要讓監聽器能夠被指定隊列，新增 `ShouldQueue` 介面到監聽器的類別。由 Artisan 指令的 `event:generate` 產生的監聽器會同時把這個介面導入當前的命名空間中，所以你可以馬上使用它：
 
@@ -167,7 +163,7 @@ Laravel 應用程式中引入的 `EventServiceProvider` 提供一個便捷的地
         //
     }
 
-當這個監聽器被一個事件呼叫時，他會被事件發送器使用 Laravel 的[隊列系統](/docs/{{version}}/queues)自動加入隊列。如果在隊列中執行監聽器時沒導致例外，隊列任務會在完成任務後自動刪除。
+當這個監聽器被一個事件呼叫時，他會被事件發送器使用 Laravel 的[隊列系統](/laravel_tw/docs/5.5/queues)自動加入隊列。如果在隊列中執行監聽器時沒導致例外，隊列任務會在完成任務後自動刪除。
 
 #### 自訂隊列連線與隊列名稱
 
@@ -300,7 +296,7 @@ Laravel 應用程式中引入的 `EventServiceProvider` 提供一個便捷的地
         }
     }
 
-> {tip} 在測試的時候，它是有助於斷言某些沒有實際觸發監聽器的事件。Laravel 的[內建測試的輔助函式](/docs/{{version}}/mocking#event-fake)將它設計得很簡單。
+> {tip} 在測試的時候，它是有助於斷言某些沒有實際觸發監聽器的事件。Laravel 的[內建測試的輔助函式](/laravel_tw/docs/5.5/mocking#event-fake)將它設計得很簡單。
 
 <a name="event-subscribers"></a>
 ## 事件訂閱者
