@@ -1,7 +1,3 @@
----
-layout: post
-title: testing
----
 # 測試：入門
 
 - [介紹](#introduction)
