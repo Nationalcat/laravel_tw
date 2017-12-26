@@ -1,7 +1,3 @@
----
-layout: post
-title: authorization
----
 # 授權
 
 - [介紹](#introduction)
@@ -24,7 +20,7 @@ title: authorization
 <a name="introduction"></a>
 ## 介紹
 
-除了內建提供的[認證](/docs/{{version}}/authentication)服務外，Laravel 也提供了簡單的方式來組織認證邏輯和控制資源的存取。像是認證一般，Laravel 授權功能是採用簡單的兩種主要方式來授權行為：Gates 與 Policy
+除了內建提供的[認證](/laravel_tw/docs/5.5/authentication)服務外，Laravel 也提供了簡單的方式來組織認證邏輯和控制資源的存取。像是認證一般，Laravel 授權功能是採用簡單的兩種主要方式來授權行為：Gates 與 Policy
 
 Gates 和 Policy 的關係像是路由和控制器。Gates 提供簡單且採用閉包的方式去授權，而 Policy 像是控制器，使用程式邏輯去區分它們特定的模型或資源。我們先來看看 Gates，然後再看看 Policy 。
 
@@ -117,7 +113,7 @@ Gates 也可以定義一個用 `Class@method` 風格的回呼字串，像是使�
 
 Policy 是組織特定模型或是資源的授權邏輯類別。舉例來說，如果你的應用程式是部落格，你可能會有一個 `Post` 模型和一個相對應的 `PostPolicy` 來授權使用者行為，像是建立新文章或是更新文章。
 
-你可以使用 [artisan 指令列](/docs/{{version}}/artisan)的 `make:policy` 來產生一個 Policy。這個產生的 Policy 將會在 `app/Policies` 這個目錄。如果這個目錄不存在，Laravel 會幫你建立：
+你可以使用 [artisan 指令列](/laravel_tw/docs/5.5/artisan)的 `make:policy` 來產生一個 Policy。這個產生的 Policy 將會在 `app/Policies` 這個目錄。如果這個目錄不存在，Laravel 會幫你建立：
 
     php artisan make:policy PostPolicy
 
@@ -125,7 +121,7 @@ Policy 是組織特定模型或是資源的授權邏輯類別。舉例來說，�
 
     php artisan make:policy PostPolicy --model=Post
 
-> {tip} 全部的 Policy 都會透過 Laravel [服務容器](/docs/{{version}}/container)來解析，可以讓你在建構子對任何需要的依賴使用型別提示，他們會被自動注入。
+> {tip} 全部的 Policy 都會透過 Laravel [服務容器](/laravel_tw/docs/5.5/container)來解析，可以讓你在建構子對任何需要的依賴使用型別提示，他們會被自動注入。
 
 <a name="registering-policies"></a>
 ### 註冊 Policy
@@ -270,7 +266,7 @@ Laravel 包含一個可以在傳入請求到你的路由或控制器前就授權
         // 當前使用者可以更新貼文...
     })->middleware('can:update,post');
 
-在這個例子中，我們傳遞兩個參數給 `can` 中介層。第一個是我們希望授權的行為名稱，第二個是我們希望傳遞這個 Policy 方法的路由參數。在這個情況下，因為我們使用了[隱式模型綁定](/docs/{{version}}/routing#implicit-binding)，一個 `Post` 模型將會被傳遞給 Policy 方法。如果使用者沒有被授權給定的行為，這個中介層將回應 HTTP `403` 的狀態碼。
+在這個例子中，我們傳遞兩個參數給 `can` 中介層。第一個是我們希望授權的行為名稱，第二個是我們希望傳遞這個 Policy 方法的路由參數。在這個情況下，因為我們使用了[隱式模型綁定](/laravel_tw/docs/5.5/routing#implicit-binding)，一個 `Post` 模型將會被傳遞給 Policy 方法。如果使用者沒有被授權給定的行為，這個中介層將回應 HTTP `403` 的狀態碼。
 
 #### 不需指定模型的操作
 
