@@ -1,3 +1,7 @@
+---
+layout: post
+title: passwords
+---
 # 重設密碼
 
 - [介紹](#introduction)
