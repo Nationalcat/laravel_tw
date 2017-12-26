@@ -1,3 +1,7 @@
+---
+layout: post
+title: eloquent-resources
+---
 # Eloquent：API 資源
 
 - [介紹](#introduction)
