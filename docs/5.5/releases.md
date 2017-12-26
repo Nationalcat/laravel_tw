@@ -1,7 +1,3 @@
----
-layout: post
-title: releases
----
 # Release Notes
 
 - [Versioning Scheme](#versioning-scheme)
@@ -43,7 +39,7 @@ Horizon provides a beautiful dashboard and code-driven configuration for your La
 
 All of your worker configuration is stored in a single, simple configuration file, allowing your configuration to stay in source control where your entire team can collaborate.
 
-For more information on Horizon, check out the [full Horizon documentation](/docs/{{version}}/horizon)
+For more information on Horizon, check out the [full Horizon documentation](/laravel_tw/docs/5.5/horizon)
 
 ### Package Discovery
 
@@ -65,7 +61,7 @@ Package developers only need to add their service providers and facades to their
         }
     },
 
-For more information on updating your packages to use service provider and facade discovery, check out the full documentation on [package development](/docs/{{version}}/packages).
+For more information on updating your packages to use service provider and facade discovery, check out the full documentation on [package development](/laravel_tw/docs/5.5/packages).
 
 ### API Resources
 
@@ -99,7 +95,7 @@ A resource class represents a single model that needs to be transformed into a J
         }
     }
 
-Of course, this is only the most basic example of an API resource. Laravel also provides a variety of methods to help you when building your resources and resource collections. For more information, check out the [full documentation](/docs/{{version}}/eloquent-resources) on API resources.
+Of course, this is only the most basic example of an API resource. Laravel also provides a variety of methods to help you when building your resources and resource collections. For more information, check out the [full documentation](/laravel_tw/docs/5.5/eloquent-resources) on API resources.
 
 ### Console Command Auto-Registration
 
