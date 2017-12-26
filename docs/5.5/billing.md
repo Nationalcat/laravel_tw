@@ -1,7 +1,3 @@
----
-layout: post
-title: billing
----
 # Laravel Cashier
 
 - [Introduction](#introduction)
@@ -52,11 +48,11 @@ First, add the Cashier package for Stripe to your dependencies:
 
 #### Service Provider
 
-Next, register the `Laravel\Cashier\CashierServiceProvider` [service provider](/docs/{{version}}/providers) in your `config/app.php` configuration file.
+Next, register the `Laravel\Cashier\CashierServiceProvider` [service provider](/laravel_tw/docs/5.5/providers) in your `config/app.php` configuration file.
 
 #### Database Migrations
 
-Before using Cashier, we'll also need to [prepare the database](/docs/{{version}}/migrations). We need to add several columns to your `users` table and create a new `subscriptions` table to hold all of our customer's subscriptions:
+Before using Cashier, we'll also need to [prepare the database](/laravel_tw/docs/5.5/migrations). We need to add several columns to your `users` table and create a new `subscriptions` table to hold all of our customer's subscriptions:
 
     Schema::table('users', function ($table) {
         $table->string('stripe_id')->nullable();
@@ -121,7 +117,7 @@ First, add the Cashier package for Braintree to your dependencies:
 
 #### Service Provider
 
-Next, register the `Laravel\Cashier\CashierServiceProvider` [service provider](/docs/{{version}}/providers) in your `config/app.php` configuration file:
+Next, register the `Laravel\Cashier\CashierServiceProvider` [service provider](/laravel_tw/docs/5.5/providers) in your `config/app.php` configuration file:
 
     Laravel\Cashier\CashierServiceProvider::class
 
@@ -133,7 +129,7 @@ The discount amount configured in the Braintree control panel can be any value y
 
 #### Database Migrations
 
-Before using Cashier, we'll need to [prepare the database](/docs/{{version}}/migrations). We need to add several columns to your `users` table and create a new `subscriptions` table to hold all of our customer's subscriptions:
+Before using Cashier, we'll need to [prepare the database](/laravel_tw/docs/5.5/migrations). We need to add several columns to your `users` table and create a new `subscriptions` table to hold all of our customer's subscriptions:
 
     Schema::table('users', function ($table) {
         $table->string('braintree_id')->nullable();
@@ -239,7 +235,7 @@ Once a user is subscribed to your application, you may easily check their subscr
         //
     }
 
-The `subscribed` method also makes a great candidate for a [route middleware](/docs/{{version}}/middleware), allowing you to filter access to routes and controllers based on the user's subscription status:
+The `subscribed` method also makes a great candidate for a [route middleware](/laravel_tw/docs/5.5/middleware), allowing you to filter access to routes and controllers based on the user's subscription status:
 
     public function handle($request, Closure $next)
     {
@@ -409,7 +405,7 @@ If you would like to offer trial periods without collecting the user's payment m
         'trial_ends_at' => Carbon::now()->addDays(10),
     ]);
 
-> {note}  Be sure to add a [date mutator](/docs/{{version}}/eloquent-mutators#date-mutators) for `trial_ends_at` to your model definition.
+> {note}  Be sure to add a [date mutator](/laravel_tw/docs/5.5/eloquent-mutators#date-mutators) for `trial_ends_at` to your model definition.
 
 Cashier refers to this type of trial as a "generic trial", since it is not attached to any existing subscription. The `onTrial` method on the `User` instance will return `true` if the current date is not past the value of `trial_ends_at`:
 
@@ -445,7 +441,7 @@ By default, this controller will automatically handle cancelling subscriptions t
 
 #### Webhooks & CSRF Protection
 
-Since Stripe webhooks need to bypass Laravel's [CSRF protection](/docs/{{version}}/csrf), be sure to list the URI as an exception in your `VerifyCsrfToken` middleware or list the route outside of the `web` middleware group:
+Since Stripe webhooks need to bypass Laravel's [CSRF protection](/laravel_tw/docs/5.5/csrf), be sure to list the URI as an exception in your `VerifyCsrfToken` middleware or list the route outside of the `web` middleware group:
 
     protected $except = [
         'stripe/*',
@@ -504,7 +500,7 @@ By default, this controller will automatically handle cancelling subscriptions t
 
 #### Webhooks & CSRF Protection
 
-Since Braintree webhooks need to bypass Laravel's [CSRF protection](/docs/{{version}}/csrf), be sure to list the URI as an exception in your `VerifyCsrfToken` middleware or list the route outside of the `web` middleware group:
+Since Braintree webhooks need to bypass Laravel's [CSRF protection](/laravel_tw/docs/5.5/csrf), be sure to list the URI as an exception in your `VerifyCsrfToken` middleware or list the route outside of the `web` middleware group:
 
     protected $except = [
         'braintree/*',
@@ -610,9 +606,9 @@ When listing the invoices for the customer, you may use the invoice's helper met
     <table>
         @foreach ($invoices as $invoice)
             <tr>
-                <td>{{ $invoice->date()->toFormattedDateString() }}</td>
-                <td>{{ $invoice->total() }}</td>
-                <td><a href="/user/invoice/{{ $invoice->id }}">Download</a></td>
+                <td>{% raw %} {{ $invoice->date()->toFormattedDateString() }} {% endraw %}</td>
+                <td>{% raw %} {{ $invoice->total() }} {% endraw %}</td>
+                <td><a href="/user/invoice/{% raw %} {{ $invoice->id }} {% endraw %}">Download</a></td>
             </tr>
         @endforeach
     </table>
