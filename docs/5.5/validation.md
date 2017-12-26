@@ -1,7 +1,3 @@
----
-layout: post
-title: validation
----
 # 驗證
 
 - [介紹](#introduction)
@@ -134,7 +130,7 @@ Laravel 提供多種方法來驗證應用程式傳入的資料。預設情況下
 <a name="quick-displaying-the-validation-errors"></a>
 ### 顯示驗證錯誤
 
-那麼當傳入的要求參數沒有通過指定的驗證規則呢？如之前提到，Laravel 會自動把使用者導回先前的位置。另外，所有的驗證錯誤會自動[快閃到 session](/docs/{{version}}/session#flash-data)。
+那麼當傳入的要求參數沒有通過指定的驗證規則呢？如之前提到，Laravel 會自動把使用者導回先前的位置。另外，所有的驗證錯誤會自動[快閃到 session](/laravel_tw/docs/5.5/session#flash-data)。
 
 注意到我們在 `GET` 路由中不需要明確地綁定錯誤訊息到視圖。這是因為 Laravel 會自動檢查 session 內的錯誤資料，如果錯誤存在的話，會自動綁定這些錯誤訊息到視圖。`$errors` 變數會是 `Illuminate\Support\MessageBag` 的實例。有關此物件的詳細資訊，[請查閱它的文件](#working-with-error-messages)。
 
@@ -150,7 +146,7 @@ Laravel 提供多種方法來驗證應用程式傳入的資料。預設情況下
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>{% raw %} {{ $error }} {% endraw %}</li>
                 @endforeach
             </ul>
         </div>
@@ -291,7 +287,7 @@ Laravel 預設會在全域的中介層堆疊中加入 `TrimStrings` 和 `Convert
 <a name="manually-creating-validators"></a>
 ## 手動建立驗證器
 
-如果你不想要用請求的 `validate` 方法，你可以透過 `Validator` [facade](/docs/{{version}}/facades) 來建立驗證器實例。Facade 中的 `make` 方法會產生一個新的驗證器實例。
+如果你不想要用請求的 `validate` 方法，你可以透過 `Validator` [facade](/laravel_tw/docs/5.5/facades) 來建立驗證器實例。Facade 中的 `make` 方法會產生一個新的驗證器實例。
 
     <?php
 
@@ -350,7 +346,7 @@ Laravel 預設會在全域的中介層堆疊中加入 `TrimStrings` 和 `Convert
 
 再來就可以從 `$errors` 變數中取得已命名的 `MessageBag` 實例：
 
-    {{ $errors->login->first('email') }}
+    {% raw %} {{ $errors->login->first('email') }} {% endraw %}
 
 <a name="after-validation-hook"></a>
 ### 驗證後的掛勾
@@ -1064,7 +1060,7 @@ Laravel 提供多種有用的驗證規則；但你可能想要定義一些自己
 <a name="using-extensions"></a>
 ### 使用擴充功能
 
-另一種註冊自訂驗證規則的方法是使用 `Validator` [facade](/docs/{{version}}/facades) 的 `extend` 方法。讓我們在[服務提供者](/docs/{{version}}/providers)中使用這個方法來自訂註冊的驗證規則：
+另一種註冊自訂驗證規則的方法是使用 `Validator` [facade](/laravel_tw/docs/5.5/facades) 的 `extend` 方法。讓我們在[服務提供者](/laravel_tw/docs/5.5/providers)中使用這個方法來自訂註冊的驗證規則：
 
     <?php
 
@@ -1114,7 +1110,7 @@ Laravel 提供多種有用的驗證規則；但你可能想要定義一些自己
 
     // 其餘的驗證錯誤訊息...
 
-在建立自訂的驗證規則時，你可能需要幫錯誤訊息定義自訂的佔位符。用如上所述的方式建立自訂的驗證器後，呼叫 `Validator` facade 的 `replacer` 方法。可以在[服務提供者](/docs/{{version}}/providers)中的 `boot` 方法來做這些事：
+在建立自訂的驗證規則時，你可能需要幫錯誤訊息定義自訂的佔位符。用如上所述的方式建立自訂的驗證器後，呼叫 `Validator` facade 的 `replacer` 方法。可以在[服務提供者](/laravel_tw/docs/5.5/providers)中的 `boot` 方法來做這些事：
 
     /**
      * 啟動所有應用程式服務。
