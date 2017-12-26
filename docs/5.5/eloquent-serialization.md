@@ -1,7 +1,3 @@
----
-layout: post
-title: eloquent-serialization
----
 # Eloquent：序列化
 
 - [介紹](#introduction)
@@ -23,13 +19,13 @@ title: eloquent-serialization
 <a name="serializing-to-arrays"></a>
 ### 序列化成陣列
 
-要將模型以及被一同載入的[關聯](/docs/{{version}}/eloquent-relationships)轉換成陣列，你應該使用 `toArray` 方法。這個方法會採用遞迴的方式，因此，所有屬性和關聯（包含關聯中的關聯）都會被轉換成陣列：
+要將模型以及被一同載入的[關聯](/laravel_tw/docs/5.5/eloquent-relationships)轉換成陣列，你應該使用 `toArray` 方法。這個方法會採用遞迴的方式，因此，所有屬性和關聯（包含關聯中的關聯）都會被轉換成陣列：
 
     $user = App\User::with('roles')->first();
 
     return $user->toArray();
 
-你也可以將整個模型[集合](/docs/{{version}}/eloquent-collections)轉換成陣列：
+你也可以將整個模型[集合](/laravel_tw/docs/5.5/eloquent-collections)轉換成陣列：
 
     $users = App\User::all();
 
@@ -110,7 +106,7 @@ title: eloquent-serialization
 <a name="appending-values-to-json"></a>
 ## 將值附加到 JSON
 
-有時候，將模型轉換為陣列或JSON 時，你可能希望在資料庫中新增沒有相應欄位的屬性。要達到此目的，首先為這個值定義[存取器](/docs/{{version}}/eloquent-mutators)：
+有時候，將模型轉換為陣列或JSON 時，你可能希望在資料庫中新增沒有相應欄位的屬性。要達到此目的，首先為這個值定義[存取器](/laravel_tw/docs/5.5/eloquent-mutators)：
 
     <?php
 
