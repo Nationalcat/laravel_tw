@@ -1,3 +1,7 @@
+---
+layout: post
+title: blade
+---
 # Blade 模板
 
 - [介紹](#introduction)
