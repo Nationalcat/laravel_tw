@@ -1,7 +1,3 @@
----
-layout: post
-title: installation
----
 # 安裝
 
 - [安裝](#installation)
@@ -19,7 +15,7 @@ title: installation
 <a name="server-requirements"></a>
 ### 系統需求
 
-Laravel 需要一些基本的系統需求。當然，這些基本需求都可以在 [Laravel Homestead](/docs/{{version}}/homestead) 虛擬機器環境內被滿足，十分推薦你使用 Homestead 作為你本機的 Laravel 開發環境。
+Laravel 需要一些基本的系統需求。當然，這些基本需求都可以在 [Laravel Homestead](/laravel_tw/docs/5.5/homestead) 虛擬機器環境內被滿足，十分推薦你使用 Homestead 作為你本機的 Laravel 開發環境。
 
 不過，如果你不使用 Homestead，則需要確保你的伺服器符合以下的要求：
 
@@ -61,7 +57,7 @@ Laravel 使用了 [Composer](https://getcomposer.org) 來管理套件的相依�
 
     php artisan serve
 
-當然，更健全的開發環境選項還是透過 [Homestead](/docs/{{version}}/homestead) 和 [Valet](/docs/{{version}}/valet)。
+當然，更健全的開發環境選項還是透過 [Homestead](/laravel_tw/docs/5.5/homestead) 和 [Valet](/laravel_tw/docs/5.5/valet)。
 
 <a name="configuration"></a>
 ### 設定
@@ -76,7 +72,7 @@ Laravel 使用了 [Composer](https://getcomposer.org) 來管理套件的相依�
 
 #### 目錄權限
 
-安裝 Laravel 後，你必須對一些權限進行設定。目錄 `storage` 及 `bootstrap/cache` 內的子目錄必須是讓網頁伺服器可寫的，否則 Laravel 就無法正常執行。若是使用 [Homestead](/docs/{{version}}/homestead) 虛擬機器，這些權限預設已經被設定完成。
+安裝 Laravel 後，你必須對一些權限進行設定。目錄 `storage` 及 `bootstrap/cache` 內的子目錄必須是讓網頁伺服器可寫的，否則 Laravel 就無法正常執行。若是使用 [Homestead](/laravel_tw/docs/5.5/homestead) 虛擬機器，這些權限預設已經被設定完成。
 
 #### 應用程式金鑰
 
@@ -91,9 +87,9 @@ Laravel 幾乎不需設定就可以馬上使用，你可以自由自在的開始
 你可能也會想要設定一些 Laravel 附加的元件，像是：
 
 <div class="content-list" markdown="1">
-- [快取](/docs/{{version}}/cache#configuration)
-- [資料庫](/docs/{{version}}/database#configuration)
-- [Session](/docs/{{version}}/session#configuration)
+- [快取](/laravel_tw/docs/5.5/cache#configuration)
+- [資料庫](/laravel_tw/docs/5.5/database#configuration)
+- [Session](/laravel_tw/docs/5.5/session#configuration)
 </div>
 
 <a name="web-server-configuration"></a>
@@ -123,4 +119,4 @@ Laravel 內包含了一個 `public/.htaccess` 檔案用於讓 URLs 路徑不帶�
         try_files $uri $uri/ /index.php?$query_string;
     }
 
-當然，如果你是使用 [Homestead](/docs/{{version}}/homestead) 或 [Valet](/docs/{{version}}/valet)，修飾 URLs 功能已經自動地被設定完成。
+當然，如果你是使用 [Homestead](/laravel_tw/docs/5.5/homestead) 或 [Valet](/laravel_tw/docs/5.5/valet)，修飾 URLs 功能已經自動地被設定完成。
