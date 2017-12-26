@@ -1,7 +1,3 @@
----
-layout: post
-title: artisan
----
 # Artisan 指令列
 
 - [介紹](#introduction)
@@ -58,7 +54,7 @@ Artisan 是 Laravel 內建的指令集合，它能提供許多好用的指令來
 
 > {tip} 為了讓程式碼更有效的複用，最好讓終端指令的程式碼保持輕量化，並讓它們緩載到應用程式服務的任務完成。在下列範例中，請注意！我們注入了一個服務類別來完成發送信件的「重任」。
 
-讓我們看一個例子。請注意，我們可以在建構子中注入任何需要的依賴，Laravel 的[服務容器](/docs/{{version}}/container)將會自動注入任何型別提示的依賴到建構子中。
+讓我們看一個例子。請注意，我們可以在建構子中注入任何需要的依賴，Laravel 的[服務容器](/laravel_tw/docs/5.5/container)將會自動注入任何型別提示的依賴到建構子中。
 
     <?php
 
@@ -140,7 +136,7 @@ Artisan 是 Laravel 內建的指令集合，它能提供許多好用的指令來
 
 #### 型別提示
 
-除了接收指令參數與選項外，指令閉包還可以使用型別提示從[服務容器](/docs/{{version}}/container)中注入所需的任何依賴：
+除了接收指令參數與選項外，指令閉包還可以使用型別提示從[服務容器](/laravel_tw/docs/5.5/container)中注入所需的任何依賴：
 
     use App\User;
     use App\DripEmailer;
@@ -398,7 +394,7 @@ Artisan 是 Laravel 內建的指令集合，它能提供許多好用的指令來
         // ...
     }
 
-你還可以藉由類別名稱寫入 `app/Console/Kernel.php` 檔案的 `$command` 屬性來手動註冊命令。當 Artisan 啟動時，該屬性中列出的所有指令將由[服務容器](/docs/{{version}}/container)解析並註冊到 Artisan 指令上：
+你還可以藉由類別名稱寫入 `app/Console/Kernel.php` 檔案的 `$command` 屬性來手動註冊命令。當 Artisan 啟動時，該屬性中列出的所有指令將由[服務容器](/laravel_tw/docs/5.5/container)解析並註冊到 Artisan 指令上：
 
     protected $commands = [
         Commands\SendEmails::class
@@ -417,7 +413,7 @@ Artisan 是 Laravel 內建的指令集合，它能提供許多好用的指令來
         //
     });
 
-在 `Artisan` facade 上使用 `queue` 方法，可以將 Artisan 指令放入[隊列](/docs/{{version}}/queues) 處理。在使用此方法前，請先確認隊列的設定，在執行隊列：
+在 `Artisan` facade 上使用 `queue` 方法，可以將 Artisan 指令放入[隊列](/laravel_tw/docs/5.5/queues) 處理。在使用此方法前，請先確認隊列的設定，在執行隊列：
 
     Route::get('/foo', function () {
         Artisan::queue('email:send', [
