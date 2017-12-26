@@ -1,3 +1,7 @@
+---
+layout: post
+title: seeding
+---
 # 資料庫: 資料填充
 
 - [簡介](#introduction)
