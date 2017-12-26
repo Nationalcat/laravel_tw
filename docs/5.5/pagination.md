@@ -1,3 +1,7 @@
+---
+layout: post
+title: pagination
+---
 # 資料庫：分頁
 
 - [介紹](#introduction)
