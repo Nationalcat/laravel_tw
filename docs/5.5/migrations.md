@@ -1,3 +1,7 @@
+---
+layout: post
+title: migrations
+---
 # 資料庫：遷移
 
 - [介紹](#introduction)
