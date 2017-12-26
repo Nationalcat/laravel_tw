@@ -1,7 +1,3 @@
----
-layout: post
-title: container
----
 # 服務容器
 
 - [介紹](#introduction)
@@ -65,7 +61,7 @@ Laravel 服務容器是管理類別依賴與執行依賴注入的強大工具。
         }
     }
 
-在這個範例中，`UserController` 需要從資料來源中取得使用者。所以我們將**注入**一個服務讓我們能取得使用者。在這個情境下，我們的 `UserRepository` 像是使用 [Eloquent](/docs/{{version}}/eloquent) 一樣，從資料庫取得使用者資訊。然而，由於 Repository 是被注入的，我們可以更容易的抽換成其他的實作。我們可以很容易的「mock」，或是建立一個假的 `UserRepository` 實作來測試我們的應用程式。
+在這個範例中，`UserController` 需要從資料來源中取得使用者。所以我們將**注入**一個服務讓我們能取得使用者。在這個情境下，我們的 `UserRepository` 像是使用 [Eloquent](/laravel_tw/docs/5.5/eloquent) 一樣，從資料庫取得使用者資訊。然而，由於 Repository 是被注入的，我們可以更容易的抽換成其他的實作。我們可以很容易的「mock」，或是建立一個假的 `UserRepository` 實作來測試我們的應用程式。
 
 深入理解 Laravel 的服務容器對於建立一個強大、大型的應用程式以及為 Laravel 核心程式碼本身做出貢獻是必要的。
 
@@ -75,7 +71,7 @@ Laravel 服務容器是管理類別依賴與執行依賴注入的強大工具。
 <a name="binding-basics"></a>
 ### 綁定基礎
 
-幾乎所有的服務容器綁定都會在[服務提供者](/docs/{{version}}/providers)中被註冊，所以下方所有的範例將示範在該情境中使用容器。
+幾乎所有的服務容器綁定都會在[服務提供者](/laravel_tw/docs/5.5/providers)中被註冊，所以下方所有的範例將示範在該情境中使用容器。
 
 > {tip} 如果類別沒有依賴任何的介面，那麼就沒有將類別綁定至容器中的必要。並不需要告訴容器如何建構這些物件，因為它會透過 PHP 的 reflection 自動解析出物件。
 
@@ -141,7 +137,7 @@ Laravel 服務容器是管理類別依賴與執行依賴注入的強大工具。
 <a name="contextual-binding"></a>
 ### 情境綁定
 
-有時候，你可能有兩個類別使用到相同介面，但你希望每個類別能注入不同實作。例如，兩個控制器可能依賴於 `Illuminate\Contracts\Filesystem\Filesystem` [contract](/docs/{{version}}/contracts) 的不同實作。Laravel 提供一個簡單又流利介面來定義此行為：
+有時候，你可能有兩個類別使用到相同介面，但你希望每個類別能注入不同實作。例如，兩個控制器可能依賴於 `Illuminate\Contracts\Filesystem\Filesystem` [contract](/laravel_tw/docs/5.5/contracts) 的不同實作。Laravel 提供一個簡單又流利介面來定義此行為：
 
     use Illuminate\Support\Facades\Storage;
     use App\Http\Controllers\PhotoController;
@@ -202,7 +198,7 @@ Laravel 服務容器是管理類別依賴與執行依賴注入的強大工具。
 <a name="automatic-injection"></a>
 #### 自動注入
 
-此外，也是最常用的，你可以簡單地在類別的建構子中對依賴「型別提示」來解析出容器中物件，包含[控制器](/docs/{{version}}/controllers)、[事件監聽器](/docs/{{version}}/events)、[隊列任務](/docs/{{version}}/queues)、[中介層](/docs/{{version}}/middleware)及其他等等。在實際情形中，這就是為何大部分的物件都是由容器中解析。
+此外，也是最常用的，你可以簡單地在類別的建構子中對依賴「型別提示」來解析出容器中物件，包含[控制器](/laravel_tw/docs/5.5/controllers)、[事件監聽器](/laravel_tw/docs/5.5/events)、[隊列任務](/laravel_tw/docs/5.5/queues)、[中介層](/laravel_tw/docs/5.5/middleware)及其他等等。在實際情形中，這就是為何大部分的物件都是由容器中解析。
 
 例如，你可以透過你應用程式控制器的建構子型別提示一個被定義的 Repository。Repository 將自動地被解析並注入到類別中：
 
