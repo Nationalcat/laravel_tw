@@ -1,7 +1,3 @@
----
-layout: post
-title: blade
----
 # Blade 模板
 
 - [介紹](#introduction)
@@ -101,7 +97,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
         {% raw %} {{ $slot }} {% endraw %}
     </div>
 
-`{{ $slot }}` 變數會把我們希望放入的內容注入到元件中。這時候，我們能使用 Blade 中的 `@component` 指令來建構這個元件。
+`{% raw %} {{ $slot }} {% endraw %}` 變數會把我們希望放入的內容注入到元件中。這時候，我們能使用 Blade 中的 `@component` 指令來建構這個元件。
 
     @component('alert')
         <strong>Whoops!</strong> Something went wrong!
@@ -112,9 +108,9 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
     <!-- /resources/views/alert.blade.php -->
 
     <div class="alert alert-danger">
-        <div class="alert-title">{{ $title }}</div>
+        <div class="alert-title">{% raw %} {{ $title }} {% endraw %}</div>
 
-        {{ $slot }}
+        {% raw %} {{ $slot }} {% endraw %}
     </div>
 
 現在，我們終於能使用 `@slot` 指令注入內容到對應變數名稱的 slot 中。任何不在 `@slot` 區塊內的內容都會放到 `$slot` 這個變數裡：
@@ -146,17 +142,17 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
 
 你可以像這樣顯示 `name` 變數的內容：
 
-    Hello, {{ $name }}.
+    Hello, {% raw %} {{ $name }} {% endraw %}.
 
 當然，也不是一定只能顯示傳遞至視圖的變數內容。你也可以顯示 PHP 函式的結果。實際上，你可以放置任何你需要的 PHP 程式碼到 Blade 顯示語法裡面：
 
-    目前的 UNIX 時間戳記為 {{ time() }}.
+    目前的 UNIX 時間戳記為 {% raw %} {{ time() }} {% endraw %}.
 
-> {tip} Blade 的 `{{}}` 語法已經自動以 PHP 的 `htmlentites` 函式防禦 XSS 攻擊。
+> {tip} Blade 的 `{% raw %} {{}} {% endraw %}` 語法已經自動以 PHP 的 `htmlentites` 函式防禦 XSS 攻擊。
 
 #### 顯示未跳脫的資料
 
-在預設下，Blade `{{ }}` 語法會自己使用 PHP `htmlspecialchars` 原生函式來避免 XSS 攻擊。如果你不想要你的資料被跳脫處理，可以使用下面的語法。
+在預設下，Blade `{% raw %} {{ }} {% endraw %}` 語法會自己使用 PHP `htmlspecialchars` 原生函式來避免 XSS 攻擊。如果你不想要你的資料被跳脫處理，可以使用下面的語法。
 
     Hello, {!! $name !!}.
 
@@ -183,9 +179,9 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
 
     <h1>Laravel</h1>
 
-    Hello, @{{ name }}.
+    Hello, @{% raw %} {{ name }} {% endraw %}.
 
-在這個範例中，`@` 符號會被 Blade 移除。而且，Blade 引擎會保留 `{{ name }}` 表達式，如此一來便可讓其它 JavaScript 框架所應用。
+在這個範例中，`@` 符號會被 Blade 移除。而且，Blade 引擎會保留 `{% raw %} {{ name }} {% endraw %}` 表達式，如此一來便可讓其它 JavaScript 框架所應用。
 
 #### `@verbatim` 指令
 
@@ -193,7 +189,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
 
     @verbatim
         <div class="container">
-            Hello, {{ name }}.
+            Hello, {% raw %} {{ name }} {% endraw %}.
         </div>
     @endverbatim
 
@@ -243,7 +239,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
         // 使用者尚未被認證...
     @endguest
 
-如果有需要，當你使用 `@auth` 和 `@guest` 指令時，你可以指定[認證守衛](/docs/{{version}}/authentication)來確認身份：
+如果有需要，當你使用 `@auth` 和 `@guest` 指令時，你可以指定[認證守衛](/laravel_tw/docs/5.5/authentication)來確認身份：
 
     @auth('admin')
         // 使用者已經被認證...
@@ -277,15 +273,15 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
 除了條件句外，Blade 支援原生 PHP 迴圈的語法。再說一次，這些指令都能對應到原生 PHP 功能：
 
     @for ($i = 0; $i < 10; $i++)
-        The current value is {{ $i }}
+        The current value is {% raw %} {{ $i }} {% endraw %}
     @endfor
 
     @foreach ($users as $user)
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user {% raw %} {{ $user->id }} {% endraw %}</p>
     @endforeach
 
     @forelse ($users as $user)
-        <li>{{ $user->name }}</li>
+        <li>{% raw %} {{ $user->name }} {% endraw %}</li>
     @empty
         <p>No users</p>
     @endforelse
@@ -303,7 +299,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
             @continue
         @endif
 
-        <li>{{ $user->name }}</li>
+        <li>{% raw %} {{ $user->name }} {% endraw %}</li>
 
         @if ($user->number == 5)
             @break
@@ -315,7 +311,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
     @foreach ($users as $user)
         @continue($user->type == 1)
 
-        <li>{{ $user->name }}</li>
+        <li>{% raw %} {{ $user->name }} {% endraw %}</li>
 
         @break($user->number == 5)
     @endforeach
@@ -334,7 +330,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
             This is the last iteration.
         @endif
 
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user {% raw %} {{ $user->id }} {% endraw %}</p>
     @endforeach
 
 如果你使用一個巢狀迴圈，你可以透過 `parent` 屬性去存取 `$loop` 變數：
@@ -365,7 +361,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
 
 Blade 允許你在你的視圖中寫註解。然而，這不像 HTML 的註解。Blade 註解不是寫入 HTML 並返回到你的網頁上：
 
-    {{-- 這裡的註解不會出現再渲染後的 HTML --}}
+    {% raw %} {{-- 這裡的註解不會出現再渲染後的 HTML --}} {% endraw %}
 
 <a name="php"></a>
 ### PHP
@@ -444,12 +440,12 @@ Blade 可以讓你使用 `@push` 將已命名的 Stack 在其他的視圖或佈�
 <a name="service-injection"></a>
 ## 服務注入
 
-`@inject` 指令可以取出 Laravel [服務容器](/docs/{{version}}/container)中的服務。傳遞給 `@inject` 的第一個參數為置放該服務的變數名稱，而第二個參數為你想要解析的服務的類別或是介面的名稱：
+`@inject` 指令可以取出 Laravel [服務容器](/laravel_tw/docs/5.5/container)中的服務。傳遞給 `@inject` 的第一個參數為置放該服務的變數名稱，而第二個參數為你想要解析的服務的類別或是介面的名稱：
 
     @inject('metrics', 'App\Services\MetricsService')
 
     <div>
-        Monthly Revenue: {{ $metrics->monthlyRevenue() }}.
+        Monthly Revenue: {% raw %} {{ $metrics->monthlyRevenue() }} {% endraw %}.
     </div>
 
 <a name="extending-blade"></a>
