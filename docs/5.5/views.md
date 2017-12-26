@@ -1,3 +1,7 @@
+---
+layout: post
+title: views
+---
 # Views
 
 - [建立視圖](#creating-views)
