@@ -1,7 +1,3 @@
----
-layout: post
-title: cache
----
 # Cache
 
 - [設定](#configuration)
@@ -69,7 +65,7 @@ Laravel 提供一個快速、統一的 API 方法給各式各樣不同的快取�
 
 在選擇使用 Redis 作為 Laravel 的快取前，你需要先經由 Composer 安裝 `predis/predis` 套件（~1.0），或是經由 PECL 安裝 PhpRedis 擴充功能。
 
-更多有關設定 Redis 的資訊，請參考 [Laravel 的文件頁面](/docs/{{version}}/redis#configuration)。
+更多有關設定 Redis 的資訊，請參考 [Laravel 的文件頁面](/laravel_tw/docs/5.5/redis#configuration)。
 
 <a name="cache-usage"></a>
 ## 快取的使用
@@ -77,7 +73,7 @@ Laravel 提供一個快速、統一的 API 方法給各式各樣不同的快取�
 <a name="obtaining-a-cache-instance"></a>
 ### 取得一個快取的實例
 
-`Illuminate\Contracts\Cache\Factory` 和 `Illuminate\Contracts\Cache\Repository` [contracts](/docs/{{version}}/contracts) 提供了存取 Laravel 快取服務的機制。而 `Factory` contract 則為你的應用程式提供了存取所有快取驅動的機制。`Repository` contract 是一般的快取驅動實作，它會依照你的快取設定檔變化。
+`Illuminate\Contracts\Cache\Factory` 和 `Illuminate\Contracts\Cache\Repository` [contracts](/laravel_tw/docs/5.5/contracts) 提供了存取 Laravel 快取服務的機制。而 `Factory` contract 則為你的應用程式提供了存取所有快取驅動的機制。`Repository` contract 是一般的快取驅動實作，它會依照你的快取設定檔變化。
 
 然而，你可能也需要使用 `Cache` facade，我們會在整份文件中使用它。 `Cache` facade 提供了方便又簡潔的方法存取現行實作的 Laravel 快取 constract：
 
@@ -207,7 +203,7 @@ Laravel 提供一個快速、統一的 API 方法給各式各樣不同的快取�
 <a name="the-cache-helper"></a>
 ### 快取輔助函式
 
-除了使用 `Cache` facade 或是 [cache contract](/docs/{{version}}/contracts) 之外，你還可以使用全域的 `cache` 函式來從快取中取得或是儲存資料。當 `cache` 函式被呼叫並且只有一個字串的參數時，將會傳回快取中這個項目的值：
+除了使用 `Cache` facade 或是 [cache contract](/laravel_tw/docs/5.5/contracts) 之外，你還可以使用全域的 `cache` 函式來從快取中取得或是儲存資料。當 `cache` 函式被呼叫並且只有一個字串的參數時，將會傳回快取中這個項目的值：
 
     $value = cache('key');
 
@@ -217,7 +213,7 @@ Laravel 提供一個快速、統一的 API 方法給各式各樣不同的快取�
 
     cache(['key' => 'value'], Carbon::now()->addSeconds(10));
 
-當你在測試中呼叫這個全域的 `cache` 輔助函式，你可以使用 `Cache::shouldReceive` 方法就像你在[測試一個 facade](/docs/{{version}}/mocking#mocking-facades) 一樣。
+當你在測試中呼叫這個全域的 `cache` 輔助函式，你可以使用 `Cache::shouldReceive` 方法就像你在[測試一個 facade](/laravel_tw/docs/5.5/mocking#mocking-facades) 一樣。
 
 <a name="cache-tags"></a>
 ## 快取標籤
@@ -259,7 +255,7 @@ Laravel 提供一個快速、統一的 API 方法給各式各樣不同的快取�
 <a name="writing-the-driver"></a>
 ### 撰寫一個驅動
 
-為了建立一個客製化的快取驅動，首先我們要實作一個 `Illuminate\Contracts\Cache\Store` [contract](/docs/{{version}}/contracts)。因此，一個 `MongoDB` 快取的實作會看起來像這樣：
+為了建立一個客製化的快取驅動，首先我們要實作一個 `Illuminate\Contracts\Cache\Store` [contract](/laravel_tw/docs/5.5/contracts)。因此，一個 `MongoDB` 快取的實作會看起來像這樣：
 
     <?php
 
@@ -327,14 +323,14 @@ Laravel 提供一個快速、統一的 API 方法給各式各樣不同的快取�
         }
     }
 
-第一個傳遞給 `extend` 方法的參數是驅動的名稱，這個名稱要與你在 `config/cache.php` 設定檔中，`driver` 選項指定的名稱相同，第二個參數是一個應該要回傳一個 `Illuminate\Cache\Repository` 實例的閉包，這個閉包會被傳入一個 `$app` 實例，這個實例是屬於[服務容器](/docs/{{version}}/container)。
+第一個傳遞給 `extend` 方法的參數是驅動的名稱，這個名稱要與你在 `config/cache.php` 設定檔中，`driver` 選項指定的名稱相同，第二個參數是一個應該要回傳一個 `Illuminate\Cache\Repository` 實例的閉包，這個閉包會被傳入一個 `$app` 實例，這個實例是屬於[服務容器](/laravel_tw/docs/5.5/container)。
 
 一旦你的擴充功能完成，你只需要簡單的更新 `config/cache.php` 設定檔中的 `driver` 選項為你的擴充功能名稱即可。
 
 <a name="events"></a>
 ## 快取事件
 
-如果要在每次操作快取時執行一段程式碼，你可以監聽由快取所觸發的[事件](/docs/{{version}}/events)。一般來說，你必須將事件監聽器放置在 `EventServiceProvider` 的 `boot` 方法中：
+如果要在每次操作快取時執行一段程式碼，你可以監聽由快取所觸發的[事件](/laravel_tw/docs/5.5/events)。一般來說，你必須將事件監聽器放置在 `EventServiceProvider` 的 `boot` 方法中：
 
     /**
      * 應用程式的事件監聽器列表。
