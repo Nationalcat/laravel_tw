@@ -1,7 +1,3 @@
----
-layout: post
-title: csrf
----
 # CSRF 保護
 
 - [介紹](#csrf-introduction)
@@ -19,11 +15,11 @@ Laravel 透過應用程式自動產生一個 CSRF「token」來管理每個活�
 在你每次定義 HTML 表單的時候，應該在表單中插入隱藏的 CSRF token，這樣用於預防 CSRF 攻擊的中介層可以驗證表單請求。你可以使用 `csrf_field` 輔助函式來產生 token 到表單中：
 
     <form method="POST" action="/profile">
-        {{ csrf_field() }}
+        {% raw %} {{ csrf_field() }} {% endraw %}
         ...
     </form>
 
-包含在 `web` 中介層群組的 `VerifyCsrfToken` [中介層](/docs/{{version}}/middleware)，會自動驗證表單請求的 token 是否與儲存在 session 的 token 一致。
+包含在 `web` 中介層群組的 `VerifyCsrfToken` [中介層](/laravel_tw/docs/5.5/middleware)，會自動驗證表單請求的 token 是否與儲存在 session 的 token 一致。
 
 #### CSRF Tokens 與 JavaScript
 
@@ -59,7 +55,7 @@ Laravel 透過應用程式自動產生一個 CSRF「token」來管理每個活�
 
 除了把 CSRF token 作為 POST 參數來檢查外，`VerifyCsrfToken` 中介層也會檢查 `X-CSRF-TOKEN` 請求標頭。如範例所見，你可以將 token 存放在 HTML 的 `meta` 標籤裡：
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{% raw %} {{ csrf_token() }} {% endraw %}">
 
 然後，一旦你建好 `meta` 標籤，就能指示類似 jQuery 的函式庫自動新增 token 到每個請求標頭。這能為你的 AJAX 應用程式提供既簡單又便利的 CSRF 保護：
 
