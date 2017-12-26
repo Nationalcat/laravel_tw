@@ -1,7 +1,3 @@
----
-layout: post
-title: eloquent-resources
----
 # Eloquent：API 資源
 
 - [介紹](#introduction)
@@ -263,7 +259,7 @@ title: eloquent-resources
         ]
     }
 
-如果你想要禁止包裝最外層的資源，你可以在基本 Resource 類別上使用 `withoutWrapping`。通常，你應該會從你的 `AppServiceProvider` 或另一個會在每個請求中都會被載入的服務提供者](/docs/{{version}}/providers)中呼叫這個方法：
+如果你想要禁止包裝最外層的資源，你可以在基本 Resource 類別上使用 `withoutWrapping`。通常，你應該會從你的 `AppServiceProvider` 或另一個會在每個請求中都會被載入的服務提供者](/laravel_tw/docs/5.5/providers)中呼叫這個方法：
 
     <?php
 
