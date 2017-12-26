@@ -1,7 +1,3 @@
----
-layout: post
-title: facades
----
 # Facades
 
 - [Introduction](#introduction)
@@ -15,7 +11,7 @@ title: facades
 <a name="introduction"></a>
 ## Introduction
 
-Facades provide a "static" interface to classes that are available in the application's [service container](/docs/{{version}}/container). Laravel ships with many facades which provide access to almost all of Laravel's features. Laravel facades serve as "static proxies" to underlying classes in the service container, providing the benefit of a terse, expressive syntax while maintaining more testability and flexibility than traditional static methods.
+Facades provide a "static" interface to classes that are available in the application's [service container](/laravel_tw/docs/5.5/container). Laravel ships with many facades which provide access to almost all of Laravel's features. Laravel facades serve as "static proxies" to underlying classes in the service container, providing the benefit of a terse, expressive syntax while maintaining more testability and flexibility than traditional static methods.
 
 All of Laravel's facades are defined in the `Illuminate\Support\Facades` namespace. So, we can easily access a facade like so:
 
@@ -34,7 +30,7 @@ Facades have many benefits. They provide a terse, memorable syntax that allows y
 
 However, some care must be taken when using facades. The primary danger of facades is class scope creep. Since facades are so easy to use and do not require injection, it can be easy to let your classes continue to grow and use many facades in a single class. Using dependency injection, this potential is mitigated by the visual feedback a large constructor gives you that your class is growing too large. So, when using facades, pay special attention to the size of your class so that its scope of responsibility stays narrow.
 
-> {tip} When building a third-party package that interacts with Laravel, it's better to inject [Laravel contracts](/docs/{{version}}/contracts) instead of using facades. Since packages are built outside of Laravel itself, you will not have access to Laravel's facade testing helpers.
+> {tip} When building a third-party package that interacts with Laravel, it's better to inject [Laravel contracts](/laravel_tw/docs/5.5/contracts) instead of using facades. Since packages are built outside of Laravel itself, you will not have access to Laravel's facade testing helpers.
 
 <a name="facades-vs-dependency-injection"></a>
 ### Facades Vs. Dependency Injection
@@ -146,7 +142,7 @@ If we look at that `Illuminate\Support\Facades\Cache` class, you'll see that the
         protected static function getFacadeAccessor() { return 'cache'; }
     }
 
-Instead, the `Cache` facade extends the base `Facade` class and defines the method `getFacadeAccessor()`. This method's job is to return the name of a service container binding. When a user references any static method on the `Cache` facade, Laravel resolves the `cache` binding from the [service container](/docs/{{version}}/container) and runs the requested method (in this case, `get`) against that object.
+Instead, the `Cache` facade extends the base `Facade` class and defines the method `getFacadeAccessor()`. This method's job is to return the name of a service container binding. When a user references any static method on the `Cache` facade, Laravel resolves the `cache` binding from the [service container](/laravel_tw/docs/5.5/container) and runs the requested method (in this case, `get`) against that object.
 
 <a name="real-time-facades"></a>
 ## Real-Time Facades
@@ -233,44 +229,44 @@ When the real-time facade is used, the publisher implementation will be resolved
 <a name="facade-class-reference"></a>
 ## Facade Class Reference
 
-Below you will find every facade and its underlying class. This is a useful tool for quickly digging into the API documentation for a given facade root. The [service container binding](/docs/{{version}}/container) key is also included where applicable.
+Below you will find every facade and its underlying class. This is a useful tool for quickly digging into the API documentation for a given facade root. The [service container binding](/laravel_tw/docs/5.5/container) key is also included where applicable.
 
 Facade  |  Class  |  Service Container Binding
 ------------- | ------------- | -------------
-App  |  [Illuminate\Foundation\Application](https://laravel.com/api/{{version}}/Illuminate/Foundation/Application.html)  | `app`
-Artisan  |  [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/{{version}}/Illuminate/Contracts/Console/Kernel.html)  |  `artisan`
-Auth  |  [Illuminate\Auth\AuthManager](https://laravel.com/api/{{version}}/Illuminate/Auth/AuthManager.html)  |  `auth`
-Blade  |  [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/{{version}}/Illuminate/View/Compilers/BladeCompiler.html)  |  `blade.compiler`
-Bus  |  [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/{{version}}/Illuminate/Contracts/Bus/Dispatcher.html)  |  &nbsp;
-Cache  |  [Illuminate\Cache\Repository](https://laravel.com/api/{{version}}/Illuminate/Cache/Repository.html)  |  `cache`
-Config  |  [Illuminate\Config\Repository](https://laravel.com/api/{{version}}/Illuminate/Config/Repository.html)  |  `config`
-Cookie  |  [Illuminate\Cookie\CookieJar](https://laravel.com/api/{{version}}/Illuminate/Cookie/CookieJar.html)  |  `cookie`
-Crypt  |  [Illuminate\Encryption\Encrypter](https://laravel.com/api/{{version}}/Illuminate/Encryption/Encrypter.html)  |  `encrypter`
-DB  |  [Illuminate\Database\DatabaseManager](https://laravel.com/api/{{version}}/Illuminate/Database/DatabaseManager.html)  |  `db`
-DB (Instance)  |  [Illuminate\Database\Connection](https://laravel.com/api/{{version}}/Illuminate/Database/Connection.html)  |  &nbsp;
-Event  |  [Illuminate\Events\Dispatcher](https://laravel.com/api/{{version}}/Illuminate/Events/Dispatcher.html)  |  `events`
-File  |  [Illuminate\Filesystem\Filesystem](https://laravel.com/api/{{version}}/Illuminate/Filesystem/Filesystem.html)  |  `files`
-Gate  |  [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/{{version}}/Illuminate/Contracts/Auth/Access/Gate.html)  |  &nbsp;
-Hash  |  [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/{{version}}/Illuminate/Contracts/Hashing/Hasher.html)  |  `hash`
-Lang  |  [Illuminate\Translation\Translator](https://laravel.com/api/{{version}}/Illuminate/Translation/Translator.html)  |  `translator`
-Log  |  [Illuminate\Log\Writer](https://laravel.com/api/{{version}}/Illuminate/Log/Writer.html)  |  `log`
-Mail  |  [Illuminate\Mail\Mailer](https://laravel.com/api/{{version}}/Illuminate/Mail/Mailer.html)  |  `mailer`
-Notification  |  [Illuminate\Notifications\ChannelManager](https://laravel.com/api/{{version}}/Illuminate/Notifications/ChannelManager.html)  |  &nbsp;
-Password  |  [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/{{version}}/Illuminate/Auth/Passwords/PasswordBrokerManager.html)  |  `auth.password`
-Queue  |  [Illuminate\Queue\QueueManager](https://laravel.com/api/{{version}}/Illuminate/Queue/QueueManager.html)  |  `queue`
-Queue (Instance)  |  [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/{{version}}/Illuminate/Contracts/Queue/Queue.html)  |  `queue`
-Queue (Base Class) |  [Illuminate\Queue\Queue](https://laravel.com/api/{{version}}/Illuminate/Queue/Queue.html)  |  &nbsp;
-Redirect  |  [Illuminate\Routing\Redirector](https://laravel.com/api/{{version}}/Illuminate/Routing/Redirector.html)  |  `redirect`
-Redis  |  [Illuminate\Redis\Database](https://laravel.com/api/{{version}}/Illuminate/Redis/Database.html)  |  `redis`
-Request  |  [Illuminate\Http\Request](https://laravel.com/api/{{version}}/Illuminate/Http/Request.html)  |  `request`
-Response  |  [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/{{version}}/Illuminate/Contracts/Routing/ResponseFactory.html)  |  &nbsp;
-Route  |  [Illuminate\Routing\Router](https://laravel.com/api/{{version}}/Illuminate/Routing/Router.html)  |  `router`
-Schema  |  [Illuminate\Database\Schema\Blueprint](https://laravel.com/api/{{version}}/Illuminate/Database/Schema/Blueprint.html)  |  &nbsp;
-Session  |  [Illuminate\Session\SessionManager](https://laravel.com/api/{{version}}/Illuminate/Session/SessionManager.html)  |  `session`
-Session (Instance)  |  [Illuminate\Session\Store](https://laravel.com/api/{{version}}/Illuminate/Session/Store.html)  |  &nbsp;
-Storage  |  [Illuminate\Contracts\Filesystem\Factory](https://laravel.com/api/{{version}}/Illuminate/Contracts/Filesystem/Factory.html)  |  `filesystem`
-URL  |  [Illuminate\Routing\UrlGenerator](https://laravel.com/api/{{version}}/Illuminate/Routing/UrlGenerator.html)  |  `url`
-Validator  |  [Illuminate\Validation\Factory](https://laravel.com/api/{{version}}/Illuminate/Validation/Factory.html)  |  `validator`
-Validator (Instance)  |  [Illuminate\Validation\Validator](https://laravel.com/api/{{version}}/Illuminate/Validation/Validator.html) |  &nbsp;
-View  |  [Illuminate\View\Factory](https://laravel.com/api/{{version}}/Illuminate/View/Factory.html)  |  `view`
-View (Instance)  |  [Illuminate\View\View](https://laravel.com/api/{{version}}/Illuminate/View/View.html)  |  &nbsp;
+App  |  [Illuminate\Foundation\Application](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Foundation/Application.html)  | `app`
+Artisan  |  [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Console/Kernel.html)  |  `artisan`
+Auth  |  [Illuminate\Auth\AuthManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Auth/AuthManager.html)  |  `auth`
+Blade  |  [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/View/Compilers/BladeCompiler.html)  |  `blade.compiler`
+Bus  |  [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Bus/Dispatcher.html)  |  &nbsp;
+Cache  |  [Illuminate\Cache\Repository](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Cache/Repository.html)  |  `cache`
+Config  |  [Illuminate\Config\Repository](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Config/Repository.html)  |  `config`
+Cookie  |  [Illuminate\Cookie\CookieJar](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Cookie/CookieJar.html)  |  `cookie`
+Crypt  |  [Illuminate\Encryption\Encrypter](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Encryption/Encrypter.html)  |  `encrypter`
+DB  |  [Illuminate\Database\DatabaseManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Database/DatabaseManager.html)  |  `db`
+DB (Instance)  |  [Illuminate\Database\Connection](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Database/Connection.html)  |  &nbsp;
+Event  |  [Illuminate\Events\Dispatcher](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Events/Dispatcher.html)  |  `events`
+File  |  [Illuminate\Filesystem\Filesystem](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Filesystem/Filesystem.html)  |  `files`
+Gate  |  [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Auth/Access/Gate.html)  |  &nbsp;
+Hash  |  [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Hashing/Hasher.html)  |  `hash`
+Lang  |  [Illuminate\Translation\Translator](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Translation/Translator.html)  |  `translator`
+Log  |  [Illuminate\Log\Writer](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Log/Writer.html)  |  `log`
+Mail  |  [Illuminate\Mail\Mailer](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Mail/Mailer.html)  |  `mailer`
+Notification  |  [Illuminate\Notifications\ChannelManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Notifications/ChannelManager.html)  |  &nbsp;
+Password  |  [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Auth/Passwords/PasswordBrokerManager.html)  |  `auth.password`
+Queue  |  [Illuminate\Queue\QueueManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Queue/QueueManager.html)  |  `queue`
+Queue (Instance)  |  [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Queue/Queue.html)  |  `queue`
+Queue (Base Class) |  [Illuminate\Queue\Queue](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Queue/Queue.html)  |  &nbsp;
+Redirect  |  [Illuminate\Routing\Redirector](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Routing/Redirector.html)  |  `redirect`
+Redis  |  [Illuminate\Redis\Database](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Redis/Database.html)  |  `redis`
+Request  |  [Illuminate\Http\Request](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Http/Request.html)  |  `request`
+Response  |  [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Routing/ResponseFactory.html)  |  &nbsp;
+Route  |  [Illuminate\Routing\Router](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Routing/Router.html)  |  `router`
+Schema  |  [Illuminate\Database\Schema\Blueprint](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Database/Schema/Blueprint.html)  |  &nbsp;
+Session  |  [Illuminate\Session\SessionManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Session/SessionManager.html)  |  `session`
+Session (Instance)  |  [Illuminate\Session\Store](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Session/Store.html)  |  &nbsp;
+Storage  |  [Illuminate\Contracts\Filesystem\Factory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Filesystem/Factory.html)  |  `filesystem`
+URL  |  [Illuminate\Routing\UrlGenerator](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Routing/UrlGenerator.html)  |  `url`
+Validator  |  [Illuminate\Validation\Factory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Validation/Factory.html)  |  `validator`
+Validator (Instance)  |  [Illuminate\Validation\Validator](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Validation/Validator.html) |  &nbsp;
+View  |  [Illuminate\View\Factory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/View/Factory.html)  |  `view`
+View (Instance)  |  [Illuminate\View\View](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/View/View.html)  |  &nbsp;
