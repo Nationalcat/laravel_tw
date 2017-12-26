@@ -1,3 +1,7 @@
+---
+layout: post
+title: queries
+---
 # 資料庫：查詢建構器
 
 - [介紹](#introduction)
