@@ -1,3 +1,7 @@
+---
+layout: post
+title: errors
+---
 # 錯誤與日誌
 
 - [介紹](#introduction)
