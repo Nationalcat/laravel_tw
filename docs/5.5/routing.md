@@ -1,7 +1,3 @@
----
-layout: post
-title: routing
----
 # Routing
 
 - [Basic Routing](#basic-routing)
@@ -65,10 +61,10 @@ Sometimes you may need to register a route that responds to multiple HTTP verbs.
 
 #### CSRF Protection
 
-Any HTML forms pointing to `POST`, `PUT`, or `DELETE` routes that are defined in the `web` routes file should include a CSRF token field. Otherwise, the request will be rejected. You can read more about CSRF protection in the [CSRF documentation](/docs/{{version}}/csrf):
+Any HTML forms pointing to `POST`, `PUT`, or `DELETE` routes that are defined in the `web` routes file should include a CSRF token field. Otherwise, the request will be rejected. You can read more about CSRF protection in the [CSRF documentation](/laravel_tw/docs/5.5/csrf):
 
     <form method="POST" action="/profile">
-        {{ csrf_field() }}
+        {% raw %} {{ csrf_field() }} {% endraw %}
         ...
     </form>
 
@@ -337,12 +333,12 @@ HTML forms do not support `PUT`, `PATCH` or `DELETE` actions. So, when defining 
 
     <form action="/foo/bar" method="POST">
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" value="{% raw %} {{ csrf_token() }} {% endraw %}">
     </form>
 
 You may use the `method_field` helper to generate the `_method` input:
 
-    {{ method_field('PUT') }}
+    {% raw %} {{ method_field('PUT') }} {% endraw %}
 
 <a name="accessing-the-current-route"></a>
 ## Accessing The Current Route
@@ -355,4 +351,4 @@ You may use the `current`, `currentRouteName`, and `currentRouteAction` methods 
 
     $action = Route::currentRouteAction();
 
-Refer to the API documentation for both the [underlying class of the Route facade](https://laravel.com/api/{{version}}/Illuminate/Routing/Router.html) and [Route instance](https://laravel.com/api/{{version}}/Illuminate/Routing/Route.html) to review all accessible methods.
+Refer to the API documentation for both the [underlying class of the Route facade](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Routing/Router.html) and [Route instance](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Routing/Route.html) to review all accessible methods.
