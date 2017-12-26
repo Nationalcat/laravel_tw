@@ -1,3 +1,7 @@
+---
+layout: post
+title: eloquent-serialization
+---
 # Eloquent：序列化
 
 - [介紹](#introduction)
