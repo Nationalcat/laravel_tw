@@ -1,7 +1,3 @@
----
-layout: post
-title: eloquent-relationships
----
 # Eloquent: 關聯
 
 - [介紹](#introduction)
@@ -43,7 +39,7 @@ title: eloquent-relationships
 <a name="defining-relationships"></a>
 ## 定義關聯
 
-Eloquent 關聯在你的 Eloquent 模型類別上定義方法。因此，像是 Eloquent 模型本身，關聯也有幾個強大的[查詢建構器](/docs/{{version}}/queries)，定義關聯作為方法提供強大的方法鏈結和查詢功能。例如，我們可以在 `post` 關聯上鏈結額外的條件：
+Eloquent 關聯在你的 Eloquent 模型類別上定義方法。因此，像是 Eloquent 模型本身，關聯也有幾個強大的[查詢建構器](/laravel_tw/docs/5.5/queries)，定義關聯作為方法提供強大的方法鏈結和查詢功能。例如，我們可以在 `post` 關聯上鏈結額外的條件：
 
     $user->posts()->where('active', 1)->get();
 
@@ -649,7 +645,7 @@ Eloquent 決定了基於模型名稱的關聯外鍵。在這個案例中，`Phon
 <a name="querying-relations"></a>
 ## 查詢關聯
 
-因為所有類型的 Eloquent 關聯都是透過方法來定義，所以可以呼叫這些方法來取得一個關聯實例，而不需要實際執行關聯查詢。此外，所有類型的 Eloquent 關聯也能當作[查詢構建器](/docs/{{version}}/queries)，這可以讓你在資料庫執行最後的 SQL 之前繼續將查詢條件鏈結到關聯查詢上。
+因為所有類型的 Eloquent 關聯都是透過方法來定義，所以可以呼叫這些方法來取得一個關聯實例，而不需要實際執行關聯查詢。此外，所有類型的 Eloquent 關聯也能當作[查詢構建器](/laravel_tw/docs/5.5/queries)，這可以讓你在資料庫執行最後的 SQL 之前繼續將查詢條件鏈結到關聯查詢上。
 
 例如，假設有一個部落格系統，其中 `User` 模型擁有許多關聯的 `Post` 模型：
 
@@ -676,7 +672,7 @@ Eloquent 決定了基於模型名稱的關聯外鍵。在這個案例中，`Phon
 
     $user->posts()->where('active', 1)->get();
 
-你可以在關聯上使用任何關於[查詢構建器](/docs/{{version}}/queries)的方法，所以請務必查閱查詢構建器的文件，來了解所有可用的方法。
+你可以在關聯上使用任何關於[查詢構建器](/laravel_tw/docs/5.5/queries)的方法，所以請務必查閱查詢構建器的文件，來了解所有可用的方法。
 
 <a name="relationship-methods-vs-dynamic-properties"></a>
 ### 關聯方法與動態屬性比較
@@ -837,7 +833,7 @@ Eloquent 決定了基於模型名稱的關聯外鍵。在這個案例中，`Phon
         $query->where('title', 'like', '%first%');
     }])->get();
 
-在這個例子裡，Eloquent 只會預載入文章標題欄位包含 `first` 的文章。當然，你也可以呼叫其他的[查詢產生器](/docs/{{version}}/queries)來進一步自訂預載入的操作：
+在這個例子裡，Eloquent 只會預載入文章標題欄位包含 `first` 的文章。當然，你也可以呼叫其他的[查詢產生器](/laravel_tw/docs/5.5/queries)來進一步自訂預載入的操作：
 
     $users = App\User::with(['posts' => function ($query) {
         $query->orderBy('created_at', 'desc');
@@ -908,7 +904,7 @@ Eloquent 提供了方便的方法來增加新的模型至關聯中。例如，�
         'message' => 'A new comment.',
     ]);
 
-> {tip} 在使用 `create` 方法之前，請確定瀏覽了[批量賦值](/docs/{{version}}/eloquent#mass-assignment)的文件。
+> {tip} 在使用 `create` 方法之前，請確定瀏覽了[批量賦值](/laravel_tw/docs/5.5/eloquent#mass-assignment)的文件。
 
 你可以使用 `createMany` 方法來建立多筆關聯模型：
 
