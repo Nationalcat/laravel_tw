@@ -1,7 +1,3 @@
----
-layout: post
-title: database-testing
----
 # 資料庫測試
 
 - [介紹](#introduction)
@@ -36,7 +32,7 @@ Laravel 提供了各種有用的工具，可以輕鬆的測試資料庫驅動。
 <a name="generating-factories"></a>
 ## 產生 Factory
 
-使用 [Artisan 指令](/docs/{{version}}/artisan) 的 `make:factory` 來產生 Factory ：
+使用 [Artisan 指令](/laravel_tw/docs/5.5/artisan) 的 `make:factory` 來產生 Factory ：
 
     php artisan make:factory PostFactory
 
@@ -79,7 +75,7 @@ Laravel 提供了各種有用的工具，可以輕鬆的測試資料庫驅動。
 <a name="writing-factories"></a>
 ## 寫入 Factory
 
-在測試時，你可能需要在測試前對資料庫寫入幾筆記錄。建立這個測試資料的時候不用手動指定每列的值，因為 Laravel 可以讓你使用模型 Factory 來為每個 [Eloquent 模型](/docs/{{version}}/eloquent)定義一組預設的屬性。開始之前請查看在你應用程式的 database/factories/UserFactory.php。這個檔案已經包含了一個現成的 Factory 定義：
+在測試時，你可能需要在測試前對資料庫寫入幾筆記錄。建立這個測試資料的時候不用手動指定每列的值，因為 Laravel 可以讓你使用模型 Factory 來為每個 [Eloquent 模型](/laravel_tw/docs/5.5/eloquent)定義一組預設的屬性。開始之前請查看在你應用程式的 database/factories/UserFactory.php。這個檔案已經包含了一個現成的 Factory 定義：
 
     use Faker\Generator as Faker;
 
@@ -176,7 +172,7 @@ Factory 狀態讓你可以定義分散的修改，以任何組合的形式應用
 <a name="relationships"></a>
 ### 關聯
 
-在這個範例中，我們會嘗試關聯某些已建好的模型。當使用 `create` 方法來建立多型模型時，會回傳 Eloquent 的[集合實例](/docs/{{version}}/eloquent-collections)，可以讓你使用集合提供的任何方便的功能，像是 `each`：
+在這個範例中，我們會嘗試關聯某些已建好的模型。當使用 `create` 方法來建立多型模型時，會回傳 Eloquent 的[集合實例](/laravel_tw/docs/5.5/eloquent-collections)，可以讓你使用集合提供的任何方便的功能，像是 `each`：
 
     $users = factory(App\User::class, 3)
                ->create()
