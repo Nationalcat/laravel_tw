@@ -1,3 +1,7 @@
+---
+layout: post
+title: mix
+---
 # Compiling Assets (Laravel Mix)
 
 - [Introduction](#introduction)
