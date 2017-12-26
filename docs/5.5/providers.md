@@ -1,7 +1,3 @@
----
-layout: post
-title: providers
----
 # 服務提供者
 
 - [介紹](#introduction)
@@ -25,7 +21,7 @@ title: providers
 <a name="writing-service-providers"></a>
 ## 撰寫服務提供者
 
-所有的服務提供者都繼承了 `Illuminate\Support\ServiceProvider` 類別。大部分服務提供者都包含兩個方法：`register` 和 `boot`。在 `register` 方法中，你應該**只將事物綁定至[服務容器](/docs/{{version}}/container)**之中。你永遠不該試圖在 `register` 方法中註冊任何事件監聽器、路由或任何其他功能。
+所有的服務提供者都繼承了 `Illuminate\Support\ServiceProvider` 類別。大部分服務提供者都包含兩個方法：`register` 和 `boot`。在 `register` 方法中，你應該**只將事物綁定至[服務容器](/laravel_tw/docs/5.5/container)**之中。你永遠不該試圖在 `register` 方法中註冊任何事件監聽器、路由或任何其他功能。
 
 Artisan 命令列介面可以很容易地透過 `make:provider` 指令產生新的提供者：
 
@@ -34,7 +30,7 @@ Artisan 命令列介面可以很容易地透過 `make:provider` 指令產生新�
 <a name="the-register-method"></a>
 ### Register 方法
 
-如同之前提到的，在 `register` 方法中，，你應該**只將事物綁定至[服務容器](/docs/{{version}}/container)**之中。你永遠不該試圖在 `register` 方法中註冊任何事件監聽器、路由或任何其他功能。否則的話，你可能會意外地使用到由尚未載入的服務提供者所提供的服務。
+如同之前提到的，在 `register` 方法中，，你應該**只將事物綁定至[服務容器](/laravel_tw/docs/5.5/container)**之中。你永遠不該試圖在 `register` 方法中註冊任何事件監聽器、路由或任何其他功能。否則的話，你可能會意外地使用到由尚未載入的服務提供者所提供的服務。
 
 讓我們來看看基本的服務提供者，在你的服務提供者中的任何方法，永遠可以使用 `$app` 屬性來存取服務容器：
 
@@ -60,7 +56,7 @@ Artisan 命令列介面可以很容易地透過 `make:provider` 指令產生新�
         }
     }
 
-此服務提供者只定義了一個 `register` 方法，並在服務容器中使用此方法定義了一份 `Riak\Connection` 的實作。若你不瞭解服務容器是如何運作的，去看看[相關文件](/docs/{{version}}/container)。
+此服務提供者只定義了一個 `register` 方法，並在服務容器中使用此方法定義了一份 `Riak\Connection` 的實作。若你不瞭解服務容器是如何運作的，去看看[相關文件](/laravel_tw/docs/5.5/container)。
 
 <a name="the-boot-method"></a>
 ### Boot 方法
@@ -90,7 +86,7 @@ Artisan 命令列介面可以很容易地透過 `make:provider` 指令產生新�
 
 #### Boot 方法依賴注入
 
-你可以對服務提供者的 `boot` 方法作依賴的型別提式。[服務容器](/docs/{{version}}/container)會自動注入你所需要的任何依賴：
+你可以對服務提供者的 `boot` 方法作依賴的型別提式。[服務容器](/laravel_tw/docs/5.5/container)會自動注入你所需要的任何依賴：
 
     use Illuminate\Contracts\Routing\ResponseFactory;
 
@@ -117,7 +113,7 @@ Artisan 命令列介面可以很容易地透過 `make:provider` 指令產生新�
 <a name="deferred-providers"></a>
 ## 緩載提供者
 
-若你的提供者**僅於**[服務容器](/docs/{{version}}/container)中註冊綁定，你可以選擇延緩其註冊，直到真正需要其中已註冊的綁定。延緩像這樣的提供者載入可增進你的應用程式的效能，因為這樣就毋須每個請求都從檔案系統將其載入。
+若你的提供者**僅於**[服務容器](/laravel_tw/docs/5.5/container)中註冊綁定，你可以選擇延緩其註冊，直到真正需要其中已註冊的綁定。延緩像這樣的提供者載入可增進你的應用程式的效能，因為這樣就毋須每個請求都從檔案系統將其載入。
 
 Laravel 編譯並儲存了一份清單，包括所有由延緩服務提供者所提供的服務，以及其服務提供者類別的名稱。因此，只有在當你企圖解析其中的服務時，Laravel 才會載入該服務提供者。
 
