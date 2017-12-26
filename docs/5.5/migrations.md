@@ -1,7 +1,3 @@
----
-layout: post
-title: migrations
----
 # 資料庫：遷移
 
 - [介紹](#introduction)
@@ -27,12 +23,12 @@ title: migrations
 
 遷移，可以說是資料庫的版本控制，可以讓你的團隊輕易修改與共享應用程式的資料庫結構。遷移通常會搭配 Laravel 的 schema 建構器來輕易的建構資料庫的結構。如果你曾有過不得不告知團隊要手動新增欄位到各自的本機資料庫結構的情況，那你可以使用資料庫遷移來解決這個問題。
 
-Laravel `Schema` [facade](/docs/{{version}}/facades) 為所有 Laravel 支援的資料庫系統提供建立和操作資料庫的相容性支援。
+Laravel `Schema` [facade](/laravel_tw/docs/5.5/facades) 為所有 Laravel 支援的資料庫系統提供建立和操作資料庫的相容性支援。
 
 <a name="generating-migrations"></a>
 ## 產生遷移
 
-使用 [Artisan](/docs/{{version}}/artisan) 的 `make:migration` 指令來建立遷移：
+使用 [Artisan](/laravel_tw/docs/5.5/artisan) 的 `make:migration` 指令來建立遷移：
 
     php artisan make:migration create_users_table
 
@@ -94,7 +90,7 @@ Laravel `Schema` [facade](/docs/{{version}}/facades) 為所有 Laravel 支援的
 
     php artisan migrate
 
-> {note} 如果你使用 [Homestead 虛擬機](/docs/{{version}}/homestead)，你應該從你的虛擬機中執行這個指令。
+> {note} 如果你使用 [Homestead 虛擬機](/laravel_tw/docs/5.5/homestead)，你應該從你的虛擬機中執行這個指令。
 
 #### 在正式上線環境強制執行遷移
 
