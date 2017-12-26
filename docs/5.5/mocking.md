@@ -1,3 +1,7 @@
+---
+layout: post
+title: mocking
+---
 # Mocking
 
 - [介紹](#introduction)
