@@ -1,3 +1,7 @@
+---
+layout: post
+title: configuration
+---
 # Configuration
 
 - [介紹](#introduction)
