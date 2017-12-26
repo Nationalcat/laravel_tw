@@ -1,3 +1,7 @@
+---
+layout: post
+title: notifications
+---
 # Notifications
 
 - [Introduction](#introduction)
