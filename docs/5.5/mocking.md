@@ -1,7 +1,3 @@
----
-layout: post
-title: mocking
----
 # Mocking
 
 - [介紹](#introduction)
@@ -90,7 +86,7 @@ Laravel 為 mock 事件、任務和 facade 提供可立即使用的輔助函式�
 <a name="mail-fake"></a>
 ## 假郵件
 
-你可以使用 `Mail` facade 的 `fake` 方法來防止郵件被寄出。你可以斷言 [mailables](/docs/{{version}}/mail) 有沒有寄給使用者，甚至是檢查它們接收的資料。使用 `fake` 時，會等到測試的程式碼被執行後進行斷言：
+你可以使用 `Mail` facade 的 `fake` 方法來防止郵件被寄出。你可以斷言 [mailables](/laravel_tw/docs/5.5/mail) 有沒有寄給使用者，甚至是檢查它們接收的資料。使用 `fake` 時，會等到測試的程式碼被執行後進行斷言：
 
     <?php
 
@@ -137,7 +133,7 @@ Laravel 為 mock 事件、任務和 facade 提供可立即使用的輔助函式�
 <a name="notification-fake"></a>
 ## 假通知
 
-你可以使用 `Notification` facade 的 `fake` 方法來防止通知真的被送出。你可以斷言[通知](/docs/{{version}}/notifications) 是不是發送給使用者，甚至是檢查它們接收的資料。使用 `fake` 時，會等到測試的程式碼被執行後進行斷言：
+你可以使用 `Notification` facade 的 `fake` 方法來防止通知真的被送出。你可以斷言[通知](/laravel_tw/docs/5.5/notifications) 是不是發送給使用者，甚至是檢查它們接收的資料。使用 `fake` 時，會等到測試的程式碼被執行後進行斷言：
 
     <?php
 
@@ -276,7 +272,7 @@ Laravel 為 mock 事件、任務和 facade 提供可立即使用的輔助函式�
         }
     }
 
-我們可以使用 `shouldReceive` 來 mock 呼叫 `Cache` facade，這會回傳 [Mockery](https://github.com/padraic/mockery) mock 實例。因為 facades 實際上是被 Laravel [服務容器](/docs/{{version}}/container)所管理與解析，它們比典型的靜態類別更具可測試性。例如，讓我們模擬呼叫 `Cache` facade 的 `get` 方法：
+我們可以使用 `shouldReceive` 來 mock 呼叫 `Cache` facade，這會回傳 [Mockery](https://github.com/padraic/mockery) mock 實例。因為 facades 實際上是被 Laravel [服務容器](/laravel_tw/docs/5.5/container)所管理與解析，它們比典型的靜態類別更具可測試性。例如，讓我們模擬呼叫 `Cache` facade 的 `get` 方法：
 
     <?php
 
