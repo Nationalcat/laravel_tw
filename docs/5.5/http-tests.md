@@ -1,7 +1,3 @@
----
-layout: post
-title: http-tests
----
 # HTTP 測試
 
 - [介紹](#introduction)
@@ -85,7 +81,7 @@ Laravel 提供幾個在 HTTP 測試期間會搭配 Session 一起測試的輔助
         }
     }
 
-當然，Session 常被用於維持已認證使用者的狀態。`actingAs` 輔助函式方法提供一個簡易的方式來認證當前的使用者。例如，我們使用[模型工廠](/docs/{{version}}/database-testing#writing-factories) 來產生並認證使用者：
+當然，Session 常被用於維持已認證使用者的狀態。`actingAs` 輔助函式方法提供一個簡易的方式來認證當前的使用者。例如，我們使用[模型工廠](/laravel_tw/docs/5.5/database-testing#writing-factories) 來產生並認證使用者：
 
     <?php
 
