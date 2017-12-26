@@ -1,3 +1,7 @@
+---
+layout: post
+title: hashing
+---
 # Hashing
 
 - [Introduction](#introduction)
