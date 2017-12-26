@@ -1,7 +1,3 @@
----
-layout: post
-title: pagination
----
 # 資料庫：分頁
 
 - [介紹](#introduction)
@@ -17,7 +13,7 @@ title: pagination
 <a name="introduction"></a>
 ## 介紹
 
-在其他框架中，分頁是非常讓人苦惱的。Laravel 的分頁器是與[查詢建構器](/docs/{{version}}/queries) 和 [Eloquent ORM](/docs/{{version}}/eloquent) 一起被整合的，並且提供方便且易於使用的資料庫結果，還能馬上使用。分頁器產生的 HTML 可相容於 [Bootstrap CSS 框架](https://getbootstrap.com/).
+在其他框架中，分頁是非常讓人苦惱的。Laravel 的分頁器是與[查詢建構器](/laravel_tw/docs/5.5/queries) 和 [Eloquent ORM](/laravel_tw/docs/5.5/eloquent) 一起被整合的，並且提供方便且易於使用的資料庫結果，還能馬上使用。分頁器產生的 HTML 可相容於 [Bootstrap CSS 框架](https://getbootstrap.com/).
 
 <a name="basic-usage"></a>
 ## 基本用法
@@ -25,7 +21,7 @@ title: pagination
 <a name="paginating-query-builder-results"></a>
 ### 對查詢建構器的結果分頁
 
-這裡有幾種方式可以分頁項目。最簡單的方式是在[查詢建構器](/docs/{{version}}/queries) 或者在 [Eloquent 查詢](/docs/{{version}}/eloquent)上使用 `paginate` 方法。`paginate` 方法會依據目前使用者正在看的頁面自動設定正確的分頁數量與偏移數。預設情況下，目前頁數會透過 HTTP 請求中的 `page` 查詢字串參數的值來檢測。當然，Laravel 會自動檢測這個值，並且會自動插入分頁器產生的連結中。
+這裡有幾種方式可以分頁項目。最簡單的方式是在[查詢建構器](/laravel_tw/docs/5.5/queries) 或者在 [Eloquent 查詢](/laravel_tw/docs/5.5/eloquent)上使用 `paginate` 方法。`paginate` 方法會依據目前使用者正在看的頁面自動設定正確的分頁數量與偏移數。預設情況下，目前頁數會透過 HTTP 請求中的 `page` 查詢字串參數的值來檢測。當然，Laravel 會自動檢測這個值，並且會自動插入分頁器產生的連結中。
 
 在這個範例中，在 `paginate` 方法傳入唯一的參數，即是你想要在「每一頁」顯示的資料數量。在這個案例中，讓我們指定想要每一頁都顯示 `15` 筆資料：
 
@@ -62,7 +58,7 @@ title: pagination
 <a name="paginating-eloquent-results"></a>
 ### 對 Eloquent 模型分頁
 
-你也可以將 [Eloquent](/docs/{{version}}/eloquent) 查詢分頁。在這個範例中，我們會將 `User` 模型分成每頁最多只有 `15` 項目。如你所見，該語法幾乎與查詢建構器的結果一樣：
+你也可以將 [Eloquent](/laravel_tw/docs/5.5/eloquent) 查詢分頁。在這個範例中，我們會將 `User` 模型分成每頁最多只有 `15` 項目。如你所見，該語法幾乎與查詢建構器的結果一樣：
 
     $users = App\User::paginate(15);
 
@@ -88,15 +84,15 @@ title: pagination
 <a name="displaying-pagination-results"></a>
 ## 顯示分頁結果
 
-在呼叫 `paginate` 方法時，你會接收 `Illuminate\Pagination\LengthAwarePaginator` 實例。在呼叫 `simplePaginate` 方法時，你會接收 `Illuminate\Pagination\Paginator` 實例。這些對象提供幾種方法用來描述結果集。除了這些輔助方法，分頁器的實例也是個疊代器，並且可以像陣列一樣使用迴圈取值。所以，你一旦取得該結果，你就可以顯示該結果並使用 [Blade](/docs/{{version}}/blade) 渲染頁面連結：
+在呼叫 `paginate` 方法時，你會接收 `Illuminate\Pagination\LengthAwarePaginator` 實例。在呼叫 `simplePaginate` 方法時，你會接收 `Illuminate\Pagination\Paginator` 實例。這些對象提供幾種方法用來描述結果集。除了這些輔助方法，分頁器的實例也是個疊代器，並且可以像陣列一樣使用迴圈取值。所以，你一旦取得該結果，你就可以顯示該結果並使用 [Blade](/laravel_tw/docs/5.5/blade) 渲染頁面連結：
 
     <div class="container">
         @foreach ($users as $user)
-            {{ $user->name }}
+            {% raw %} {{ $user->name }} {% endraw %}
         @endforeach
     </div>
 
-    {{ $users->links() }}
+    {% raw %} {{ $users->links() }} {% endraw %}
 
 `links` 方法會在結果中渲染該連結到其餘頁面。這些每一個連結都已經具有正確的 `page` 查詢字串變數。請記得，使用 `link` 方法產生的 HTML 會相容於 [Bootstrap CSS 框架](https://getbootstrap.com).
 
@@ -116,11 +112,11 @@ title: pagination
 
 你可以使用 `appends` 方法來將查詢字串附加到分頁連結上。例如，要附加 `sort=votes` 到每一個分頁連結上，你應該照著以下範例呼叫 `appends`：
 
-    {{ $users->appends(['sort' => 'votes'])->links() }}
+    {% raw %} {{ $users->appends(['sort' => 'votes'])->links() }} {% endraw %}
 
 如果你希望附加一段「雜湊片段」到分頁器的連結，你可以使用 `fragment` 方法。例如，要附加 `#foo` 到每個分頁連結的最後一段，請跟著下列範例一樣呼叫 `fragment` 方法：
 
-    {{ $users->fragment('foo')->links() }}
+    {% raw %} {{ $users->fragment('foo')->links() }} {% endraw %}
 
 <a name="converting-results-to-json"></a>
 ### 將結果轉換成 JSON
@@ -160,10 +156,10 @@ Laravel 分頁器結果類別實作了 `Illuminate\Contracts\Support\Jsonable` �
 
 渲染預設的視圖所顯示的分頁連結可相容於 Bootstrap CSS 框架。然而，如果你不是使用 Bootstrap，你依然可以自由的定義自己的視圖來選染這些連結。在分頁器實例上呼叫 `links` 方法時，視圖名稱將作為傳入該方法的第一個參數：
 
-    {{ $paginator->links('view.name') }}
+    {% raw %} {{ $paginator->links('view.name') }} {% endraw %}
 
     // 傳入資料到該視圖...
-    {{ $paginator->links('view.name', ['foo' => 'bar']) }}
+    {% raw %} {{ $paginator->links('view.name', ['foo' => 'bar']) }} {% endraw %}
 
 然而，自訂分頁視圖的最容易方式是使用 `vendor:publish` 指令將它們導入到 `resources/views/vendor` 目錄中：
 
