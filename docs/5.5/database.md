@@ -1,3 +1,7 @@
+---
+layout: post
+title: database
+---
 # 資料庫：入門
 
 - [介紹](#introduction)
