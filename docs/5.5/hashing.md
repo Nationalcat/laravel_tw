@@ -1,7 +1,3 @@
----
-layout: post
-title: hashing
----
 # Hashing
 
 - [Introduction](#introduction)
@@ -10,7 +6,7 @@ title: hashing
 <a name="introduction"></a>
 ## Introduction
 
-The Laravel `Hash` [facade](/docs/{{version}}/facades) provides secure Bcrypt hashing for storing user passwords. If you are using the built-in `LoginController` and `RegisterController` classes that are included with your Laravel application, they will automatically use Bcrypt for registration and authentication.
+The Laravel `Hash` [facade](/laravel_tw/docs/5.5/facades) provides secure Bcrypt hashing for storing user passwords. If you are using the built-in `LoginController` and `RegisterController` classes that are included with your Laravel application, they will automatically use Bcrypt for registration and authentication.
 
 > {tip} Bcrypt is a great choice for hashing passwords because its "work factor" is adjustable, which means that the time it takes to generate a hash can be increased as hardware power increases.
 
@@ -53,7 +49,7 @@ The `make` method also allows you to manage the work factor of the bcrypt hashin
 
 #### Verifying A Password Against A Hash
 
-The `check` method allows you to verify that a given plain-text string corresponds to a given hash. However, if you are using the `LoginController` [included with Laravel](/docs/{{version}}/authentication), you will probably not need to use this directly, as this controller automatically calls this method:
+The `check` method allows you to verify that a given plain-text string corresponds to a given hash. However, if you are using the `LoginController` [included with Laravel](/laravel_tw/docs/5.5/authentication), you will probably not need to use this directly, as this controller automatically calls this method:
 
     if (Hash::check('plain-text', $hashedPassword)) {
         // The passwords match...
