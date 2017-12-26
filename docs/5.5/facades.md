@@ -1,3 +1,7 @@
+---
+layout: post
+title: facades
+---
 # Facades
 
 - [Introduction](#introduction)
