@@ -1,3 +1,7 @@
+---
+layout: post
+title: valet
+---
 # Laravel Valet
 
 - [Introduction](#introduction)
