@@ -1,3 +1,7 @@
+---
+layout: post
+title: eloquent-relationships
+---
 # Eloquent: 關聯
 
 - [介紹](#introduction)
