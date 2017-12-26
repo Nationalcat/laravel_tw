@@ -1,7 +1,3 @@
----
-layout: post
-title: configuration
----
 # Configuration
 
 - [介紹](#introduction)
@@ -42,7 +38,7 @@ Laravel 框架的所有設定檔都存放在 `config` 目錄中。每個選項�
 <a name="determining-the-current-environment"></a>
 ### 確認目前環境
 
-目前應用程式的環境透過從你的  `.env` 檔案中的 `APP_ENV` 變數去判定的。你可以透過在 `App` [facade](/docs/{{version}}/facades) 上的 `environment` 方法來存取這個值：
+目前應用程式的環境透過從你的  `.env` 檔案中的 `APP_ENV` 變數去判定的。你可以透過在 `App` [facade](/laravel_tw/docs/5.5/facades) 上的 `environment` 方法來存取這個值：
 
     $environment = App::environment();
 
@@ -99,7 +95,7 @@ Laravel 框架的所有設定檔都存放在 `config` 目錄中。每個選項�
 
 #### 維護模式與隊列
 
-當你的應用程式正處於維護模式時，[隊列中的任務](/docs/{{version}}/queues)將不會被處理。直到應用程式離開維護模式才會繼續處理任務。
+當你的應用程式正處於維護模式時，[隊列中的任務](/laravel_tw/docs/5.5/queues)將不會被處理。直到應用程式離開維護模式才會繼續處理任務。
 
 #### 維護模式的替代方案
 
