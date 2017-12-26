@@ -1,3 +1,7 @@
+---
+layout: post
+title: controllers
+---
 # 控制器
 
 - [介紹](#introduction)
