@@ -1,3 +1,7 @@
+---
+layout: post
+title: frontend
+---
 # JavaScript & CSS Scaffolding
 
 - [Introduction](#introduction)
