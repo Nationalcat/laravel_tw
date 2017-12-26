@@ -1,3 +1,7 @@
+---
+layout: post
+title: requests
+---
 # HTTP Requests
 
 - [Accessing The Request](#accessing-the-request)
