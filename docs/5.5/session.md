@@ -1,3 +1,7 @@
+---
+layout: post
+title: session
+---
 # HTTP Session
 
 - [Introduction](#introduction)
