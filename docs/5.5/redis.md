@@ -1,3 +1,7 @@
+---
+layout: post
+title: redis
+---
 # Redis
 
 - [簡介](#introduction)
