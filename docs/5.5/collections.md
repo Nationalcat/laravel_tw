@@ -1,3 +1,7 @@
+---
+layout: post
+title: collections
+---
 # Collections
 
 - [Introduction](#introduction)
