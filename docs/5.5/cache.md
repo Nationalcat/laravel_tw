@@ -1,3 +1,7 @@
+---
+layout: post
+title: cache
+---
 # Cache
 
 - [設定](#configuration)
