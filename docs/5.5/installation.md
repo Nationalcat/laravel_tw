@@ -1,3 +1,7 @@
+---
+layout: post
+title: installation
+---
 # 安裝
 
 - [安裝](#installation)
