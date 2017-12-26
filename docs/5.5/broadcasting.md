@@ -1,3 +1,7 @@
+---
+layout: post
+title: broadcasting
+---
 # 廣播系統
 
 - [介紹](#introduction)
