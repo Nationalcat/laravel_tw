@@ -1,3 +1,7 @@
+---
+layout: post
+title: homestead
+---
 # Laravel Homestead
 
 - [Introduction](#introduction)
