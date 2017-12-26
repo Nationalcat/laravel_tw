@@ -1,3 +1,7 @@
+---
+layout: post
+title: queues
+---
 # Queues
 
 - [Introduction](#introduction)
