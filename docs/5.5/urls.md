@@ -1,3 +1,7 @@
+---
+layout: post
+title: urls
+---
 # URL Generation
 
 - [Introduction](#introduction)
