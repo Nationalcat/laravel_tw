@@ -1,3 +1,7 @@
+---
+layout: post
+title: authorization
+---
 # 授權
 
 - [介紹](#introduction)
