@@ -1,7 +1,3 @@
----
-layout: post
-title: mail
----
 # Mail
 
 - [Introduction](#introduction)
@@ -106,7 +102,7 @@ However, if your application uses the same "from" address for all of its emails,
 <a name="configuring-the-view"></a>
 ### Configuring The View
 
-Within a mailable class' `build` method, you may use the `view` method to specify which template should be used when rendering the email's contents. Since each email typically uses a [Blade template](/docs/{{version}}/blade) to render its contents, you have the full power and convenience of the Blade templating engine when building your email's HTML:
+Within a mailable class' `build` method, you may use the `view` method to specify which template should be used when rendering the email's contents. Since each email typically uses a [Blade template](/laravel_tw/docs/5.5/blade) to render its contents, you have the full power and convenience of the Blade templating engine when building your email's HTML:
 
     /**
      * Build the message.
@@ -186,7 +182,7 @@ Typically, you will want to pass some data to your view that you can utilize whe
 Once the data has been set to a public property, it will automatically be available in your view, so you may access it like you would access any other data in your Blade templates:
 
     <div>
-        Price: {{ $order->price }}
+        Price: {% raw %} {{ $order->price }} {% endraw %}
     </div>
 
 #### Via The `with` Method:
@@ -241,7 +237,7 @@ If you would like to customize the format of your email's data before it is sent
 Once the data has been passed to the `with` method, it will automatically be available in your view, so you may access it like you would access any other data in your Blade templates:
 
     <div>
-        Price: {{ $orderPrice }}
+        Price: {% raw %} {{ $orderPrice }} {% endraw %}
     </div>
 
 <a name="attachments"></a>
@@ -301,7 +297,7 @@ Embedding inline images into your emails is typically cumbersome; however, Larav
     <body>
         Here is an image:
 
-        <img src="{{ $message->embed($pathToFile) }}">
+        <img src="{% raw %} {{ $message->embed($pathToFile) }} {% endraw %}">
     </body>
 
 > {note} `$message` variable is not available in markdown messages.
@@ -313,7 +309,7 @@ If you already have a raw data string you wish to embed into an email template, 
     <body>
         Here is an image from raw data:
 
-        <img src="{{ $message->embedData($data, $name) }}">
+        <img src="{% raw %} {{ $message->embedData($data, $name) }} {% endraw %}">
     </body>
 
 <a name="customizing-the-swiftmailer-message"></a>
@@ -376,7 +372,7 @@ Markdown mailables use a combination of Blade components and Markdown syntax whi
     @endcomponent
 
     Thanks,<br>
-    {{ config('app.name') }}
+    {% raw %} {{ config('app.name') }} {% endraw %}
     @endcomponent
 
 > {tip} Do not use excess indentation when writing Markdown emails. Markdown parsers will render indented content as code blocks.
@@ -437,7 +433,7 @@ When designing a mailable's template, it is convenient to quickly preview the re
 <a name="sending-mail"></a>
 ## Sending Mail
 
-To send a message, use the `to` method on the `Mail` [facade](/docs/{{version}}/facades). The `to` method accepts an email address, a user instance, or a collection of users. If you pass an object or collection of objects, the mailer will automatically use their `email` and `name` properties when setting the email recipients, so make sure these attributes are available on your objects. Once you have specified your recipients, you may pass an instance of your mailable class to the `send` method:
+To send a message, use the `to` method on the `Mail` [facade](/laravel_tw/docs/5.5/facades). The `to` method accepts an email address, a user instance, or a collection of users. If you pass an object or collection of objects, the mailer will automatically use their `email` and `name` properties when setting the email recipients, so make sure these attributes are available on your objects. Once you have specified your recipients, you may pass an instance of your mailable class to the `send` method:
 
     <?php
 
@@ -480,14 +476,14 @@ Of course, you are not limited to just specifying the "to" recipients when sendi
 
 #### Queueing A Mail Message
 
-Since sending email messages can drastically lengthen the response time of your application, many developers choose to queue email messages for background sending. Laravel makes this easy using its built-in [unified queue API](/docs/{{version}}/queues). To queue a mail message, use the `queue` method on the `Mail` facade after specifying the message's recipients:
+Since sending email messages can drastically lengthen the response time of your application, many developers choose to queue email messages for background sending. Laravel makes this easy using its built-in [unified queue API](/laravel_tw/docs/5.5/queues). To queue a mail message, use the `queue` method on the `Mail` facade after specifying the message's recipients:
 
     Mail::to($request->user())
         ->cc($moreUsers)
         ->bcc($evenMoreUsers)
         ->queue(new OrderShipped($order));
 
-This method will automatically take care of pushing a job onto the queue so the message is sent in the background. Of course, you will need to [configure your queues](/docs/{{version}}/queues) before using this feature.
+This method will automatically take care of pushing a job onto the queue so the message is sent in the background. Of course, you will need to [configure your queues](/laravel_tw/docs/5.5/queues) before using this feature.
 
 #### Delayed Message Queueing
 
@@ -531,7 +527,7 @@ When developing an application that sends email, you probably don't want to actu
 
 #### Log Driver
 
-Instead of sending your emails, the `log` mail driver will write all email messages to your log files for inspection. For more information on configuring your application per environment, check out the [configuration documentation](/docs/{{version}}/configuration#environment-configuration).
+Instead of sending your emails, the `log` mail driver will write all email messages to your log files for inspection. For more information on configuring your application per environment, check out the [configuration documentation](/laravel_tw/docs/5.5/configuration#environment-configuration).
 
 #### Universal To
 
