@@ -1,7 +1,3 @@
----
-layout: post
-title: envoy
----
 # Envoy Task Runner
 
 - [介紹](#introduction)
@@ -89,7 +85,7 @@ title: envoy
         cd site
 
         @if ($branch)
-            git pull origin {{ $branch }}
+            git pull origin {% raw %} {{ $branch }} {% endraw %}
         @endif
 
         php artisan migrate
@@ -128,7 +124,7 @@ Envoy 可以讓你輕鬆的在多個伺服器上執行。首先，增加額外�
 
     @task('deploy', ['on' => ['web-1', 'web-2']])
         cd site
-        git pull origin {{ $branch }}
+        git pull origin {% raw %} {{ $branch }} {% endraw %}
         php artisan migrate
     @endtask
 
@@ -140,7 +136,7 @@ Envoy 可以讓你輕鬆的在多個伺服器上執行。首先，增加額外�
 
     @task('deploy', ['on' => ['web-1', 'web-2'], 'parallel' => true])
         cd site
-        git pull origin {{ $branch }}
+        git pull origin {% raw %} {{ $branch }} {% endraw %}
         php artisan migrate
     @endtask
 
@@ -158,7 +154,7 @@ Envoy 可以讓你輕鬆的在多個伺服器上執行。首先，增加額外�
 
     @task('deploy', ['on' => 'web', 'confirm' => true])
         cd site
-        git pull origin {{ $branch }}
+        git pull origin {% raw %} {{ $branch }} {% endraw %}
         php artisan migrate
     @endtask
 
