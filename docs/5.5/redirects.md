@@ -1,7 +1,3 @@
----
-layout: post
-title: redirects
----
 # HTTP 重導
 
 - [建立重導](#creating-redirects)
@@ -18,7 +14,7 @@ title: redirects
         return redirect('home/dashboard');
     });
 
-有時候你或許希望重導使用者到先前的位置，像是當我們提交了無效的表單，你可以使用全域 `back` 輔助函式來執行。由於這個 feature 利用了 [session](/docs/{{version}}/session)，確保這個呼叫 `back` 的函式路由是使用 `web` 中介層群組或是已經套用了所有 session 中介層：
+有時候你或許希望重導使用者到先前的位置，像是當我們提交了無效的表單，你可以使用全域 `back` 輔助函式來執行。由於這個 feature 利用了 [session](/laravel_tw/docs/5.5/session)，確保這個呼叫 `back` 的函式路由是使用 `web` 中介層群組或是已經套用了所有 session 中介層：
 
     Route::post('user/profile', function () {
         // 驗證請求...
@@ -62,7 +58,7 @@ title: redirects
 <a name="redirecting-controller-actions"></a>
 ## 重導向到 Controller 的 Action
 
-你也許會產生重導向到 [controller 的 action](/docs/{{version}}/controllers)。如果需要的話，傳送 controller 和 action 名稱到 `action` 方法。記住，你不需要指定完整的命名空間，Laravel 的 `RouteServiceProvider` 將會自動幫你設定好基礎的 controller 命名空間：
+你也許會產生重導向到 [controller 的 action](/laravel_tw/docs/5.5/controllers)。如果需要的話，傳送 controller 和 action 名稱到 `action` 方法。記住，你不需要指定完整的命名空間，Laravel 的 `RouteServiceProvider` 將會自動幫你設定好基礎的 controller 命名空間：
 
     return redirect()->action('HomeController@index');
 
@@ -75,7 +71,7 @@ title: redirects
 <a name="redirecting-with-flashed-session-data"></a>
 ## 重導與被快閃的 Session 資料
 
-通常在重導向到新的 URL 也會把[資料快閃到 session](/docs/{{version}}/session#flash-data)。通常當你成功執行一個 action 後，你會快閃成功訊息到 session。你可以藉由單一的語法鏈結流暢的建立一個 `RedirectResponse` 實例並快閃資料到 session：
+通常在重導向到新的 URL 也會把[資料快閃到 session](/laravel_tw/docs/5.5/session#flash-data)。通常當你成功執行一個 action 後，你會快閃成功訊息到 session。你可以藉由單一的語法鏈結流暢的建立一個 `RedirectResponse` 實例並快閃資料到 session：
 
     Route::post('user/profile', function () {
         // 更新使用者的個人資訊...
@@ -83,10 +79,10 @@ title: redirects
         return redirect('dashboard')->with('status', 'Profile updated!');
     });
 
-在使用者重導向後，你可以從 [session](/docs/{{version}}/session) 顯示被快閃訊息。例如，使用 [Blade 語法](/docs/{{version}}/blade)：
+在使用者重導向後，你可以從 [session](/laravel_tw/docs/5.5/session) 顯示被快閃訊息。例如，使用 [Blade 語法](/laravel_tw/docs/5.5/blade)：
 
     @if (session('status'))
         <div class="alert alert-success">
-            {{ session('status') }}
+            {% raw %} {{ session('status') }} {% endraw %}
         </div>
     @endif
