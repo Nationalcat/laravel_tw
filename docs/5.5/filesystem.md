@@ -1,7 +1,3 @@
----
-layout: post
-title: filesystem
----
 # File Storage
 
 - [Introduction](#introduction)
@@ -337,7 +333,7 @@ In order to set up the custom filesystem you will need a Flysystem adapter. Let'
 
     composer require spatie/flysystem-dropbox
 
-Next, you should create a [service provider](/docs/{{version}}/providers) such as `DropboxServiceProvider`. In the provider's `boot` method, you may use the `Storage` facade's `extend` method to define the custom driver:
+Next, you should create a [service provider](/laravel_tw/docs/5.5/providers) such as `DropboxServiceProvider`. In the provider's `boot` method, you may use the `Storage` facade's `extend` method to define the custom driver:
 
     <?php
 
