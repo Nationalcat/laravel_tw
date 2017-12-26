@@ -1,3 +1,7 @@
+---
+layout: post
+title: eloquent
+---
 # Eloquent：入門
 
 - [介紹](#introduction)
