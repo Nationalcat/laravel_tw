@@ -1,7 +1,3 @@
----
-layout: post
-title: mix
----
 # Compiling Assets (Laravel Mix)
 
 - [Introduction](#introduction)
@@ -301,9 +297,9 @@ The `version` method will automatically append a unique hash to the filenames of
     mix.js('resources/assets/js/app.js', 'public/js')
        .version();
 
-After generating the versioned file, you won't know the exact file name. So, you should use Laravel's global `mix` function within your [views](/docs/{{version}}/views) to load the appropriately hashed asset. The `mix` function will automatically determine the current name of the hashed file:
+After generating the versioned file, you won't know the exact file name. So, you should use Laravel's global `mix` function within your [views](/laravel_tw/docs/5.5/views) to load the appropriately hashed asset. The `mix` function will automatically determine the current name of the hashed file:
 
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="{% raw %} {{ mix('/css/app.css') }} {% endraw %}">
 
 Because versioned files are usually unnecessary in development, you may instruct the versioning process to only run during `npm run production`:
 
