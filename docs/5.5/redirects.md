@@ -1,3 +1,7 @@
+---
+layout: post
+title: redirects
+---
 # HTTP 重導
 
 - [建立重導](#creating-redirects)
