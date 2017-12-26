@@ -1,3 +1,7 @@
+---
+layout: post
+title: validation
+---
 # 驗證
 
 - [介紹](#introduction)
