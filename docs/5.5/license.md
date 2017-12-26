@@ -1,7 +1,3 @@
----
-layout: post
-title: license
----
 The MIT License (MIT)
 Copyright © Taylor Otwell
 
