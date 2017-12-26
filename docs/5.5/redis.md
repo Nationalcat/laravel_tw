@@ -1,7 +1,3 @@
----
-layout: post
-title: redis
----
 # Redis
 
 - [簡介](#introduction)
@@ -120,7 +116,7 @@ title: redis
 <a name="interacting-with-redis"></a>
 ## 與 Redis 互動
 
-你可以透過呼叫多個在 `Redis` [facade](/docs/{{version}}/facades) 的方法來與 Redis 互動。`Redis` facade 支援了動態方法，意味著呼叫任何 facade 內的 [Redis 指令](https://redis.io/commands) 會直接傳遞至 Redis。在這個範例中，我們會藉由使用在 `Redis` facade 中的 `get` 方法來執行 Redis 的 `GET` 指令：
+你可以透過呼叫多個在 `Redis` [facade](/laravel_tw/docs/5.5/facades) 的方法來與 Redis 互動。`Redis` facade 支援了動態方法，意味著呼叫任何 facade 內的 [Redis 指令](https://redis.io/commands) 會直接傳遞至 Redis。在這個範例中，我們會藉由使用在 `Redis` facade 中的 `get` 方法來執行 Redis 的 `GET` 指令：
 
     <?php
 
@@ -181,7 +177,7 @@ This will give you an instance of the default Redis server. You may also pass th
 
 Laravel 提供了一個方便的介面操作 Redis 的 `publish` 及 `subscribe` 指令。這些 Redis 指令允許你在指定的「頻道」上監聽訊息。你可以從其他的應用程式，甚至使用其他的程式語言來推播訊息到頻道，讓你方便的在應用程式和進程之間溝通。
 
-首先，必須先使用 `subscribe` 方法設定頻道監聽。因為呼叫 `subscribe` 方法是一個持續執行的進程，我們將會調用 [Artisan 命令](/docs/{{version}}/artisan) 呼叫這個方法：
+首先，必須先使用 `subscribe` 方法設定頻道監聽。因為呼叫 `subscribe` 方法是一個持續執行的進程，我們將會調用 [Artisan 命令](/laravel_tw/docs/5.5/artisan) 呼叫這個方法：
 
     <?php
 
