@@ -1,7 +1,3 @@
----
-layout: post
-title: horizon
----
 # Laravel Horizon
 
 - [Introduction](#introduction)
@@ -191,7 +187,7 @@ You may configure how many seconds are considered a "long wait" within your `con
 <a name="metrics"></a>
 ## Metrics
 
-Horizon includes a metrics dashboard which provides information on your job and queue wait times and throughput. In order to populate this dashboard, you should configure Horizon's `snapshot` Artisan command to run every five minutes via your application's [scheduler](/docs/{{version}}/scheduling):
+Horizon includes a metrics dashboard which provides information on your job and queue wait times and throughput. In order to populate this dashboard, you should configure Horizon's `snapshot` Artisan command to run every five minutes via your application's [scheduler](/laravel_tw/docs/5.5/scheduling):
 
     /**
      * Define the application's command schedule.
