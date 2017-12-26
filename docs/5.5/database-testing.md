@@ -1,3 +1,7 @@
+---
+layout: post
+title: database-testing
+---
 # 資料庫測試
 
 - [介紹](#introduction)
