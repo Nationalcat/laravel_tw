@@ -1,3 +1,7 @@
+---
+layout: post
+title: contributions
+---
 # 貢獻導引
 
 - [Bug 回報](#bug-reports)
