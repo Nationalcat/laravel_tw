@@ -1,7 +1,3 @@
----
-layout: post
-title: queues
----
 # Queues
 
 - [Introduction](#introduction)
@@ -31,7 +27,7 @@ title: queues
 <a name="introduction"></a>
 ## Introduction
 
-> {tip} Laravel now offers Horizon, a beautiful dashboard and configuration system for your Redis powered queues. Check out the full [Horizon documentation](/docs/{{version}}/horizon) for more information.
+> {tip} Laravel now offers Horizon, a beautiful dashboard and configuration system for your Redis powered queues. Check out the full [Horizon documentation](/laravel_tw/docs/5.5/horizon) for more information.
 
 Laravel queues provide a unified API across a variety of different queue backends, such as Beanstalk, Amazon SQS, Redis, or even a relational database. Queues allow you to defer the processing of a time consuming task, such as sending an email, until a later time. Deferring these time consuming tasks drastically speeds up web requests to your application.
 
@@ -146,9 +142,9 @@ Job classes are very simple, normally containing only a `handle` method which is
         }
     }
 
-In this example, note that we were able to pass an [Eloquent model](/docs/{{version}}/eloquent) directly into the queued job's constructor. Because of the `SerializesModels` trait that the job is using, Eloquent models will be gracefully serialized and unserialized when the job is processing. If your queued job accepts an Eloquent model in its constructor, only the identifier for the model will be serialized onto the queue. When the job is actually handled, the queue system will automatically re-retrieve the full model instance from the database. It's all totally transparent to your application and prevents issues that can arise from serializing full Eloquent model instances.
+In this example, note that we were able to pass an [Eloquent model](/laravel_tw/docs/5.5/eloquent) directly into the queued job's constructor. Because of the `SerializesModels` trait that the job is using, Eloquent models will be gracefully serialized and unserialized when the job is processing. If your queued job accepts an Eloquent model in its constructor, only the identifier for the model will be serialized onto the queue. When the job is actually handled, the queue system will automatically re-retrieve the full model instance from the database. It's all totally transparent to your application and prevents issues that can arise from serializing full Eloquent model instances.
 
-The `handle` method is called when the job is processed by the queue. Note that we are able to type-hint dependencies on the `handle` method of the job. The Laravel [service container](/docs/{{version}}/container) automatically injects these dependencies.
+The `handle` method is called when the job is processed by the queue. Note that we are able to type-hint dependencies on the `handle` method of the job. The Laravel [service container](/laravel_tw/docs/5.5/container) automatically injects these dependencies.
 
 > {note} Binary data, such as raw image contents, should be passed through the `base64_encode` function before being passed to a queued job. Otherwise, the job may not properly serialize to JSON when being placed on the queue.
 
@@ -358,7 +354,7 @@ However, you may also define the maximum number of seconds a job should be allow
 <a name="rate-limiting"></a>
 ### Rate Limiting
 
-> {note} This feature requires that your application can interact with a [Redis server](/docs/{{version}}/redis).
+> {note} This feature requires that your application can interact with a [Redis server](/laravel_tw/docs/5.5/redis).
 
 If your application interacts with Redis, you may throttle your queued jobs by time or concurrency. This feature can be of assistance when your queued jobs are interacting with APIs that are also rate limited. For example, using the `throttle` method, you may throttle a given type of job to only run 10 times every 60 seconds. If a lock can not be obtained, you should typically release the job back onto the queue so it can be retried later:
 
@@ -440,7 +436,7 @@ Since queue workers are long-lived processes, they will not pick up changes to y
 
 This command will instruct all queue workers to gracefully "die" after they finish processing their current job so that no existing jobs are lost. Since the queue workers will die when the `queue:restart` command is executed, you should be running a process manager such as [Supervisor](#supervisor-configuration) to automatically restart the queue workers.
 
-> {tip} The queue uses the [cache](/docs/{{version}}/cache) to store restart signals, so you should verify a cache driver is properly configured for your application before using this feature.
+> {tip} The queue uses the [cache](/laravel_tw/docs/5.5/cache) to store restart signals, so you should verify a cache driver is properly configured for your application before using this feature.
 
 <a name="job-expirations-and-timeouts"></a>
 ### Job Expirations & Timeouts
@@ -642,7 +638,7 @@ To delete all of your failed jobs, you may use the `queue:flush` command:
 <a name="job-events"></a>
 ## Job Events
 
-Using the `before` and `after` methods on the `Queue` [facade](/docs/{{version}}/facades), you may specify callbacks to be executed before or after a queued job is processed. These callbacks are a great opportunity to perform additional logging or increment statistics for a dashboard. Typically, you should call these methods from a [service provider](/docs/{{version}}/providers). For example, we may use the `AppServiceProvider` that is included with Laravel:
+Using the `before` and `after` methods on the `Queue` [facade](/laravel_tw/docs/5.5/facades), you may specify callbacks to be executed before or after a queued job is processed. These callbacks are a great opportunity to perform additional logging or increment statistics for a dashboard. Typically, you should call these methods from a [service provider](/laravel_tw/docs/5.5/providers). For example, we may use the `AppServiceProvider` that is included with Laravel:
 
     <?php
 
@@ -686,7 +682,7 @@ Using the `before` and `after` methods on the `Queue` [facade](/docs/{{version}}
         }
     }
 
-Using the `looping` method on the `Queue` [facade](/docs/{{version}}/facades), you may specify callbacks that execute before the worker attempts to fetch a job from a queue. For example, you might register a Closure to rollback any transactions that were left open by a previously failed job:
+Using the `looping` method on the `Queue` [facade](/laravel_tw/docs/5.5/facades), you may specify callbacks that execute before the worker attempts to fetch a job from a queue. For example, you might register a Closure to rollback any transactions that were left open by a previously failed job:
 
     Queue::looping(function () {
         while (DB::transactionLevel() > 0) {
