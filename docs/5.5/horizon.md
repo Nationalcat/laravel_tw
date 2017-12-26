@@ -1,3 +1,7 @@
+---
+layout: post
+title: horizon
+---
 # Laravel Horizon
 
 - [Introduction](#introduction)
