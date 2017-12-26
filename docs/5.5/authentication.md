@@ -1,7 +1,3 @@
----
-layout: post
-title: authentication
----
 # 認證
 
 - [介紹](#introduction)
@@ -41,7 +37,7 @@ Laravel 的認證系統核心主要由「守衛」與「提供者」組成。守
 <a name="introduction-database-considerations"></a>
 ### 資料庫注意事項
 
-預設的 Laravel 會在 `app` 資料夾中內建一個 `App\User` [Eloquent 模型](/docs/{{version}}/eloquent)。這個模型預設只用 Eloquent 認證驅動。如果你的應用程式沒有使用 Eloquent，你可以改用 `database` 這個使用了 Laravel 查詢生成器的認證驅動。
+預設的 Laravel 會在 `app` 資料夾中內建一個 `App\User` [Eloquent 模型](/laravel_tw/docs/5.5/eloquent)。這個模型預設只用 Eloquent 認證驅動。如果你的應用程式沒有使用 Eloquent，你可以改用 `database` 這個使用了 Laravel 查詢生成器的認證驅動。
 
 為 `App\User` 模型建立資料庫結構時，請確保密碼欄位長度至少有 60 字元長。建議字元長度為 255 字元長。
 
@@ -114,7 +110,7 @@ Laravel 提供一個簡單的指令來快速建立所有認證所需的路由和
 
 `RegisterController` 的 `validator` 方法包含了對於新使用者的驗證規則，你可以根據你的需求來自由的修改這些方法
 
-`RegisterController` 的 `create` 方法負責使用 [Eloquent ORM](/docs/{{version}}/eloquent) 負責在你的資料庫建立新的 `App\User` 記錄。你可以根據實際資料庫需求任意修改這個方法。
+`RegisterController` 的 `create` 方法負責使用 [Eloquent ORM](/laravel_tw/docs/5.5/eloquent) 負責在你的資料庫建立新的 `App\User` 記錄。你可以根據實際資料庫需求任意修改這個方法。
 
 <a name="retrieving-the-authenticated-user"></a>
 ### 取得已認證的使用者
@@ -161,18 +157,18 @@ Laravel 提供一個簡單的指令來快速建立所有認證所需的路由和
         // 使用者已經登入...
     }
 
-> {tip} 即使可以使用 `check` 方法來檢查使用者是否有通過認證，但還是建議你在使用者存取控制器或路由之前，使用「中介層」來過濾使用者的認證狀態。想知道更多資訊，可以查看[保護路由](/docs/{{version}}/authentication#protecting-routes)文件。
+> {tip} 即使可以使用 `check` 方法來檢查使用者是否有通過認證，但還是建議你在使用者存取控制器或路由之前，使用「中介層」來過濾使用者的認證狀態。想知道更多資訊，可以查看[保護路由](/laravel_tw/docs/5.5/authentication#protecting-routes)文件。
 
 <a name="protecting-routes"></a>
 ### 保護路由
 
-[路由中介層](/docs/{{version}}/middleware)能使用於允許限定已認證的使用者存取指定的路由。Laravel 內建的 `auth` 中介層被定義在 `Illuminate\Auth\Middleware\Authenticate` 這個路徑。由於這個中介層已註冊在 HTTP 的核心中，所以你只要將中介層附加到路由定義中：
+[路由中介層](/laravel_tw/docs/5.5/middleware)能使用於允許限定已認證的使用者存取指定的路由。Laravel 內建的 `auth` 中介層被定義在 `Illuminate\Auth\Middleware\Authenticate` 這個路徑。由於這個中介層已註冊在 HTTP 的核心中，所以你只要將中介層附加到路由定義中：
 
     Route::get('profile', function () {
         // 只有通過認證的使用者可以...
     })->middleware('auth');
 
-當然，如果正在使用[控制器](/docs/{{version}}/controllers)，你可以在建構子呼叫 `middleware` 這方法，而不用在路由中定義它：
+當然，如果正在使用[控制器](/laravel_tw/docs/5.5/controllers)，你可以在建構子呼叫 `middleware` 這方法，而不用在路由中定義它：
 
     public function __construct()
     {
@@ -198,7 +194,7 @@ Laravel 提供一個簡單的指令來快速建立所有認證所需的路由和
 
 當然，你不需要使用 Laravel 內建的認證控制器。如果你選擇移除這些控制器，你將需要直接使用 Laravel 認證類別來直接管理使用者認證。別擔心，這很容易！
 
-我們將藉由 `Auth` 的 [facade](/docs/{{version}}/facades) 存取 Laravel 認證服務，所以我們將需要確保在類別最上方引入 Auth facade。接下來，讓我們看看 `attempt` 方法：
+我們將藉由 `Auth` 的 [facade](/laravel_tw/docs/5.5/facades) 存取 Laravel 認證服務，所以我們將需要確保在類別最上方引入 Auth facade。接下來，讓我們看看 `attempt` 方法：
 
     <?php
 
@@ -276,7 +272,7 @@ redirector 上的 `intented` 方法在透過身份認證中介層之前，將使
 
 #### 認證使用者實例
 
-如果你需要登入一個現有的使用者實例到你的應用程式，你可以在你的使用者實例呼叫 `login` 方法。給定的物件必須實作  `Illuminate\Contracts\Auth\Authenticatable`（[contract](/docs/{{version}}/contracts)。當然，內建的 `App\User` 模型已經實作了這個介面：
+如果你需要登入一個現有的使用者實例到你的應用程式，你可以在你的使用者實例呼叫 `login` 方法。給定的物件必須實作  `Illuminate\Contracts\Auth\Authenticatable`（[contract](/laravel_tw/docs/5.5/contracts)。當然，內建的 `App\User` 模型已經實作了這個介面：
 
     Auth::login($user);
 
@@ -307,7 +303,7 @@ redirector 上的 `intented` 方法在透過身份認證中介層之前，將使
 <a name="http-basic-authentication"></a>
 ## HTTP 基礎認證
 
-[HTTP 基礎認證](https://en.wikipedia.org/wiki/Basic_access_authentication)提供一個快速的方法來認證使用者，不需要任何的「登入」頁面。首先，先將 `auth.basic` [中介層](/docs/{{version}}/middleware)加入到你的路由上。`auth.basic` 中介層已經內建在 Laravel 裡面了，所以你不需要在額外定義它：
+[HTTP 基礎認證](https://en.wikipedia.org/wiki/Basic_access_authentication)提供一個快速的方法來認證使用者，不需要任何的「登入」頁面。首先，先將 `auth.basic` [中介層](/laravel_tw/docs/5.5/middleware)加入到你的路由上。`auth.basic` 中介層已經內建在 Laravel 裡面了，所以你不需要在額外定義它：
 
     Route::get('profile', function () {
         // 只有被認證的使用者可以進入...
@@ -325,7 +321,7 @@ redirector 上的 `intented` 方法在透過身份認證中介層之前，將使
 <a name="stateless-http-basic-authentication"></a>
 ### 無狀態 HTTP 基礎認證
 
-你也可以使用 HTTP 基礎認證而不用在 session 中設定使用者認證用的 cookie ，這個功能對 API 認證來說非常有用。為了達到目的，[定義一個中介層](/docs/{{version}}/middleware)來呼叫 `onceBasic` 方法。如果沒有任何回應從 `onceBasic` 方法回傳的話，這個請求可以進一步傳進應用程式中：
+你也可以使用 HTTP 基礎認證而不用在 session 中設定使用者認證用的 cookie ，這個功能對 API 認證來說非常有用。為了達到目的，[定義一個中介層](/laravel_tw/docs/5.5/middleware)來呼叫 `onceBasic` 方法。如果沒有任何回應從 `onceBasic` 方法回傳的話，這個請求可以進一步傳進應用程式中：
 
     <?php
 
@@ -349,7 +345,7 @@ redirector 上的 `intented` 方法在透過身份認證中介層之前，將使
 
     }
 
-接著，[註冊路由中介層](/docs/{{version}}/middleware#registering-middleware)，並將它加入到路由：
+接著，[註冊路由中介層](/laravel_tw/docs/5.5/middleware#registering-middleware)，並將它加入到路由：
 
     Route::get('api/user', function () {
         // 只有被認證的使用者可以進入...
@@ -358,7 +354,7 @@ redirector 上的 `intented` 方法在透過身份認證中介層之前，將使
 <a name="adding-custom-guards"></a>
 ## 新增客製化守衛
 
-你可以使用 `Auth` facade 的 `extend` 方法來定義屬於你自己的身份認證守衛。你需要在[服務提供者](/docs/{{version}}/providers)中呼叫 `provider`。由於 Laravel 已內建了 `AuthServiceProvider`，所以我們可以把程式碼放到這個提供者裡：
+你可以使用 `Auth` facade 的 `extend` 方法來定義屬於你自己的身份認證守衛。你需要在[服務提供者](/laravel_tw/docs/5.5/providers)中呼叫 `provider`。由於 Laravel 已內建了 `AuthServiceProvider`，所以我們可以把程式碼放到這個提供者裡：
 
     <?php
 
@@ -501,7 +497,7 @@ redirector 上的 `intented` 方法在透過身份認證中介層之前，將使
 <a name="events"></a>
 ## 事件
 
-Laravel 在認證過程中觸發了許多[事件](/docs/{{version}}/events)，你可以在 `EventServiceProvider` 增加監聽器來監聽事件：
+Laravel 在認證過程中觸發了許多[事件](/laravel_tw/docs/5.5/events)，你可以在 `EventServiceProvider` 增加監聽器來監聽事件：
 
     /**
      * 增加監聽器來監聽應用程式
