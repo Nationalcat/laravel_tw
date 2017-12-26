@@ -1,7 +1,3 @@
----
-layout: post
-title: dusk
----
 # 瀏覽器測試 (Laravel Dusk)
 
 - [介紹](#introduction)
@@ -502,7 +498,7 @@ Dusk 甚至可以讓你斷言 [Vue](https://vuejs.org) 的元件資料狀態。�
     // Component Definition...
 
     Vue.component('profile', {
-        template: '<div>{{ user.name }}</div>',
+        template: '<div>{% raw %} {{ user.name }} {% endraw %}</div>',
 
         data: function () {
             return {
