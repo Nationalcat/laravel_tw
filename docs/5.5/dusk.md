@@ -1,3 +1,7 @@
+---
+layout: post
+title: dusk
+---
 # 瀏覽器測試 (Laravel Dusk)
 
 - [介紹](#introduction)
