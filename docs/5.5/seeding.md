@@ -1,7 +1,3 @@
----
-layout: post
-title: seeding
----
 # 資料庫: 資料填充
 
 - [簡介](#introduction)
@@ -18,11 +14,11 @@ Laravel 可以簡單的使用 seed 類別，填充測試用的資料至資料庫
 <a name="writing-seeders"></a>
 ## 撰寫資料填充
 
-你可以透過 `make:seeder` [Artisan 指令](/docs/{{version}}/artisan) 來產生一個 Seeder。所有透過框架產生的 Seeder 都將被放置在 `database/seeders` 路徑：
+你可以透過 `make:seeder` [Artisan 指令](/laravel_tw/docs/5.5/artisan) 來產生一個 Seeder。所有透過框架產生的 Seeder 都將被放置在 `database/seeders` 路徑：
 
     php artisan make:seeder UsersTableSeeder
 
-在 seeder 類別裡只會預設一個方法：`run`。當執行 `db:seed` [Artisan 指令](/docs/{{version}}/artisan) 時就會呼叫此方法。在 `run` 方法中，你可以新增任何想要的資料至你的資料庫中。你可使用 [查詢產生器](/docs/{{version}}/queries) 手動新增資料或你也可以使用 [Eloquent 模型工廠](/docs/{{version}}/database-testing#writing-factories)。
+在 seeder 類別裡只會預設一個方法：`run`。當執行 `db:seed` [Artisan 指令](/laravel_tw/docs/5.5/artisan) 時就會呼叫此方法。在 `run` 方法中，你可以新增任何想要的資料至你的資料庫中。你可使用 [查詢產生器](/laravel_tw/docs/5.5/queries) 手動新增資料或你也可以使用 [Eloquent 模型工廠](/laravel_tw/docs/5.5/database-testing#writing-factories)。
 
 如同下面的範例，讓我們修改 Laravel 預設的 DatabaseSeeder 類別。我們加入一段新增的語句到 `run` 方法：
 
@@ -51,7 +47,7 @@ Laravel 可以簡單的使用 seed 類別，填充測試用的資料至資料庫
 <a name="using-model-factories"></a>
 ### 使用模型工廠
 
-當然，手動為每一個 seed 模型指定屬性是很繁瑣的。你可以使用[模型工廠](/docs/{{version}}/database-testing#writing-factories)來作為替代，方便的產生大量的資料庫記錄。首先，閱讀[模型工廠的文件](/docs/{{version}}/database-testing#writing-factories)來學習如何定義你的工廠。一旦你定義了你的工廠，你就可以使用 factory 這個輔助方法函式來新增記錄到資料庫中。
+當然，手動為每一個 seed 模型指定屬性是很繁瑣的。你可以使用[模型工廠](/laravel_tw/docs/5.5/database-testing#writing-factories)來作為替代，方便的產生大量的資料庫記錄。首先，閱讀[模型工廠的文件](/laravel_tw/docs/5.5/database-testing#writing-factories)來學習如何定義你的工廠。一旦你定義了你的工廠，你就可以使用 factory 這個輔助方法函式來新增記錄到資料庫中。
 
 例如，讓我們建立 50 位使用者，並為每個使用者建立關聯：
 
