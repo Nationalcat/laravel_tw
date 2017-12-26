@@ -1,3 +1,7 @@
+---
+layout: post
+title: structure
+---
 # Directory Structure
 
 - [Introduction](#introduction)
