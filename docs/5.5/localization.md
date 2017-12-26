@@ -1,7 +1,3 @@
----
-layout: post
-title: localization
----
 # Localization
 
 - [Introduction](#introduction)
@@ -102,9 +98,9 @@ You may retrieve lines from language files using the `__` helper function. The `
 
     echo __('I love programming.');
 
-Of course if you are using the [Blade templating engine](/docs/{{version}}/blade), you may use the `{{ }}` syntax to echo the translation string or use the `@lang` directive:
+Of course if you are using the [Blade templating engine](/laravel_tw/docs/5.5/blade), you may use the `{% raw %} {{ }} {% endraw %}` syntax to echo the translation string or use the `@lang` directive:
 
-    {{ __('messages.welcome') }}
+    {% raw %} {{ __('messages.welcome') }} {% endraw %}
 
     @lang('messages.welcome')
 
