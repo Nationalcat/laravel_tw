@@ -1,7 +1,3 @@
----
-layout: post
-title: eloquent-mutators
----
 # Eloquent：修改器
 
 - [介紹](#introduction)
@@ -15,7 +11,7 @@ title: eloquent-mutators
 <a name="introduction"></a>
 ## 介紹
 
-存取器和修改器可以讓你在模型實例上取得或設定它們的時候格式化 Eloquent 屬性的值。例如，你可能想要使用 [Laravel 加密器](/docs/{{version}}/encryption)來對正要被儲存在資料庫的值加密，並且你在 Eloquent 模型上存取他時自動解密該屬性。
+存取器和修改器可以讓你在模型實例上取得或設定它們的時候格式化 Eloquent 屬性的值。例如，你可能想要使用 [Laravel 加密器](/laravel_tw/docs/5.5/encryption)來對正要被儲存在資料庫的值加密，並且你在 Eloquent 模型上存取他時自動解密該屬性。
 
 除了自訂的存取器和修改器外，Eloquent 也會自動將日期欄位型別轉換成 [Carbon](https://github.com/briannesbitt/Carbon) 實例或甚至[將文字欄位型別轉換成 JSON](#attribute-casting)。
 
