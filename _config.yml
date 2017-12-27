@@ -1,4 +1,3 @@
-highlighter: rouge
 
 title: Your awesome title
 email: your-email@example.com
@@ -8,6 +7,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
 
 plugins:
     - jekyll-redirect-from
