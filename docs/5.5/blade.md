@@ -82,7 +82,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
 
 在這個範例中，`sidebar` 區塊利用了 `@parent` 指令增加（而不是覆蓋）內容至佈局的側邊欄。`@parent` 指令會在視圖輸出時被置換成佈局的內容。
 
-> {tip} 有一點要澄清一下，這邊的 `sidebar` 結束時是使用 `@endsection` 而不是 `@shwo`。 `@endsection` 指令只會定義一個區塊，而 `@show` 會**直接產生**這個區塊的內容。
+> {tip} 有一點要澄清一下，這邊的 `sidebar` 結束時是使用 `@endsection` 而不是 `@show`。 `@endsection` 指令只會定義一個區塊，而 `@show` 會**直接產生**這個區塊的內容。
 
 你可以在路由使用全域的 `view` 輔助函式來取得 Blade 視圖：
 
