@@ -1,0 +1,266 @@
+---
+layout: post
+title: controllers
+---
+# HTTP 控制器
+
+- [簡介](#introduction)
+- [基礎控制器](#basic-controllers)
+- [控制器中介層](#controller-middleware)
+- [RESTful 資源控制器](#restful-resource-controllers)
+    - [部分資源路由](#restful-partial-resource-routes)
+    - [命名資源路由](#restful-naming-resource-routes)
+    - [附加資源控制器](#restful-supplementing-resource-controllers)
+- [依賴注入與控制器](#dependency-injection-and-controllers)
+- [路由快取](#route-caching)
+
+<a name="introduction"></a>
+## 簡介
+
+除了在單一的 `routes.php` 檔案中定義所有的請求處理邏輯，你可能希望使用控制器類別來組織此行為。控制器可將相關的 HTTP 請求處理邏輯組成一個類別。控制器一般存放在 `app/Http/Controllers` 目錄下。
+
+<a name="basic-controllers"></a>
+## 基礎控制器
+
+這是一個基礎控制器類別的範例。所有 Laravel 控制器都應繼承基礎控制器類別，它包含在 Laravel 的預設安裝中：
+
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use App\User;
+    use App\Http\Controllers\Controller;
+
+    class UserController extends Controller
+    {
+        /**
+         * 顯示給定使用者的個人資料。
+         *
+         * @param  int  $id
+         * @return Response
+         */
+        public function showProfile($id)
+        {
+            return view('user.profile', ['user' => User::findOrFail($id)]);
+        }
+    }
+
+我們可以經由路由指定控制器行為，就像這樣：
+
+    Route::get('user/{id}', 'UserController@showProfile');
+
+現在，當請求和此特定的路由 URI 相匹配時，`UserController` 類別的 `showProfile` 方法就會被執行。當然，路由的參數也會被傳遞至該方法。
+
+#### 控制器和命名空間
+
+有一點非常重要，那就是我們在定義控制器路由時，不需要指定完整的控制器命名空間。我們只需要定義「根」命名空間 `App\Http\Controllers` 之後的部分類別名稱。預設情況下 `RouteServiceProvider` 會把 `routes.php` 檔案載入到包含根控制器命名空間的路由群組中。
+
+若你選擇在 `App\Http\Controllers` 目錄內層，使用 PHP 命名空間巢狀或組織控制器，只要使用相對於 `App\Http\Controllers` 根命名空間的特定類別名稱即可。因此，若你的控制器類別全名為 `App\Http\Controllers\Photos\AdminController`，你可以像這樣註冊一個路由：
+
+    Route::get('foo', 'Photos\AdminController@method');
+
+#### 命名控制器路由
+
+就像閉包路由，你可以指定控制器路由的名稱：
+
+    Route::get('foo', ['uses' => 'FooController@method', 'as' => 'name']);
+
+你也可以使用 `route` 輔助方法，產生命名控制器路由的 URL：
+
+    $url = route('name');
+
+<a name="controller-middleware"></a>
+## 控制器中介層
+
+可將[中介層](/laravel_tw/docs/5.2/middleware)指派給控制器路由，例如：
+
+    Route::get('profile', [
+        'middleware' => 'auth',
+        'uses' => 'UserController@showProfile'
+    ]);
+
+不過，在控制器建構子中指定中介層會更為方便。在控制器建構子中使用 `middleware` 方法，你可以很容易地將中介層指定給控制器。你甚至可以對中介層作出限制，僅將它提供給控制器類別中的某些方法。
+
+    class UserController extends Controller
+    {
+        /**
+         * 新增一個 UserController 實例。
+         *
+         * @return void
+         */
+        public function __construct()
+        {
+            $this->middleware('auth');
+
+            $this->middleware('log', ['only' => [
+                'fooAction',
+                'barAction',
+            ]]);
+
+            $this->middleware('subscribed', ['except' => [
+                'fooAction',
+                'barAction',
+            ]]);
+        }
+    }
+
+<a name="restful-resource-controllers"></a>
+## RESTful 資源控制器
+
+資源控制器讓你可以無痛地建立與資源有關的 RESTful 控制器。例如，你可能想要建立一個控制器，用來處理對你應用程式儲存「相片」發送的 HTTP 請求。使用 `make:controller` Artisan 指令，我們可以快速地建立像這樣的控制器：
+
+    php artisan make:controller PhotoController --resource
+
+此 Artisan 指令會產生 `app/Http/Controllers/PhotoController.php` 控制器檔案。此控制器會包含用來操作可取得的各種資源的方法。
+
+接下來，你可以在控制器中註冊資源化路由：
+
+    Route::resource('photo', 'PhotoController');
+
+這一條路由宣告會創建多個路由，用來處理各式各樣和相片資源相關的的 RESTful 行為。同樣地，產生的控制器已有各種和這些行為繫結的方法，並包含通知你它們所處理的 URI 及動詞的記錄。
+
+#### 由資源控制器處理的行為
+
+動詞      | 路徑                  | 行為         | 路由名稱
+----------|-----------------------|--------------|---------------------
+GET       | `/photo`              | index        | photo.index
+GET       | `/photo/create`       | create       | photo.create
+POST      | `/photo`              | store        | photo.store
+GET       | `/photo/{photo}`      | show         | photo.show
+GET       | `/photo/{photo}/edit` | edit         | photo.edit
+PUT/PATCH | `/photo/{photo}`      | update       | photo.update
+DELETE    | `/photo/{photo}`      | destroy      | photo.destroy
+
+<a name="restful-partial-resource-routes"></a>
+#### 部分資源路由
+
+宣告資源路由時，你可以指定讓此路由僅處理一部分的行為：
+
+    Route::resource('photo', 'PhotoController', ['only' => [
+        'index', 'show'
+    ]]);
+
+    Route::resource('photo', 'PhotoController', ['except' => [
+        'create', 'store', 'update', 'destroy'
+    ]]);
+
+<a name="restful-naming-resource-routes"></a>
+#### 命名資源路由
+
+所有的資源控制器行為預設都有一路由名稱；不過你可以在選項中傳遞一個 `names` 陣列來覆寫這些名稱：
+
+    Route::resource('photo', 'PhotoController', ['names' => [
+        'create' => 'photo.build'
+    ]]);
+
+<a name="restful-supplementing-resource-controllers"></a>
+#### 附加資源控制器
+
+若你必須在資源控制器中預設的資源路由之外，加入額外的路由，你應該在呼叫 `Route::resource` 之前定義這些路由。否則，由 `resource` 方法定義的路由可能會意外地覆蓋你附加的路由：
+
+    Route::get('photos/popular', 'PhotoController@method');
+
+    Route::resource('photos', 'PhotoController');
+
+<a name="dependency-injection-and-controllers"></a>
+## 依賴注入與控制器
+
+#### 建構子注入
+
+Laravel [服務容器](/laravel_tw/docs/5.2/container)用於解析所有的 Laravel 控制器。因此，在建構子中，你可以對控制器可能需要的任何依賴使用型別提示。依賴會自動被解析並注入控制器實例之中。
+
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use App\Repositories\UserRepository;
+
+    class UserController extends Controller
+    {
+        /**
+         * 使用者儲存庫實例。
+         */
+        protected $users;
+
+        /**
+         * 建立新的控制器實例。
+         *
+         * @param  UserRepository  $users
+         * @return void
+         */
+        public function __construct(UserRepository $users)
+        {
+            $this->users = $users;
+        }
+    }
+
+當然，你也可以對任何的 [Laravel contract](/laravel_tw/docs/5.2/contracts) 使用型別提示。若容器能夠解析它，你就可以使用型別提示。
+
+#### 方法注入
+
+除了建構子注入之外，你也可以對控制器行為方法的依賴使用型別提示。例如，讓我們對 `Illuminate\Http\Request` 實例的其中一個方法使用型別提示：
+
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class UserController extends Controller
+    {
+        /**
+         * 儲存一個新的使用者。
+         *
+         * @param  Request  $request
+         * @return Response
+         */
+        public function store(Request $request)
+        {
+            $name = $request->input('name');
+
+            //
+        }
+    }
+
+若你的控制器方法也預期從路由參數獲得輸入值，只要在你其它的依賴之後列出路由參數即可。例如，如果你的路由被定義成這個樣子：
+
+    Route::put('user/{id}', 'UserController@update');
+
+你依然可以做 `Illuminate\Http\Request` 型別提示並透過定義你的控制器方法類似下面範例，來存取你的路由參數 `id`：
+
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+    use Illuminate\Routing\Controller;
+
+    class UserController extends Controller
+    {
+        /**
+         * 更新指定的使用者。
+         *
+         * @param  Request  $request
+         * @param  string  $id
+         * @return Response
+         */
+        public function update(Request $request, $id)
+        {
+            //
+        }
+    }
+
+<a name="route-caching"></a>
+## 路由快取
+
+> **注意：**路由快取並不會作用在基於閉包的路由。要使用路由快取，你必須將所有閉包路由轉換為控制器類別。
+
+若你的應用程式完全透過控制器使用路由，你應該考慮採用 Laravel 的路由快取。使用路由快取可以大幅降低註冊你應用程式全部的路由所需的時間。在某些情況下，你的路由註冊甚至可以快上一百倍！要產生路由快取，只要執行 `route:cache` 此 Artisan 指令：
+
+    php artisan route:cache
+
+這就是全部了！現在你的快取路由檔案將被用來代替 `app/Http/routes.php` 此一檔案。請記得，若你新增了任何新的路由，就必須產生新的路由快取。因此你應該只在專案部署時才執行 `route:cache` 指令。
+
+要移除快取路由檔案而不產生新的快取，請使用 `route:clear` 指令：
+
+    php artisan route:clear
