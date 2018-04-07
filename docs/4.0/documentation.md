@@ -1,0 +1,45 @@
+---
+layout: post
+title: documentation
+---
+- 前言
+    - [介紹](/docs/introduction)
+    - [快速開始](/docs/quick)
+    - [貢獻](/docs/contributing)
+- 入門
+    - [安裝](/docs/installation)
+    - [設定](/docs/configuration)
+    - [生命週期](/docs/lifecycle)
+    - [路由](/docs/routing)
+    - [請求及輸入(Requests & Input)](/docs/requests)
+    - [視圖及回應(Views & Responses)](/docs/responses)
+    - [控制器(Controllers)](/docs/controllers)
+    - [錯誤及記錄](/docs/errors)
+- 更多
+    - [快取](/docs/cache)
+    - [Core Extension](/docs/extending)
+    - [事件](/docs/events)
+    - [Facades](/docs/facades)
+    - [表單及HTML](/docs/html)
+    - [Helpers 函式](/docs/helpers)
+    - [IoC 容器](/docs/ioc)
+    - [在地化](/docs/localization)
+    - [郵件](/docs/mail)
+    - [套件開發](/docs/packages)
+    - [分頁](/docs/pagination)
+    - [佇列](/docs/queues)
+    - [安全性](/docs/security)
+    - [Session](/docs/session)
+    - [樣板](/docs/templates)
+    - [單元測試](/docs/testing)
+    - [驗證](/docs/validation)
+- 資料庫
+    - [基本用法](/docs/database)
+    - [Query 產生器](/docs/queries)
+    - [Eloquent ORM](/docs/eloquent)
+    - [Schema 產生器](/docs/schema)
+    - [Migrations & Seeding](/docs/migrations)
+    - [Redis](/docs/redis)
+- Artisan 介面指令
+    - [概要](/docs/artisan)
+    - [開發](/docs/commands)
