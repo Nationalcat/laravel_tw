@@ -1,0 +1,85 @@
+---
+layout: post
+title: documentation
+---
+- 前言
+    - [發行說明](/laravel_tw/docs/5.3/releases)
+    - [升級導引](/laravel_tw/docs/5.3/upgrade)
+    - [貢獻導引](/laravel_tw/docs/5.3/contributions)
+    - [API 文件](https://laravel.com/api/{% raw %} {{version}} {% endraw %})
+- 入門
+    - [安裝](/laravel_tw/docs/5.3/installation)
+    - [設定](/laravel_tw/docs/5.3/configuration)
+    - [目錄結構](/laravel_tw/docs/5.3/structure)
+    - [請求生命週期](/laravel_tw/docs/5.3/lifecycle)
+- 開發環境
+    - [Homestead](/laravel_tw/docs/5.3/homestead)
+    - [Valet](/laravel_tw/docs/5.3/valet)
+- 核心概念
+    - [服務容器](/laravel_tw/docs/5.3/container)
+    - [服務提供者](/laravel_tw/docs/5.3/providers)
+    - [Facades](/laravel_tw/docs/5.3/facades)
+    - [Contracts](/laravel_tw/docs/5.3/contracts)
+- HTTP 層
+    - [路由](/laravel_tw/docs/5.3/routing)
+    - [中介層](/laravel_tw/docs/5.3/middleware)
+    - [CSRF 保護](/laravel_tw/docs/5.3/csrf)
+    - [控制器](/laravel_tw/docs/5.3/controllers)
+    - [請求](/laravel_tw/docs/5.3/requests)
+    - [回應](/laravel_tw/docs/5.3/responses)
+    - [Session](/laravel_tw/docs/5.3/session)
+    - [驗證](/laravel_tw/docs/5.3/validation)
+- 視圖與模板
+    - [視圖](/laravel_tw/docs/5.3/views)
+    - [Blade 模板](/laravel_tw/docs/5.3/blade)
+    - [本土化](/laravel_tw/docs/5.3/localization)
+- JavaScript 與 CSS
+    - [入門](/laravel_tw/docs/5.3/frontend)
+    - [編譯資源檔](/laravel_tw/docs/5.3/elixir)
+- 安全
+    - [認證](/laravel_tw/docs/5.3/authentication)
+    - [授權](/laravel_tw/docs/5.3/authorization)
+    - [重置密碼](/laravel_tw/docs/5.3/passwords)
+    - [API 認證](/laravel_tw/docs/5.3/passport)
+    - [加密](/laravel_tw/docs/5.3/encryption)
+    - [雜湊](/laravel_tw/docs/5.3/hashing)
+- 常用功能
+    - [廣播](/laravel_tw/docs/5.3/broadcasting)
+    - [快取](/laravel_tw/docs/5.3/cache)
+    - [錯誤與日誌](/laravel_tw/docs/5.3/errors)
+    - [事件](/laravel_tw/docs/5.3/events)
+    - [檔案儲存](/laravel_tw/docs/5.3/filesystem)
+    - [郵件](/laravel_tw/docs/5.3/mail)
+    - [通知](/laravel_tw/docs/5.3/notifications)
+    - [隊列](/laravel_tw/docs/5.3/queues)
+- 資料庫
+    - [入門](/laravel_tw/docs/5.3/database)
+    - [查詢建構器](/laravel_tw/docs/5.3/queries)
+    - [分頁](/laravel_tw/docs/5.3/pagination)
+    - [遷移](/laravel_tw/docs/5.3/migrations)
+    - [資料填充](/laravel_tw/docs/5.3/seeding)
+    - [Redis](/laravel_tw/docs/5.3/redis)
+- Eloquent ORM
+    - [入門](/laravel_tw/docs/5.3/eloquent)
+    - [關聯](/laravel_tw/docs/5.3/eloquent-relationships)
+    - [集合](/laravel_tw/docs/5.3/eloquent-collections)
+    - [存取器](/laravel_tw/docs/5.3/eloquent-mutators)
+    - [序列化](/laravel_tw/docs/5.3/eloquent-serialization)
+- Artisan 指令列
+    - [指令](/laravel_tw/docs/5.3/artisan)
+    - [任務排程](/laravel_tw/docs/5.3/scheduling)
+- 測試
+    - [入門](/laravel_tw/docs/5.3/testing)
+    - [測試應用程式](/laravel_tw/docs/5.3/application-testing)
+    - [資料庫](/laravel_tw/docs/5.3/database-testing)
+    - [模擬](/laravel_tw/docs/5.3/mocking)
+- 官方套件
+    - [Cashier](/laravel_tw/docs/5.3/billing)
+    - [Envoy](/laravel_tw/docs/5.3/envoy)
+    - [Passport](/laravel_tw/docs/5.3/passport)
+    - [Scout](/laravel_tw/docs/5.3/scout)
+    - [Socialite](https://github.com/laravel/socialite)
+- 附錄
+    - [集合](/laravel_tw/docs/5.3/collections)
+    - [輔助方法](/laravel_tw/docs/5.3/helpers)
+    - [套件](/laravel_tw/docs/5.3/packages)
