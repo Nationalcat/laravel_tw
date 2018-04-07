@@ -1,0 +1,48 @@
+---
+layout: post
+title: documentation
+---
+- 前言
+    - [介紹](/docs/introduction)
+    - [快速開始](/docs/quick)
+    - [發行說明](/docs/releases)
+    - [升級導引](/docs/upgrade)
+- 開始學習
+    - [安裝](/docs/installation)
+    - [設定](/docs/configuration)
+    - [請求的生命週期](/docs/lifecycle)
+    - [路由](/docs/routing)
+    - [請求與輸入](/docs/requests)
+    - [視圖與回應](/docs/responses)
+    - [控制器](/docs/controllers)
+    - [錯誤與日誌](/docs/errors)
+- 深度體驗
+    - [認證](/docs/security)
+    - [快取](/docs/cache)
+    - [核心擴展](/docs/extending)
+    - [事件](/docs/events)
+    - [Facades](/docs/facades)
+    - [表單與 HTML](/docs/html)
+    - [輔助方法](/docs/helpers)
+    - [IoC 容器](/docs/ioc)
+    - [在地化](/docs/localization)
+    - [郵件](/docs/mail)
+    - [資源包開發](/docs/packages)
+    - [分頁](/docs/pagination)
+    - [隊列](/docs/queues)
+    - [安全性](/docs/security)
+    - [Session](/docs/session)
+    - [SSH](/docs/ssh)
+    - [模板](/docs/templates)
+    - [單元測試](/docs/testing)
+    - [驗證](/docs/validation)
+- 資料庫
+    - [基本用法](/docs/database)
+    - [查詢架構器](/docs/queries)
+    - [Eloquent ORM](/docs/eloquent)
+    - [結構生成器](/docs/schema)
+    - [遷移與資料填充](/docs/migrations)
+    - [Redis](/docs/redis)
+- Artisan 命令列工具
+    - [概覽](/docs/artisan)
+    - [開發](/docs/commands)
