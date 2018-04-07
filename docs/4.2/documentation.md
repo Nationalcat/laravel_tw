@@ -1,0 +1,50 @@
+---
+layout: post
+title: documentation
+---
+- 前言
+    - [介紹](/docs/4.2/introduction)
+    - [快速開始](/docs/4.2/quick)
+    - [發行說明](/docs/4.2/releases)
+    - [升級導引](/docs/4.2/upgrade)
+- 開始學習
+    - [安裝](/docs/4.2/installation)
+    - [設定](/docs/4.2/configuration)
+    - [莊園(封裝)](/docs/4.2/homestead)
+    - [請求的生命週期](/docs/4.2/lifecycle)
+    - [路由](/docs/4.2/routing)
+    - [請求與輸入](/docs/4.2/requests)
+    - [視圖與回應](/docs/4.2/responses)
+    - [控制器](/docs/4.2/controllers)
+    - [錯誤與日誌](/docs/4.2/errors)
+- 深度體驗
+    - [認證](/docs/4.2/security)
+    - [交易](/docs/4.2/billing)
+    - [快取](/docs/4.2/cache)
+    - [核心擴展](/docs/4.2/extending)
+    - [事件](/docs/4.2/events)
+    - [Facades](/docs/4.2/facades)
+    - [表單與 HTML](/docs/4.2/html)
+    - [輔助方法](/docs/4.2/helpers)
+    - [IoC 容器](/docs/4.2/ioc)
+    - [在地化](/docs/4.2/localization)
+    - [郵件](/docs/4.2/mail)
+    - [資源包開發](/docs/4.2/packages)
+    - [分頁](/docs/4.2/pagination)
+    - [隊列](/docs/4.2/queues)
+    - [安全性](/docs/4.2/security)
+    - [Session](/docs/4.2/session)
+    - [SSH](/docs/4.2/ssh)
+    - [模板](/docs/4.2/templates)
+    - [單元測試](/docs/4.2/testing)
+    - [驗證](/docs/4.2/validation)
+- 資料庫
+    - [基本用法](/docs/4.2/database)
+    - [查詢架構器](/docs/4.2/queries)
+    - [Eloquent ORM](/docs/4.2/eloquent)
+    - [結構生成器](/docs/4.2/schema)
+    - [遷移與資料填充](/docs/4.2/migrations)
+    - [Redis](/docs/4.2/redis)
+- Artisan 命令列工具
+    - [概覽](/docs/4.2/artisan)
+    - [開發](/docs/4.2/commands)
