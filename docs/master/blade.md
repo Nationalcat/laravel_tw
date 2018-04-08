@@ -1,6 +1,7 @@
 ---
 layout: post
 title: blade
+tag: master
 ---
 # Blade Templates
 
