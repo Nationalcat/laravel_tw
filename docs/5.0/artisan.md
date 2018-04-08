@@ -1,6 +1,7 @@
 ---
 layout: post
 title: artisan
+tag: 5.0
 ---
 # Artisan 命令列介面
 
