@@ -1,6 +1,7 @@
 ---
 layout: post
 title: documentation
+tag: 4.2
 ---
 - 前言
     - [介紹](/docs/4.2/introduction)
