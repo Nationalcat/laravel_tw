@@ -1,6 +1,7 @@
 ---
 layout: post
 title: scout
+tag: 5.4
 ---
 # Laravel Scout
 
