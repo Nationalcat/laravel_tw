@@ -1,6 +1,7 @@
 ---
 layout: post
 title: collections
+tag: master
 ---
 # Collections
 
