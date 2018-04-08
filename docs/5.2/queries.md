@@ -1,6 +1,7 @@
 ---
 layout: post
 title: queries
+tag: 5.2
 ---
 # 資料庫：查詢建構器
 
