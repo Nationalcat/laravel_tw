@@ -1,6 +1,7 @@
 ---
 layout: post
 title: structure
+tag: master
 ---
 # Directory Structure
 
