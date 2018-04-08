@@ -1,6 +1,7 @@
 ---
 layout: post
 title: eloquent-mutators
+tag: master
 ---
 # Eloquent: Mutators
 
