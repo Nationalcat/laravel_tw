@@ -1,6 +1,7 @@
 ---
 layout: post
 title: events
+tag: 5.2
 ---
 # 事件
 
