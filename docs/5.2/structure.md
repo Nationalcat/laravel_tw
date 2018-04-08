@@ -1,6 +1,7 @@
 ---
 layout: post
 title: structure
+tag: 5.2
 ---
 # 應用程式結構
 
