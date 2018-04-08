@@ -1,6 +1,7 @@
 ---
 layout: post
 title: queues
+tag: 5.2
 ---
 # 隊列
 
