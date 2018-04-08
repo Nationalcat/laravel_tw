@@ -1,6 +1,7 @@
 ---
 layout: post
 title: localization
+tag: 4.0
 ---
 # Localization
 
