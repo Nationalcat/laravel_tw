@@ -1,6 +1,7 @@
 ---
 layout: post
 title: upgrade
+tag: 5.1
 ---
 # 升級導引
 
@@ -372,6 +373,24 @@ use Authenticatable, CanResetPassword;
 如果你在 `start/global.php` 有任何的[服務容器](/laravel_tw/docs/5.1/container)綁定，請將它們全部移至 `app/Providers/AppServiceProvider.php` 檔案的 `register` 方法。你可能需要引入 `App` facade。
 
 你也可以選擇將這些綁定，依照類別拆分到各別的服務提供者中。
+
+### 視圖
+
+將你的視圖從 `app/views` 移到新的 `resources/views` 目錄。
+
+### Blade 標籤變更
+
+基於安全考量，Laravel 5.0 會把所有 `{% raw %} {{ }} {% endraw %}` and `{% raw %} {{{ }} {% endraw %}}` Blade 標籤的輸出的特殊字元都進行轉譯。新的 `{!! !!}` 標籤則被採用來顯示原始未轉譯的輸出。當你**有把握**顯示原始輸出是安全的話，升級你的應用程式最安全的方法是只使用新的 `{!! !!}` 標籤。
+
+然而，如果你**必須**使用舊的 Blade 語法，請在  `AppServiceProvider@register` 的結尾加入以下幾行：
+
+```php
+\Blade::setRawTags('{% raw %} {{', '}} {% endraw %}');
+\Blade::setContentTags('{% raw %} {{{', '}} {% endraw %}}');
+\Blade::setEscapedContentTags('{% raw %} {{{', '}} {% endraw %}}');
+```
+
+你不該輕易的使用上述設定，這將使你的應用程式更加容易暴露於 XSS 攻擊。而且用 `{% raw %} {{--` 註解將無法作用。
 
 ### 語系檔
 
