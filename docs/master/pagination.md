@@ -1,6 +1,7 @@
 ---
 layout: post
 title: pagination
+tag: master
 ---
 # Pagination
 
