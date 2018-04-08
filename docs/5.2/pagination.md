@@ -1,6 +1,7 @@
 ---
 layout: post
 title: pagination
+tag: 5.2
 ---
 # 分頁
 
