@@ -1,6 +1,7 @@
 ---
 layout: post
 title: collections
+tag: 5.2
 ---
 # 集合
 
