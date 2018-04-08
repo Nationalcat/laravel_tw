@@ -1,6 +1,7 @@
 ---
 layout: post
 title: database
+tag: 4.2
 ---
 # 資料庫基本用法
 
