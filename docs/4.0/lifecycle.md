@@ -1,6 +1,7 @@
 ---
 layout: post
 title: lifecycle
+tag: 4.0
 ---
 # Request Lifecycle
 
