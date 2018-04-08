@@ -1,6 +1,7 @@
 ---
 layout: post
 title: installation
+tag: master
 ---
 # Installation
 
