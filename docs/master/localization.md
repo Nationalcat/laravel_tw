@@ -1,6 +1,7 @@
 ---
 layout: post
 title: localization
+tag: master
 ---
 # Localization
 
