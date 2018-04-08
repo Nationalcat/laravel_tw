@@ -1,6 +1,7 @@
 ---
 layout: post
 title: controllers
+tag: 4.0
 ---
 # 控制器(Controllers)
 
