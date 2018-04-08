@@ -1,6 +1,7 @@
 ---
 layout: post
 title: eloquent-relationships
+tag: 5.2
 ---
 # Eloquent：關聯
 
