@@ -1,6 +1,7 @@
 ---
 layout: post
 title: eloquent-collections
+tag: master
 ---
 # Eloquent: Collections
 
