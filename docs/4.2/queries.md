@@ -1,6 +1,7 @@
 ---
 layout: post
 title: queries
+tag: 4.2
 ---
 # 查詢產生器
 
