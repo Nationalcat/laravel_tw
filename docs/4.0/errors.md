@@ -1,6 +1,7 @@
 ---
 layout: post
 title: errors
+tag: 4.0
 ---
 # Errors & Logging
 
