@@ -1,6 +1,7 @@
 ---
 layout: post
 title: queries
+tag: master
 ---
 # Database: Query Builder
 
