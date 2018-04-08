@@ -1,6 +1,7 @@
 ---
 layout: post
 title: elixir
+tag: master
 ---
 # Compiling Assets (Laravel Elixir)
 
