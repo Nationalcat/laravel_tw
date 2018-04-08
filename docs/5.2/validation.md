@@ -1,6 +1,7 @@
 ---
 layout: post
 title: validation
+tag: 5.2
 ---
 # 驗證
 
