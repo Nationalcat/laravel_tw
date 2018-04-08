@@ -1,6 +1,7 @@
 ---
 layout: post
 title: artisan
+tag: master
 ---
 # Console Commands
 
