@@ -1,6 +1,7 @@
 ---
 layout: post
 title: notifications
+tag: master
 ---
 # Notifications
 
