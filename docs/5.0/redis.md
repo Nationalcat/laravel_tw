@@ -1,6 +1,7 @@
 ---
 layout: post
 title: redis
+tag: 5.0
 ---
 # Redis
 
