@@ -1,6 +1,7 @@
 ---
 layout: post
 title: quickstart-intermediate
+tag: 5.2
 ---
 # 中級任務清單
 
