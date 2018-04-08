@@ -1,6 +1,7 @@
 ---
 layout: post
 title: billing
+tag: master
 ---
 # Laravel Cashier
 
