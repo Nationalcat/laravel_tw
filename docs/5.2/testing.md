@@ -1,6 +1,7 @@
 ---
 layout: post
 title: testing
+tag: 5.2
 ---
 # 測試
 
