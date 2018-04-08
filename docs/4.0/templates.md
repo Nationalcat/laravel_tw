@@ -1,6 +1,7 @@
 ---
 layout: post
 title: templates
+tag: 4.0
 ---
 # Templates
 
