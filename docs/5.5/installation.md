@@ -1,6 +1,7 @@
 ---
 layout: post
 title: installation
+tag: 5.5
 ---
 # 安裝
 
