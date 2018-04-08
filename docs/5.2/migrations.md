@@ -1,6 +1,7 @@
 ---
 layout: post
 title: migrations
+tag: 5.2
 ---
 # 資料庫: 遷移
 
