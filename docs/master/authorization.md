@@ -1,6 +1,7 @@
 ---
 layout: post
 title: authorization
+tag: master
 ---
 # Authorization
 
