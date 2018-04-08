@@ -1,6 +1,7 @@
 ---
 layout: post
 title: eloquent-resources
+tag: 5.5
 ---
 # Eloquent：API 資源
 
