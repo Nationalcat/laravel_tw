@@ -1,6 +1,7 @@
 ---
 layout: post
 title: lifecycle
+tag: 4.2
 ---
 # Request 生命週期
 
