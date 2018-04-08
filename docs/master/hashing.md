@@ -1,6 +1,7 @@
 ---
 layout: post
 title: hashing
+tag: master
 ---
 # Hashing
 
