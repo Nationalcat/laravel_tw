@@ -1,6 +1,7 @@
 ---
 layout: post
 title: upgrade
+tag: master
 ---
 # Upgrade Guide
 
