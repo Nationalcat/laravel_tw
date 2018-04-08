@@ -1,6 +1,7 @@
 ---
 layout: post
 title: configuration
+tag: 4.1
 ---
 # 設定
 
