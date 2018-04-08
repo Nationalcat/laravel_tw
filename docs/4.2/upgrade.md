@@ -1,6 +1,7 @@
 ---
 layout: post
 title: upgrade
+tag: 4.2
 ---
 # 升級導引
 
