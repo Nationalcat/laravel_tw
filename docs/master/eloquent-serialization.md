@@ -1,6 +1,7 @@
 ---
 layout: post
 title: eloquent-serialization
+tag: master
 ---
 # Eloquent: Serialization
 
