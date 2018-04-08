@@ -1,6 +1,7 @@
 ---
 layout: post
 title: documentation
+tag: 5.2
 ---
 - 前言
     - [發行說明](/laravel_tw/docs/5.2/releases)
