@@ -1,6 +1,7 @@
 ---
 layout: post
 title: quick
+tag: 4.2
 ---
 # Laravel 快速入門
 
