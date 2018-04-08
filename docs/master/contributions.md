@@ -1,6 +1,7 @@
 ---
 layout: post
 title: contributions
+tag: master
 ---
 # Contribution Guide
 
