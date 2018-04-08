@@ -1,6 +1,7 @@
 ---
 layout: post
 title: cache
+tag: master
 ---
 # Cache
 
