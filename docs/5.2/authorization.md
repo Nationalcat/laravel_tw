@@ -1,6 +1,7 @@
 ---
 layout: post
 title: authorization
+tag: 5.2
 ---
 # 授權
 
