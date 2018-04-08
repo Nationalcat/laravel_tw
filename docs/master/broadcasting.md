@@ -1,6 +1,7 @@
 ---
 layout: post
 title: broadcasting
+tag: master
 ---
 # Event Broadcasting
 
