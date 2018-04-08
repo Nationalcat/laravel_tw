@@ -1,6 +1,7 @@
 ---
 layout: post
 title: license
+tag: master
 ---
 The MIT License (MIT)
 Copyright © Taylor Otwell
