@@ -1,6 +1,7 @@
 ---
 layout: post
 title: hashing
+tag: 5.0
 ---
 # 雜湊
 
