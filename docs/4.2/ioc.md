@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ioc
+tag: 4.2
 ---
 # IoC 容器
 
