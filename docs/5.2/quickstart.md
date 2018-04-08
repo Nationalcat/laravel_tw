@@ -1,6 +1,7 @@
 ---
 layout: post
 title: quickstart
+tag: 5.2
 ---
 # 基本任務清單
 
