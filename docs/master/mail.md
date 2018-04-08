@@ -1,6 +1,7 @@
 ---
 layout: post
 title: mail
+tag: master
 ---
 # Mail
 
