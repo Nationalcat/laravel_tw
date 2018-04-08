@@ -1,6 +1,7 @@
 ---
 layout: post
 title: blade
+tag: 5.2
 ---
 # Blade 模板
 
