@@ -1,6 +1,7 @@
 ---
 layout: post
 title: valet
+tag: master
 ---
 # Laravel Valet
 
