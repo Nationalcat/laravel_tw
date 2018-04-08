@@ -1,6 +1,7 @@
 ---
 layout: post
 title: horizon
+tag: 5.5
 ---
 # Laravel Horizon
 
