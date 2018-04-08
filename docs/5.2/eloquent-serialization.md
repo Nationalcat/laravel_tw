@@ -1,6 +1,7 @@
 ---
 layout: post
 title: eloquent-serialization
+tag: 5.2
 ---
 # Eloquent: 序列化
 
