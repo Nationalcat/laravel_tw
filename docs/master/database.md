@@ -1,6 +1,7 @@
 ---
 layout: post
 title: database
+tag: master
 ---
 # Database: Getting Started
 
