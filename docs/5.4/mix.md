@@ -1,6 +1,7 @@
 ---
 layout: post
 title: mix
+tag: 5.4
 ---
 # Compiling Assets (Laravel Mix)
 
