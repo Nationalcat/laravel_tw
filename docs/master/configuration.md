@@ -1,6 +1,7 @@
 ---
 layout: post
 title: configuration
+tag: master
 ---
 # Configuration
 
