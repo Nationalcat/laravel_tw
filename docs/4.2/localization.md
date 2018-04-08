@@ -1,6 +1,7 @@
 ---
 layout: post
 title: localization
+tag: 4.2
 ---
 # 在地化
 
