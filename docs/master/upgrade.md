@@ -1,6 +1,7 @@
 ---
 layout: post
 title: upgrade
+tag: master
 ---
 # Upgrade Guide
 
@@ -1041,6 +1042,20 @@ Optionally, you may break these bindings up into separate service providers by c
 ### Views
 
 Move your views from `app/views` to the new `resources/views` directory.
+
+### Blade Tag Changes
+
+For better security by default, Laravel 5.0 escapes all output from both the `{% raw %} {{ }} {% endraw %}` and `{% raw %} {{{ }} {% endraw %}}` Blade directives. A new `{!! !!}` directive has been introduced to display raw, unescaped output. The most secure option when upgrading your application is to only use the new `{!! !!}` directive when you are **certain** that it is safe to display raw output.
+
+However, if you **must** use the old Blade syntax, add the following lines at the bottom of `AppServiceProvider@register`:
+
+```php
+\Blade::setRawTags('{% raw %} {{', '}} {% endraw %}');
+\Blade::setContentTags('{% raw %} {{{', '}} {% endraw %}}');
+\Blade::setEscapedContentTags('{% raw %} {{{', '}} {% endraw %}}');
+```
+
+This should not be done lightly, and may make your application more vulnerable to XSS exploits. Also, comments with `{% raw %} {{--` will no longer work.
 
 ### Translation Files
 
