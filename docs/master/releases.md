@@ -1,6 +1,7 @@
 ---
 layout: post
 title: releases
+tag: master
 ---
 # Release Notes
 
