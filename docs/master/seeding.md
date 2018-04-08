@@ -1,6 +1,7 @@
 ---
 layout: post
 title: seeding
+tag: master
 ---
 # Database: Seeding
 
