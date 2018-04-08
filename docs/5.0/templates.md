@@ -1,6 +1,7 @@
 ---
 layout: post
 title: templates
+tag: 5.0
 ---
 # 模板
 
