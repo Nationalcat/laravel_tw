@@ -1,6 +1,7 @@
 ---
 layout: post
 title: cache
+tag: 4.2
 ---
 # 快取
 
