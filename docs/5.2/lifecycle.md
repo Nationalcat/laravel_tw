@@ -1,6 +1,7 @@
 ---
 layout: post
 title: lifecycle
+tag: 5.2
 ---
 # 請求的生命週期
 
