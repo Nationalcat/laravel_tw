@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ssh
+tag: 4.2
 ---
 # SSH
 
