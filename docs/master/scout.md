@@ -1,6 +1,7 @@
 ---
 layout: post
 title: scout
+tag: master
 ---
 # Laravel Scout
 
