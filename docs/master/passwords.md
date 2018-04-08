@@ -1,6 +1,7 @@
 ---
 layout: post
 title: passwords
+tag: master
 ---
 # Resetting Passwords
 
