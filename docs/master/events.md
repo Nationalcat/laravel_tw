@@ -1,6 +1,7 @@
 ---
 layout: post
 title: events
+tag: master
 ---
 # Events
 
