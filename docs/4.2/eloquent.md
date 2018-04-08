@@ -1,6 +1,7 @@
 ---
 layout: post
 title: eloquent
+tag: 4.2
 ---
 # Eloquent ORM
 
