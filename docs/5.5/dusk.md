@@ -1,6 +1,7 @@
 ---
 layout: post
 title: dusk
+tag: 5.5
 ---
 # 瀏覽器測試 (Laravel Dusk)
 
