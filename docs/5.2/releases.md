@@ -1,6 +1,7 @@
 ---
 layout: post
 title: releases
+tag: 5.2
 ---
 # 發行說明
 
