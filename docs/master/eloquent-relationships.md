@@ -1,6 +1,7 @@
 ---
 layout: post
 title: eloquent-relationships
+tag: master
 ---
 # Eloquent: Relationships
 
