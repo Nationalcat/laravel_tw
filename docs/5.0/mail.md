@@ -1,6 +1,7 @@
 ---
 layout: post
 title: mail
+tag: 5.0
 ---
 # 郵件
 
