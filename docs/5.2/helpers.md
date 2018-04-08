@@ -1,6 +1,7 @@
 ---
 layout: post
 title: helpers
+tag: 5.2
 ---
 # 輔助方法
 
