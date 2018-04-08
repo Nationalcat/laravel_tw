@@ -1,6 +1,7 @@
 ---
 layout: post
 title: mix
+tag: 5.5
 ---
 # 編譯資源 (Laravel Mix)
 
