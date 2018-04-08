@@ -1,6 +1,7 @@
 ---
 layout: post
 title: schema
+tag: 4.2
 ---
 # 結構生成器
 
