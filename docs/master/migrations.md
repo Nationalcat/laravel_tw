@@ -1,6 +1,7 @@
 ---
 layout: post
 title: migrations
+tag: master
 ---
 # Database: Migrations
 
