@@ -1,6 +1,7 @@
 ---
 layout: post
 title: responses
+tag: 4.2
 ---
 # 視圖（ View ）與回應（ Response ）
 
