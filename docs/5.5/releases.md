@@ -3,60 +3,60 @@ layout: post
 title: releases
 tag: 5.5
 ---
-# Release Notes
+# 發行說明
 
-- [Versioning Scheme](#versioning-scheme)
-- [Support Policy](#support-policy)
+- [版本規劃](#versioning-scheme)
+- [提供支援的原則](#support-policy)
 - [Laravel 5.5](#laravel-5.5)
 
 <a name="versioning-scheme"></a>
-## Versioning Scheme
+## 版本規劃
 
-Laravel's versioning scheme maintains the following convention: `paradigm.major.minor`. Major framework releases are released every six months (February and August), while minor releases may be released as often as every week. Minor releases should **never** contain breaking changes.
+Laravel 的版本規劃維持以下慣例：`主流版本.主要版本.次要版本`。會在每六個月（二月和八月）發佈新的主要框架版本，而次要版本通常可能會每週發布一次。次要版本的更新內容**不會**破壞主要版本的結構。
 
-When referencing the Laravel framework or its components from your application or package, you should always use a version constraint such as `5.5.*`, since major releases of Laravel do include breaking changes. However, we strive to always ensure you may update to a new major release in one day or less.
+當你從應用程式或套件中引用 Laravel 框架或它的元件，你應該維持版本的控制，像是 `5.5.*`，由於 Laravel 的主要版本會有重大改變，我們盡力為你能夠在一天或更短的時間內升級新的主要版本號。
 
-Paradigm shifting releases are separated by many years and represent fundamental shifts in the framework's architecture and conventions. Currently, there is no paradigm shifting release under development.
+主流版本的轉換通常會相隔好幾年，這也表示框架的結構與慣例已經準備重新開始。現階段還尚未規劃開發新的主流版本。
 
-#### Why Doesn't Laravel Use Semantic Versioning?
+#### 為什麼 Laravel 不使用語意化版控？
 
-On one hand, all optional components of Laravel (Cashier, Dusk, Valet, Socialite, etc.) **do** use semantic versioning. However, the Laravel framework itself does not. The reason for this is because semantic versioning is a "reductionist" way of determining if two pieces of code are compatible. Even when using semantic versioning, you still must install the upgraded package and run your automated test suite to know if anything is *actually* incompatible with your code base.
+一方面，Laravel 的所有可選元件（Cashier、Dusk、Valet、Socialite，等等）**都有**使用語意化版控。然而，Laravel 框架並沒有這麼做。這是因為語意化版控式是為了確認新舊版本的程式碼的相容性之還原方式。就算使用了語意化版控，你仍必須安裝升級套件，並執行自動化測試來確認是否有與**實際**程式碼不相容的地方。
 
-So, instead, the Laravel framework uses a versioning scheme that is more communicative of the actual scope of the release. Furthermore, since minor releases **never** contain intentional breaking changes, you should never receive a breaking change as long as your version constraints follow the `paradigm.major.*` convention.
+反正 Laravel 就是使用了這個版控規劃，這個版控規劃可以更直觀地表示版本的實際範圍。此外，由於次要版本的更新內容**不會**破壞主要版本的結構，只要你的版本維持在`主流版本.主要版本.*`的慣例，你就不會接收到破壞主體的更新。
 
 <a name="support-policy"></a>
-## Support Policy
+## 提供支援的原則
 
-For LTS releases, such as Laravel 5.5, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 6 months and security fixes are provided for 1 year.
+對於 LTS 版本，像是 Laravel 5.5，會提供兩年的臭蟲修復與五年的安全性修復。這些版本會提供長期的支援與維護。至於一般的版本，只會提供六個月的臭蟲修復和一年的安全性修復。
 
 <a name="laravel-5.5"></a>
 ## Laravel 5.5 (LTS)
 
-Laravel 5.5 continues the improvements made in Laravel 5.4 by adding package auto-detection, API resources / transformations, auto-registration of console commands, queued job chaining, queued job rate limiting, time based job attempts, renderable mailables, renderable and reportable exceptions, more consistent exception handling, database testing improvements, simpler custom validation rules, React front-end presets, `Route::view` and `Route::redirect` methods, "locks" for the Memcached and Redis cache drivers, on-demand notifications, headless Chrome support in Dusk, convenient Blade shortcuts, improved trusted proxy support, and more.
+Laravel 5.5 持續對 Laravel 5.4 進行改良：透過新增自動檢查套件、API 資源與轉換、自動註冊終端指令、隊列任務鏈結、隊列任務的速率限制、根據時間來規範重試任務、渲染 mailable、渲染與報告例外、更一致的例外處理、改良資料庫測試、更簡單的自訂驗證規則、React 前端預設、`Route::view` 和 `Route::redirect` 方法、Memcached 和 Redis 快取驅動的「鎖定」、被動通知、在 Dusk 的 headless Chrome 支援、更便捷的 Blade 模板、改良可信任的代理的支援，以及更多。
 
-In addition, Laravel 5.5 coincides with the release of [Laravel Horizon](https://horizon.laravel.com), a beautiful new queue dashboard and configuration system for your Redis based Laravel queues.
+此外，Laravel 5.5 剛好也發佈了 [Laravel Horizon](https://horizon.laravel.com)，這是一個用於 Redis 為基礎的 Laravel 隊列的全新華麗隊列儀表板和設定系統。
 
-> {tip} This documentation summarizes the most notable improvements to the framework; however, more thorough change logs are always available [on GitHub](https://github.com/laravel/framework/blob/5.5/CHANGELOG-5.5.md).
+> {tip} 這個文件總結了框架最有感的改良內容。然而，更徹底的更新日誌都可以在 [GitHub](https://github.com/laravel/framework/blob/5.5/CHANGELOG-5.5.md) 上找到。
 
 ### Laravel Horizon
 
-Horizon provides a beautiful dashboard and code-driven configuration for your Laravel powered Redis queues. Horizon allows you to easily monitor key metrics of your queue system such as job throughput, runtime, and job failures.
+Horizon 為你的 Laravel Redis 隊列提供了一個華麗的儀表板以及程式碼驅動的設定。Horizon 可以讓你輕易的監控隊列系統的關鍵指標，像是任務的流量，執行時間和失敗任務。
 
-All of your worker configuration is stored in a single, simple configuration file, allowing your configuration to stay in source control where your entire team can collaborate.
+你的所有執行設定會被儲存在單一且簡單的設定檔中，可以讓你的設定共用在整個團隊的版本控制系統中。
 
-For more information on Horizon, check out the [full Horizon documentation](/laravel_tw/docs/5.5/horizon)
+想知道更多 Horizon 的資訊，請查閱[完整的 Horizon 文件](/laravel_tw/docs/5.5/horizon)
 
-### Package Discovery
+### 套件的發掘
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/5) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/5)。
 
-In previous versions of Laravel, installing a package typically required several additional steps such as adding the service provider to your `app` configuration file and registering any relevant facades. However, beginning with Laravel 5.5, Laravel can automatically detect and register service providers and facades for you.
+在之前的 Laravel 版本中，安裝套件通常會要求幾個額外的步驟，像是新增服務提供者到 `app` 設定檔，並註冊任何相關的 Facade。然而，從 Laravel 5.5 開始，Laravel 可以自動為你檢測並註冊服務提供者和 Facades。
 
-For example, you can experience this by installing the popular `barryvdh/laravel-debugbar` package into your Laravel application. Once the package is installed via Composer, the debug bar will be available to your application with no additional configuration:
+例如，你能透過安裝 `barryvdh/laravel-debugbar` 套件到 Laravel 應用程式中來體驗這個功能，一旦透過 Composer 安裝套件，該除錯工具會被直接用於應用程式，且不需額外作設定：
 
     composer require barryvdh/laravel-debugbar
 
-Package developers only need to add their service providers and facades to their package's `composer.json` file:
+套件開發者只需要新增他們的服務提供者和 Facades 到套件的 `composer.json` 檔案：
 
     "extra": {
         "laravel": {
@@ -66,13 +66,13 @@ Package developers only need to add their service providers and facades to their
         }
     },
 
-For more information on updating your packages to use service provider and facade discovery, check out the full documentation on [package development](/laravel_tw/docs/5.5/packages).
+關於升級套件來使用服務提供者和 Facade 發掘的更多相關資訊，請查閱[套件開發](/laravel_tw/docs/5.5/packages)的完整文件。
 
-### API Resources
+### API 資源
 
-When building an API, you may need a transformation layer that sits between your Eloquent models and the JSON responses that are actually returned to your application's users. Laravel's resource classes allow you to expressively and easily transform your models and model collections into JSON.
+在建構一個 API 時，你可能需要一個位於 Eloquent 模型和實際回傳應用程式使用者的 JSON 回應之間的轉換層。Laravel 的 Resource 類別可以讓你更直觀且容易的將模型和模型集合轉換成 JSON。
 
-A resource class represents a single model that needs to be transformed into a JSON structure. For example, here is a simple `User` resource class:
+Resource 類別代表著需要被轉換成 JSON 結構的一個模型。例如，這是一個簡單的 `User` Resource 類別：
 
     <?php
 
@@ -80,10 +80,10 @@ A resource class represents a single model that needs to be transformed into a J
 
     use Illuminate\Http\Resources\Json\Resource;
 
-    class User extends Resource
+    class UserResource extends Resource
     {
         /**
-         * Transform the resource into an array.
+         * 將資源轉換成陣列。
          *
          * @param  \Illuminate\Http\Request
          * @return array
@@ -100,16 +100,16 @@ A resource class represents a single model that needs to be transformed into a J
         }
     }
 
-Of course, this is only the most basic example of an API resource. Laravel also provides a variety of methods to help you when building your resources and resource collections. For more information, check out the [full documentation](/laravel_tw/docs/5.5/eloquent-resources) on API resources.
+當然，這只是一個 API 資源的最基本範例。Laravel 也提供各種方法來協助你建構 Resource 和 Resource 的集合。想知道更多的資訊，請查閱[API 資源](/laravel_tw/docs/5.5/eloquent-resources)的完整文件。
 
-### Console Command Auto-Registration
+### 自動註冊終端指令
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/12) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/12)。
 
-When creating new console commands, you no longer are required to manually list them in the `$commands` property of your Console kernel. Instead, a new `load` method is called from the `commands` method of your kernel, which will scan the given directory for any console commands and register them automatically:
+建立新終端指令時，你不再需要在終端 Kernel 的 `$commadns` 屬性中手動列出它們了。反而是從 Kernel 中的 `commands` 方法呼叫新的 `load` 方法，這會去掃描給定目錄中的任何終端指令並自動將它們註冊：
 
     /**
-     * Register the commands for the application.
+     * 註冊應用程式的指令。
      *
      * @return void
      */
@@ -120,59 +120,59 @@ When creating new console commands, you no longer are required to manually list 
         // ...
     }
 
-### New Frontend Presets
+### 新的前端預設框架選項
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/4) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/4)。
 
-While the basic Vue scaffolding is still included in Laravel 5.5, several new frontend preset options are now available. In a fresh Laravel application, you can swap the Vue scaffolding for React scaffolding using the `preset` command:
+雖然基本的 Vue 框架仍然在 Laravel 5.5，但有幾個新的前端預設框架選項可使用。剛建立新的 Laravel 應用程式中，你能使用 `preset` 指令將 Vue 框架換成 React 框架：
 
     php artisan preset react
 
-Or, you can remove the JavaScript and CSS framework scaffolding entirely using the `none` preset. This preset will leave your application with a plain Sass file and a few simple JavaScript utilities:
+或者，你能移除該 JavaScript 和 CSS 框架，並完整使用 `none` 框架預設。該框架預設會提供簡單的純 Sass 和一些簡單的 JavaScript：
 
     php artisan preset none
 
-> {note} These commands are only intended to be run on fresh Laravel installations. They should not be used on existing applications.
+> {note} 這些只適用於新安裝的 Laravel，不應該使用在已開發許久的應用程式。
 
-### Queued Job Chaining
+### 隊列任務鏈結
 
-Job chaining allows you to specify a list of queued jobs that should be run in sequence. If one job in the sequence fails, the rest of the jobs will not be run. To execute a queued job chain, you may use the `withChain` method on any of your dispatchable jobs:
+任務鏈結可以讓你指定一個會被依序執行的隊列任務清單。如果有個任務在流程中發生錯誤，則剩下的任務將會停止執行。要執行隊列任務鏈結，你可以在任何指派的任務上使用 `withChain` 方法：
 
     ProvisionServer::withChain([
         new InstallNginx,
         new InstallPhp
     ])->dispatch();
 
-### Queued Job Rate Limiting
+### 隊列任務速率限制
 
-If your application interacts with Redis, you may now throttle your queued jobs by time or concurrency. This feature can be of assistance when your queued jobs are interacting with APIs that are also rate limited. For example, you may throttle a given type of job to only run 10 times every 60 seconds:
+如果你的應用程式正與 Redis 交換資料，你現在可以透過時間或併發來限制隊列任務。這個功能有助於你的隊列任務正與被限制速率的 API 交換資料時後。例如，你可以限制給定任務類型在六十秒只能執行十次：
 
     Redis::throttle('key')->allow(10)->every(60)->then(function () {
-        // Job logic...
+        // 任務邏輯...
     }, function () {
-        // Could not obtain lock...
+        // 無法獲得鎖定...
 
         return $this->release(10);
     });
 
-> {tip} In the example above, the `key` may be any string that uniquely identifies the type of job you would like to rate limit. For example, you may wish to construct the key based on the class name of the job and the IDs of the Eloquent models it operates on.
+> {tip} 在以上範例中，`key` 可以是任何字串，專門用來識別你想要限速的任務類型。例如，你可能希望根據任務的類別名稱和 Eloquent 模型的 ID 來建構這個鍵。
 
-Alternatively, you may specify the maximum number of workers that may simultaneously process a given job. This can be helpful when a queued job is modifying a resource that should only be modified by one job at a time. For example, we may limit jobs of a given type to only be processed by one worker at a time:
+或者，你可以指定能同時處理給定任務的最大 Worker 數量。這有助於在隊列任務一次只能修改一個任務資源的時候。例如，我們可以限制給定類型的任務只能一次被一個 worker 處理：
 
     Redis::funnel('key')->limit(1)->then(function () {
-        // Job logic...
+        // 任務邏輯...
     }, function () {
-        // Could not obtain lock...
+        // 無法獲得鎖定...
 
         return $this->release(10);
     });
 
-### Time Based Job Attempts
+### 根據時間來規範重試任務
 
-As an alternative to defining how many times a job may be attempted before it fails, you may now define a time at which the job should timeout. This allows a job to be attempted any number of times within a given time frame. To define the time at which a job should timeout, add a `retryUntil` method to your job class:
+如何定義任務超過嘗試次數的替代方法，你現在可以定義任務超時的時間。這可以讓你在給定時間範圍內嘗試執行任務的次數。要定義該任務超時的時間，請新增 `retryUntil` 方法到你的任務類別中：
 
     /**
-     * Determine the time at which the job should timeout.
+     * 確認任務超時的時間。
      *
      * @return \DateTime
      */
@@ -181,17 +181,17 @@ As an alternative to defining how many times a job may be attempted before it fa
         return now()->addSeconds(5);
     }
 
-> {tip} You may also define a `retryUntil` method on your queued event listeners.
+> {tip} 你也可以在隊列事件監聽器中定義一個 `retryUntil` 方法。
 
-### Validation Rule Objects
+### 驗證規則物件
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/7) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/7)。
 
-Validation rule objects provide a new, compact way of adding custom validation rules to your application. In previous versions of Laravel, the `Validator::extend` method was used to add custom validation rules via Closures. However, this can grow cumbersome. In Laravel 5.5, a new `make:rule` Artisan command will generate a new validation rule in the `app/Rules` directory:
+驗證規則物件提供一個既新又嚴謹的方式來新增自訂驗證規則到你的應用程式。在 Laravel 的前一個版本中，`Validator::extend` 方法透過使用閉包來自訂驗證規則。然而，這會使程式碼變的複雜。在 Laravel 5.5 中，新的 Artisan 的 `make:rule` 指令會在 `app\Rules` 目錄中產生一個驗證規則：
 
     php artisan make:rule ValidName
 
-A rule object only has two methods: `passes` and `message`. The `passes` method receives the attribute value and name, and should return `true` or `false` depending on whether the attribute value is valid or not. The `message` method should return the validation error message that should be used when validation fails:
+規則物件只有兩種方法：`passes` 和 `message`。`passes` 方法接受屬性值與名稱，並會根據屬性值的有效性來回傳 `true` 或 `false`。`message` 方法會回傳應該被用在驗證錯誤時所回傳的驗證錯誤訊息：
 
     <?php
 
@@ -202,7 +202,7 @@ A rule object only has two methods: `passes` and `message`. The `passes` method 
     class ValidName implements Rule
     {
         /**
-         * Determine if the validation rule passes.
+         * 確認是否有通過驗證規則。
          *
          * @param  string  $attribute
          * @param  mixed  $value
@@ -214,7 +214,7 @@ A rule object only has two methods: `passes` and `message`. The `passes` method 
         }
 
         /**
-         * Get the validation error message.
+         * 取得驗證錯誤訊息。
          *
          * @return string
          */
@@ -224,7 +224,7 @@ A rule object only has two methods: `passes` and `message`. The `passes` method 
         }
     }
 
-Once the rule has been defined, you may use it by simply passing an instance of the rule object with your other validation rules:
+一旦規則被定義，你就可以傳入一個規則物件實例與其他驗證規則來使用：
 
     use App\Rules\ValidName;
 
@@ -232,13 +232,13 @@ Once the rule has been defined, you may use it by simply passing an instance of 
         'name' => ['required', new ValidName],
     ]);
 
-### Trusted Proxy Integration
+### 可信任的代理整合
 
-When running applications behind a load balancer that terminates TLS / SSL certificates, you may notice your application sometimes does not generate HTTPS links. Typically this is because your application is being forwarded traffic from your load balancer on port 80 and does not know it should generate secure links.
+當你執行的應用程式背後的負載平衡器的 TLS 和 SSL 憑證過後期，你可能注意到你的應用程式有時不會產生 HTTPS 連結。通常是因為應用程式從 Port 80 上的負載平衡器轉發流量時，並不知道要產生安全的連結。
 
-To solve this, many Laravel users install the [Trusted Proxies](https://github.com/fideloper/TrustedProxy) package by Chris Fidao. Since this is such a common use case, Chris' package now ships with Laravel 5.5 by default.
+要解決這件事，許多 Laravel 使用者會去安裝 Chris Fidao 的 [Trusted Proxies](https://github.com/fideloper/TrustedProxy)套件。 由於這個套件很常被使用，所以這個套件現在會內建到預設的 Laravel 5.5 中。
 
-A new `App\Http\Middleware\TrustProxies` middleware is included in the default Laravel 5.5 application. This middleware allows you to quickly customize the proxies that should be trusted by your application:
+在預設的 Laravel 5.5 應用程式中，已包含一個新的 `App\Http\Middleware\TrustProxies`中介層。這個中介層可以讓你快速自訂應用程式應該信任的代理：
 
     <?php
 
@@ -250,14 +250,14 @@ A new `App\Http\Middleware\TrustProxies` middleware is included in the default L
     class TrustProxies extends Middleware
     {
         /**
-         * The trusted proxies for this application.
+         * 這個應用程式可信任的代理。
          *
          * @var array
          */
         protected $proxies;
 
         /**
-         * The current proxy header mappings.
+         * 當前代理標頭映射。
          *
          * @var array
          */
@@ -270,19 +270,19 @@ A new `App\Http\Middleware\TrustProxies` middleware is included in the default L
         ];
     }
 
-### On-Demand Notifications
+### 被動通知
 
-Sometimes you may need to send a notification to someone who is not stored as a "user" of your application. Using the new `Notification::route` method, you may specify ad-hoc notification routing information before sending the notification:
+有時你可能需要發送一個通知給尚未在應用程式中儲存的「使用者」。使用新的 `Notification::route` 方法，你可以指定在發送通知之前，指定臨時的通知路由資訊：
 
     Notification::route('mail', 'taylor@laravel.com')
                 ->route('nexmo', '5555555555')
                 ->send(new InvoicePaid($invoice));
 
-### Renderable Mailables
+### 渲染 Mailable
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/6) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/6)。
 
-Mailables can now be returned directly from routes, allowing you to quickly preview your mailable's designs in the browser:
+Mailable 現在能直接從路由中回傳，可以讓你在瀏覽器中快速預覽 Mailable 的設計：
 
     Route::get('/mailable', function () {
         $invoice = App\Invoice::find(1);
@@ -290,14 +290,14 @@ Mailables can now be returned directly from routes, allowing you to quickly prev
         return new App\Mail\InvoicePaid($invoice);
     });
 
-### Renderable & Reportable Exceptions
+### 渲染與回報例外
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/18) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/18)。
 
-In previous versions of Laravel, you may have had to resort to "type checking" in your exception handler in order to render a custom response for a given exception. For instance, you may have written code like this in your exception handler's `render` method:
+在上個 Laravel 版本中，對於渲染給定例外的自訂回應，你可以不由得的在例外處理中使用「型別檢查」。例如，你可能在例外處理的 `render` 方法中撰寫像這樣的程式碼：
 
     /**
-     * Render an exception into an HTTP response.
+     * 將例外渲染到 HTTP 回應。
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
@@ -312,7 +312,7 @@ In previous versions of Laravel, you may have had to resort to "type checking" i
         return parent::render($request, $exception);
     }
 
-In Laravel 5.5, you may now define a `render` method directly on your exceptions. This allows you to place the custom response rendering logic directly on the exception, which helps avoid conditional logic accumulation in your exception handler. If you would like to also customize the reporting logic for the exception, you may define a `report` method on the class:
+在 Laravel 5.5 中，你現在可以在例外上直接定義一個 `render` 方法。這可以讓你在例外上直接放置自訂回應的渲染邏輯，這有助於避免堆積條件表達式在例外處理中。如果你也想要自訂例外的回報邏輯，你可以在類別上定義 `report` 方法：
 
     <?php
 
@@ -323,7 +323,7 @@ In Laravel 5.5, you may now define a `render` method directly on your exceptions
     class SpecialException extends Exception
     {
         /**
-         * Report the exception.
+         * 回報例外。
          *
          * @return void
          */
@@ -333,7 +333,7 @@ In Laravel 5.5, you may now define a `render` method directly on your exceptions
         }
 
         /**
-         * Report the exception.
+         * 回報例外。
          *
          * @param  \Illuminate\Http\Request
          * @return void
@@ -344,11 +344,11 @@ In Laravel 5.5, you may now define a `render` method directly on your exceptions
         }
     }
 
-### Request Validation
+### 請求驗證
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/2) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/2)。
 
-The `Illuminate\Http\Request` object now provides a `validate` method, allowing you to quickly validate an incoming request from a route Closure or controller:
+`Illuminate\Http\Request` 物件現在提供了一個 `validate` 方法，可以讓你更快地從路由閉包或控制器中驗證傳進來的請求：
 
     use Illuminate\Http\Request;
 
@@ -361,9 +361,9 @@ The `Illuminate\Http\Request` object now provides a `validate` method, allowing 
         // ...
     });
 
-### Consistent Exception Handling
+### 更一致的例外處理
 
-Validation exception handling is now consistent throughout the framework. Previously, there were multiple locations in the framework that required customization to change the default format for JSON validation error responses. In addition, the default format for JSON validation responses in Laravel 5.5 now adheres to the following convention:
+現在整個框架的驗證例外處理是可被集中規範的。在以前，框架中有幾多個地方需要透過自訂來更改 JSON 驗證錯誤回應的預設格式。另外，Laravel 5.5 中的 JSON 驗證回應的預設格式目前遵循以下規範：
 
     {
         "message": "The given data was invalid.",
@@ -379,12 +379,12 @@ Validation exception handling is now consistent throughout the framework. Previo
         }
     }
 
-All JSON validation error formatting can be controlled by defining a single method on your `App\Exceptions\Handler` class. For example, the following customization will format JSON validation responses using the Laravel 5.4 convention.
+所有 JSON 驗證錯誤格式都能透過定義 `App\Exceptions\Handler` 類別的一個方法來控制。例如，以下自訂內容會使用 Laravel 5.4 規範來格式化 JSON 驗證回應。
 
     use Illuminate\Validation\ValidationException;
 
     /**
-     * Convert a validation exception into a JSON response.
+     * 將驗證例外轉換成 JSON 回應。
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Illuminate\Validation\ValidationException  $exception
@@ -395,40 +395,40 @@ All JSON validation error formatting can be controlled by defining a single meth
         return response()->json($exception->errors(), $exception->status);
     }
 
-### Cache Locks
+### 快取鎖定
 
-The Redis and Memcached cache drivers now have support for obtaining and releasing atomic "locks". This provides a simple method of obtaining arbitrary locks without worrying about race conditions. For example, before performing a task, you may wish to obtain a lock so no other processes attempt the same task that is already in progress:
+Redis 和 Memcached 快取驅動現在支援獲得與釋放原子「鎖」。這提供一個簡單獲得屬性所的方法，而不用擔心其他條件。例如，在處理任務之前，你可能希望獲得一個鎖定，來確保沒有線程在執行相同的任務：
 
     if (Cache::lock('lock-name', 60)->get()) {
-        // Lock obtained for 60 seconds, continue processing...
+        // 將鎖定 60 秒，再繼續處理...
 
         Cache::lock('lock-name')->release();
     } else {
-        // Lock was not able to be obtained...
+        // 無法鎖定...
     }
 
-Or, you may pass a Closure to the `get` method. The Closure will only be executed if the lock can be obtained and the lock will automatically be released after the Closure is executed:
+或者，你可以將閉包傳入 `get` 方法。只有在鎖定的情況下才會執行閉包，執行閉包後就會自動釋放鎖定：
 
     Cache::lock('lock-name', 60)->get(function () {
-        // Lock obtained for 60 seconds...
+        // 將鎖定 60 秒...
     });
 
-In addition, you may "block" until the lock becomes available:
+此外，你可以「阻礙」鎖定，直到可以使用為止：
 
     if (Cache::lock('lock-name', 60)->block(10)) {
-        // Wait for a maximum of 10 seconds for the lock to become available...
+        // 最多等待十秒鐘，直到可以使用鎖定為止...
     }
 
-### Blade Improvements
+### Blade 模板改良
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/10) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/10)。
 
-Programming a custom directive is sometimes more complex than necessary when defining simple, custom conditional statements. For that reason, Blade now provides a `Blade::if` method which allows you to quickly define custom conditional directives using Closures. For example, let's define a custom conditional that checks the current application environment. We may do this in the `boot` method of our `AppServiceProvider`:
+在定義簡單的自定義條件語句時，對自定的指令進行撰寫有時比所需的更為複雜。因此，Blade 現在提供了一個 `Blade::if` 方法，可以讓你使用閉包來快速定義自定條件指令。例如，讓我們定義一個自定條件來檢查當前的應用程式的環境。我們可以在我們的 `AppServiceProvider` 的 `boot` 方法中做到這一點：
 
     use Illuminate\Support\Facades\Blade;
 
     /**
-     * Perform post-registration booting of services.
+     * 處理服務註冊後啟動。
      *
      * @return void
      */
@@ -439,43 +439,43 @@ Programming a custom directive is sometimes more complex than necessary when def
         });
     }
 
-Once the custom conditional has been defined, we can easily use it on our templates:
+一旦定義了自訂的條件。我們就能輕易的在自己的模板上使用它：
 
     @env('local')
-        // The application is in the local environment...
+        // 應用程式在本機的環境...
     @else
-        // The application is not in the local environment...
+        // 應用程式不在本機的環境...
     @endenv
 
-In addition to the ability to easily define custom Blade conditional directives, new shortcuts have been added to quickly check the authentication status of the current user:
+除了可以輕易地自訂 Blade 條件指令外，還新增了更方便的指令來快速檢查當前使用者的的驗證狀態：
 
     @auth
-        // The user is authenticated...
+        // 該使用者已認證過...
     @endauth
 
     @guest
-        // The user is not authenticated...
+        // 該使用者未認證過...
     @endguest
 
-### New Routing Methods
+### 新的路由方法
 
-> {video} There is a free [video tutorial](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/16) for this feature available on Laracasts.
+> {video} Laracasts 上有提供這個功能的免費[教學影片的網站](https://laracasts.com/series/whats-new-in-laravel-5-5/episodes/16)。
 
-If you are defining a route that redirects to another URI, you may now use the `Route::redirect` method. This method provides a convenient shortcut so that you do not have to define a full route or controller for performing a simple redirect:
+如果你正在定義一個用來重導到另一個 URI 的路由，你現在可以使用 `Route::redirect` 方法。這個方法提供了一個便捷的方式，所以你不必為了執行簡單的重導而定義完整的路由或控制器：
 
     Route::redirect('/here', '/there', 301);
 
-If your route only needs to return a view, you may now use the `Route::view` method. Like the `redirect` method, this method provides a simple shortcut so that you do not have to define a full route or controller. The `view` method accepts a URI as its first argument and a view name as its second argument. In addition, you may provide an array of data to pass to the view as an optional third argument:
+如果你的路由只需要回傳一個視圖，你現在可以使用 `Route::view` 方法。就像是使用 `redirect` 方法一樣，這個方法提供了一個簡易的使用方式，所以你不必定義一個完整的路由或控制器。`view` 方法接受一個 URI 作為第一個參數，一個視圖名稱作為其第二個參數。另外，你可以提供一個資料陣列作為可選的第三個參數傳入視圖：
 
     Route::view('/welcome', 'welcome');
 
     Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
-### "Sticky" Database Connections
+### "Sticky" 資料庫連線
 
-#### The `sticky` Option
+#### `sticky` 選項
 
-When configuring read / write database connections, a new `sticky` configuration option is available:
+在設定資料庫連線的讀寫分離時，可以使用新的 `sticky` 設定選項：
 
     'mysql' => [
         'read' => [
@@ -494,4 +494,4 @@ When configuring read / write database connections, a new `sticky` configuration
         'prefix'    => '',
     ],
 
-The `sticky` option is an *optional* value that can be used to allow the immediate reading of records that have been written to the database during the current request cycle. If the `sticky` option is enabled and a "write" operation has been performed against the database during the current request cycle, any further "read" operations will use the "write" connection. This ensures that any data written during the request cycle can be immediately read back from the database during that same request. It is up to you to decide if this is the desired behavior for your application.
+`sticky` 選項是一個*可選的*值，可被用於在當前請求週期內立刻讀取已寫入資料庫的記錄。如果在當前請求週期中啟用了 `sticky` 選項並對資料庫執行了「寫入」的操作，則任何進一步的「讀取」操作都會使用「寫入」的連接。這可以確保在請求週期內寫入的任何資料可以在同一請求期間即時從資料庫讀取。由你來決定這是否是你的應用程序所需的行為。
