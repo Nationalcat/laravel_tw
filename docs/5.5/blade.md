@@ -72,7 +72,7 @@ Blade 是 Laravel 所提供的簡單且強大的模板引擎。相較於其它�
     @section('title', 'Page Title')
 
     @section('sidebar')
-        @@parent
+        @parent
 
         <p>這裡放置側欄</p>
     @endsection
