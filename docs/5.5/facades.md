@@ -5,20 +5,20 @@ tag: 5.5
 ---
 # Facades
 
-- [Introduction](#introduction)
-- [When To Use Facades](#when-to-use-facades)
-    - [Facades Vs. Dependency Injection](#facades-vs-dependency-injection)
-    - [Facades Vs. Helper Functions](#facades-vs-helper-functions)
-- [How Facades Work](#how-facades-work)
-- [Real-Time Facades](#real-time-facades)
-- [Facade Class Reference](#facade-class-reference)
+- [介紹](#introduction)
+- [何時該使用 Facade](#when-to-use-facades)
+    - [Facades Vs. 依賴注入](#facades-vs-dependency-injection)
+    - [Facades Vs. 輔助函式](#facades-vs-helper-functions)
+- [Facade 運作原理](#how-facades-work)
+- [即時 Facades](#real-time-facades)
+- [Facade 類別總清單](#facade-class-reference)
 
 <a name="introduction"></a>
-## Introduction
+## 介紹
 
-Facades provide a "static" interface to classes that are available in the application's [service container](/laravel_tw/docs/5.5/container). Laravel ships with many facades which provide access to almost all of Laravel's features. Laravel facades serve as "static proxies" to underlying classes in the service container, providing the benefit of a terse, expressive syntax while maintaining more testability and flexibility than traditional static methods.
+Facades 在應用程式的[服務容器](/laravel_tw/docs/5.5/container)中為類別提供了一個「靜態」介面。Laravel 內建了許多 facade 來存取 Laravel 幾乎全部的功能。Laravel facade 作為服務容器裡的底層類別的「靜態代理」，提供了簡潔明瞭的語法，同時維持比傳統的靜態方法更高的可測試性和彈性。
 
-All of Laravel's facades are defined in the `Illuminate\Support\Facades` namespace. So, we can easily access a facade like so:
+Laravel 所有的 Facade 都被定義在 `Illuminate\Support\Facades` 命名空間。所以我們能夠輕易的存取 Facade，就像是：
 
     use Illuminate\Support\Facades\Cache;
 
@@ -26,23 +26,23 @@ All of Laravel's facades are defined in the `Illuminate\Support\Facades` namespa
         return Cache::get('key');
     });
 
-Throughout the Laravel documentation, many of the examples will use facades to demonstrate various features of the framework.
+所有的 Laravel 文件中的許多範例都會使用 Facade 來示範框架的各種功能。
 
 <a name="when-to-use-facades"></a>
-## When To Use Facades
+## 何時該使用 Facade
 
-Facades have many benefits. They provide a terse, memorable syntax that allows you to use Laravel's features without remembering long class names that must be injected or configured manually. Furthermore, because of their unique usage of PHP's dynamic methods, they are easy to test.
+Facades 有許多優點。它們提供了一個簡潔而有力的語法來讓你使用 Laravel 的功能，而不用再去記那些需要手動注入或冗長的類別名稱。此外，也因為 PHP 動態方法的特別用法，使得它們更容易測試。
 
-However, some care must be taken when using facades. The primary danger of facades is class scope creep. Since facades are so easy to use and do not require injection, it can be easy to let your classes continue to grow and use many facades in a single class. Using dependency injection, this potential is mitigated by the visual feedback a large constructor gives you that your class is growing too large. So, when using facades, pay special attention to the size of your class so that its scope of responsibility stays narrow.
+然而， 使用 Facade 時最好要小心幾個地方。使用 Facade 最主要注意的地方是類別的範圍性蔓延。由於 Facade 容易被使用，且還不要求注入，因此會在你不斷地將 Facade 塞入類別的同時還讓你的類別變的更肥。使用依賴注入的話，會因為建構子增長而有視覺性的反饋來提醒你應該適量注入。所以，在使用 Facade 時，要格外注意類別的大小與耦合程度。
 
-> {tip} When building a third-party package that interacts with Laravel, it's better to inject [Laravel contracts](/laravel_tw/docs/5.5/contracts) instead of using facades. Since packages are built outside of Laravel itself, you will not have access to Laravel's facade testing helpers.
+> {tip} 在建構與 Laravel 交換資料的第三方套件時。最好是注入 [Laravel contracts](/laravel_tw/docs/5.5/contracts)，而不是注入 facades。因為套件是屬於 Laravel 外部構造，所以你無法存取 Laravel 的 Facade 測試輔助函式。
 
 <a name="facades-vs-dependency-injection"></a>
-### Facades Vs. Dependency Injection
+### Facades Vs. 依賴注入
 
-One of the primary benefits of dependency injection is the ability to swap implementations of the injected class. This is useful during testing since you can inject a mock or stub and assert that various methods were called on the stub.
+依賴注入的主要優點是能夠切換注入類別的實作。這在測試的時候很好用，因為你可以注入一個 mock 或 stub，並斷言 stub 上呼叫的各種方法。
 
-Typically, it would not be possible to mock or stub a truly static class method. However, since facades use dynamic methods to proxy method calls to objects resolved from the service container, we actually can test facades just as we would test an injected class instance. For example, given the following route:
+通常來說，真正的靜態類別方法不可能被 mock 或 stub。然而，因為 Facade 使用了動態方法來代替從服務容器中解析的物件方法呼叫，所以我們實際上能像測試注入類別實例一樣測試 Facade。例如，給予下面的路由：
 
     use Illuminate\Support\Facades\Cache;
 
@@ -50,12 +50,12 @@ Typically, it would not be possible to mock or stub a truly static class method.
         return Cache::get('key');
     });
 
-We can write the following test to verify that the `Cache::get` method was called with the argument we expected:
+我們能撰寫下面的測試來驗證 `Cache::get` 方法是否能被我們預期的參數所呼叫：
 
     use Illuminate\Support\Facades\Cache;
 
     /**
-     * A basic functional test example.
+     * 基本功能測試範例。
      *
      * @return void
      */
@@ -70,26 +70,26 @@ We can write the following test to verify that the `Cache::get` method was calle
     }
 
 <a name="facades-vs-helper-functions"></a>
-### Facades Vs. Helper Functions
+### Facades Vs. 輔助函式
 
-In addition to facades, Laravel includes a variety of "helper" functions which can perform common tasks like generating views, firing events, dispatching jobs, or sending HTTP responses. Many of these helper functions perform the same function as a corresponding facade. For example, this facade call and helper call are equivalent:
+除了 Facade，Laravel 還包含了各種可以用來執行常見任務的「輔助」函式，像是產生視圖、觸發事件、調度任務或發送 HTTP 回應。許多輔助函式都有對應的 Facade。例如，這個 Facade 呼叫與輔助函式呼叫的結果會是相等的：
 
     return View::make('profile');
 
     return view('profile');
 
-There is absolutely no practical difference between facades and helper functions. When using helper functions, you may still test them exactly as you would the corresponding facade. For example, given the following route:
+Facade 與輔助函式之間絕對沒有實際上的區別。在使用輔助函式時，你仍可以使用對應的 Facade 來測試它們。例如，給予以下路由：
 
     Route::get('/cache', function () {
         return cache('key');
     });
 
-Under the hood, the `cache` helper is going to call the `get` method on the class underlying the `Cache` facade. So, even though we are using the helper function, we can write the following test to verify that the method was called with the argument we expected:
+事實上，`cache` 輔助函式會去呼叫 `Cache` Facade 底層類別的 `get` 方法。即便我們使用了輔助函式，我們也可以寫下面的測試來驗證這個方法是否使用我們預期的參數所呼叫的：
 
     use Illuminate\Support\Facades\Cache;
 
     /**
-     * A basic functional test example.
+     * 基本功能測試範例。
      *
      * @return void
      */
@@ -104,11 +104,11 @@ Under the hood, the `cache` helper is going to call the `get` method on the clas
     }
 
 <a name="how-facades-work"></a>
-## How Facades Work
+## Facade 運作原理
 
-In a Laravel application, a facade is a class that provides access to an object from the container. The machinery that makes this work is in the `Facade` class. Laravel's facades, and any custom facades you create, will extend the base `Illuminate\Support\Facades\Facade` class.
+在 Laravel 應用程式中，Facade 是一個為容器中的物件提供存取的類別。因為 `Facade` 類別使得機器可以執行。Laravel 的 Facade 以及你建立的任何自訂 Facade 都要去繼承底層的 `Illuminate\Support\Facades\Facade` 類別。
 
-The `Facade` base class makes use of the `__callStatic()` magic-method to defer calls from your facade to an object resolved from the container. In the example below, a call is made to the Laravel cache system. By glancing at this code, one might assume that the static method `get` is being called on the `Cache` class:
+`Facade` 基本類別是使用了 `__callStatic()` 魔術方法來從你的 Facade 延遲呼叫來解析在容器中的物件。在底下範例中，會去呼叫 Laravel 的快取系統。先是預覽這些程式碼，可能會一口咬定的認為靜態方法 `get` 是被 `Cache` 類別所呼叫的：
 
     <?php
 
@@ -120,7 +120,7 @@ The `Facade` base class makes use of the `__callStatic()` magic-method to defer 
     class UserController extends Controller
     {
         /**
-         * Show the profile for the given user.
+         * 為特定使用者顯示個資。
          *
          * @param  int  $id
          * @return Response
@@ -133,26 +133,26 @@ The `Facade` base class makes use of the `__callStatic()` magic-method to defer 
         }
     }
 
-Notice that near the top of the file we are "importing" the `Cache` facade. This facade serves as a proxy to accessing the underlying implementation of the `Illuminate\Contracts\Cache\Factory` interface. Any calls we make using the facade will be passed to the underlying instance of Laravel's cache service.
+請注意，在檔案的的上方，我們會先「導入」`Cache` facade。這個 facade 做為存取底層實作  `Illuminate\Contracts\Cache\Factory` 介面的代理。我們使用 facade 的任何呼叫將會傳送給 Laravel 快取服務的底層實例。
 
-If we look at that `Illuminate\Support\Facades\Cache` class, you'll see that there is no static method `get`:
+如果我們查看 `Illuminate\Support\Facades\Cache` 類別，你會發現沒有靜態方法 `get`：
 
     class Cache extends Facade
     {
         /**
-         * Get the registered name of the component.
+         * 取得元件的註冊名稱。
          *
          * @return string
          */
         protected static function getFacadeAccessor() { return 'cache'; }
     }
 
-Instead, the `Cache` facade extends the base `Facade` class and defines the method `getFacadeAccessor()`. This method's job is to return the name of a service container binding. When a user references any static method on the `Cache` facade, Laravel resolves the `cache` binding from the [service container](/laravel_tw/docs/5.5/container) and runs the requested method (in this case, `get`) against that object.
+反而是 `Cache` Facade 繼承了基底 `Facade` 類別，並定義了 `getFacadeAccessor()` 方法。請記住，這個方法的任務是回傳服務容器綁定的名稱。當使用者在 `Cache` Facade 上參用任何的靜態方法，Laravel 會從[服務容器](/laravel_tw/docs/5.5/container)解析被綁定的 `cache` 以及針對物件執行請求的方法（在這個範例中是 `get`）。
 
 <a name="real-time-facades"></a>
-## Real-Time Facades
+## 即時 Facades
 
-Using real-time facades, you may treat any class in your application as if it were a facade. To illustrate how this can be used, let's examine an alternative. For example, let's assume our `Podcast` model has a `publish` method. However, in order to publish the podcast, we need to inject a `Publisher` instance:
+使用即時 Facades 可以將應用程式的任何類別是為 Facade。為了說明如何使用這個，讓我們來審視一個替代方案。例如，讓我們假設 `Podcast` 模型有一個 `publish` 方法。然而，為了發佈播客，我們需要會注入 `Publisher` 實例：
 
     <?php
 
@@ -164,7 +164,7 @@ Using real-time facades, you may treat any class in your application as if it we
     class Podcast extends Model
     {
         /**
-         * Publish the podcast.
+         * 發佈播客。
          *
          * @param  Publisher  $publisher
          * @return void
@@ -177,7 +177,7 @@ Using real-time facades, you may treat any class in your application as if it we
         }
     }
 
-Injecting a publisher implementation into the method allows us to easily test the method in isolation since we can mock the injected publisher. However, it requires us to always pass a publisher instance each time we call the `publish` method. Using real-time facades, we can maintain the same testability while not being required to explicitly pass a `Publisher` instance. To generate a real-time facade, simply prefix the namespace of the imported class with `Facades`:
+將 Publisher 實作注入到該方法，可以讓我們對該方法做獨立測試，因為我們這樣就可以模擬注入 publisher。然而，每當我們呼叫 `publish` 方法時，都會需要我們傳入一個 `Publisher` 實例。為了產生一個即時的 Facade，只需要用將 `Facade` 前綴導入到類別的命名空間即可：
 
     <?php
 
@@ -189,7 +189,7 @@ Injecting a publisher implementation into the method allows us to easily test th
     class Podcast extends Model
     {
         /**
-         * Publish the podcast.
+         * 發佈播客。
          *
          * @return void
          */
@@ -201,7 +201,7 @@ Injecting a publisher implementation into the method allows us to easily test th
         }
     }
 
-When the real-time facade is used, the publisher implementation will be resolved out of the service container using the portion of the interface or class name that appears after the `Facades` prefix. When testing, we can use Laravel's built-in facade testing helpers to mock this method call:
+使用即時 Facade 時，Publisher 實作會藉由服務容器使用「Facade」前綴後面顯示的介面或類別名稱來解析而得。在測試時，我們能夠使用 Laravel 的內建 Facade 測試輔助函式來模擬這個方法呼叫：
 
     <?php
 
@@ -217,7 +217,7 @@ When the real-time facade is used, the publisher implementation will be resolved
         use RefreshDatabase;
 
         /**
-         * A test example.
+         * 一個測試範例。
          *
          * @return void
          */
@@ -232,23 +232,27 @@ When the real-time facade is used, the publisher implementation will be resolved
     }
 
 <a name="facade-class-reference"></a>
-## Facade Class Reference
+## Facade 類別總清單
 
-Below you will find every facade and its underlying class. This is a useful tool for quickly digging into the API documentation for a given facade root. The [service container binding](/laravel_tw/docs/5.5/container) key is also included where applicable.
+在下方你可以找到每個 facade 及其底層的類別。這個工具對於透過給定 facade 的來源快速尋找 API 文件相當有用。可應用的[服務容器綁定](/laravel_tw/docs/5.5/container)關鍵字也包含在裡面。
 
-Facade  |  Class  |  Service Container Binding
+Facade  |  類別  |  服務容器綁定
 ------------- | ------------- | -------------
-App  |  [Illuminate\Foundation\Application](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Foundation/Application.html)  | `app`
+App  |  [Illuminate\Foundation\Application](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Foundation/Application.html)  |  `app`
 Artisan  |  [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Console/Kernel.html)  |  `artisan`
 Auth  |  [Illuminate\Auth\AuthManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Auth/AuthManager.html)  |  `auth`
+Auth (Instance)  |  [Illuminate\Contracts\Auth\Guard](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Auth/Guard.html)  |  `auth.driver`
 Blade  |  [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/View/Compilers/BladeCompiler.html)  |  `blade.compiler`
+Broadcast  |  [Illuminate\Contracts\Broadcasting\Factory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Broadcasting/Factory.html)  |  &nbsp;
+Broadcast (Instance)  |  [Illuminate\Contracts\Broadcasting\Broadcaster](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Broadcasting/Broadcaster.html)  |  &nbsp;
 Bus  |  [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Bus/Dispatcher.html)  |  &nbsp;
-Cache  |  [Illuminate\Cache\Repository](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Cache/Repository.html)  |  `cache`
+Cache  |  [Illuminate\Cache\CacheManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Cache/CacheManager.html)  |  `cache`
+Cache (Instance)  |  [Illuminate\Cache\Repository](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Cache/Repository.html)  |  `cache.store`
 Config  |  [Illuminate\Config\Repository](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Config/Repository.html)  |  `config`
 Cookie  |  [Illuminate\Cookie\CookieJar](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Cookie/CookieJar.html)  |  `cookie`
 Crypt  |  [Illuminate\Encryption\Encrypter](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Encryption/Encrypter.html)  |  `encrypter`
 DB  |  [Illuminate\Database\DatabaseManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Database/DatabaseManager.html)  |  `db`
-DB (Instance)  |  [Illuminate\Database\Connection](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Database/Connection.html)  |  &nbsp;
+DB (Instance)  |  [Illuminate\Database\Connection](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Database/Connection.html)  |  `db.connection`
 Event  |  [Illuminate\Events\Dispatcher](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Events/Dispatcher.html)  |  `events`
 File  |  [Illuminate\Filesystem\Filesystem](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Filesystem/Filesystem.html)  |  `files`
 Gate  |  [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Auth/Access/Gate.html)  |  &nbsp;
@@ -258,20 +262,24 @@ Log  |  [Illuminate\Log\Writer](https://laravel.com/api/{% raw %} {{version}} {%
 Mail  |  [Illuminate\Mail\Mailer](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Mail/Mailer.html)  |  `mailer`
 Notification  |  [Illuminate\Notifications\ChannelManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Notifications/ChannelManager.html)  |  &nbsp;
 Password  |  [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Auth/Passwords/PasswordBrokerManager.html)  |  `auth.password`
+Password (Instance)  |  [Illuminate\Auth\Passwords\PasswordBroker](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Auth/Passwords/PasswordBroker.html)  |  `auth.password.broker`
 Queue  |  [Illuminate\Queue\QueueManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Queue/QueueManager.html)  |  `queue`
-Queue (Instance)  |  [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Queue/Queue.html)  |  `queue`
-Queue (Base Class) |  [Illuminate\Queue\Queue](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Queue/Queue.html)  |  &nbsp;
+Queue (Instance)  |  [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Queue/Queue.html)  |  `queue.connection`
+Queue (Base Class)  |  [Illuminate\Queue\Queue](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Queue/Queue.html)  |  &nbsp;
 Redirect  |  [Illuminate\Routing\Redirector](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Routing/Redirector.html)  |  `redirect`
-Redis  |  [Illuminate\Redis\Database](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Redis/Database.html)  |  `redis`
+Redis  |  [Illuminate\Redis\RedisManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Redis/RedisManager.html)  |  `redis`
+Redis (Instance)  |  [Illuminate\Redis\Connections\Connection](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Redis/Connections/Connection.html)  |  `redis.connection`
 Request  |  [Illuminate\Http\Request](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Http/Request.html)  |  `request`
 Response  |  [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Routing/ResponseFactory.html)  |  &nbsp;
+Response (Instance)  |  [Illuminate\Http\Response](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Http/Response.html)  |  &nbsp;
 Route  |  [Illuminate\Routing\Router](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Routing/Router.html)  |  `router`
-Schema  |  [Illuminate\Database\Schema\Blueprint](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Database/Schema/Blueprint.html)  |  &nbsp;
+Schema  |  [Illuminate\Database\Schema\Builder](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Database/Schema/Builder.html)  |  &nbsp;
 Session  |  [Illuminate\Session\SessionManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Session/SessionManager.html)  |  `session`
-Session (Instance)  |  [Illuminate\Session\Store](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Session/Store.html)  |  &nbsp;
-Storage  |  [Illuminate\Contracts\Filesystem\Factory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Filesystem/Factory.html)  |  `filesystem`
+Session (Instance)  |  [Illuminate\Session\Store](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Session/Store.html)  |  `session.store`
+Storage  |  [Illuminate\Filesystem\FilesystemManager](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Filesystem/FilesystemManager.html)  |  `filesystem`
+Storage (Instance)  |  [Illuminate\Contracts\Filesystem\Filesystem](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Contracts/Filesystem/Filesystem.html)  |  `filesystem.disk`
 URL  |  [Illuminate\Routing\UrlGenerator](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Routing/UrlGenerator.html)  |  `url`
 Validator  |  [Illuminate\Validation\Factory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Validation/Factory.html)  |  `validator`
-Validator (Instance)  |  [Illuminate\Validation\Validator](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Validation/Validator.html) |  &nbsp;
+Validator (Instance)  |  [Illuminate\Validation\Validator](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/Validation/Validator.html)  |  &nbsp;
 View  |  [Illuminate\View\Factory](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/View/Factory.html)  |  `view`
 View (Instance)  |  [Illuminate\View\View](https://laravel.com/api/{% raw %} {{version}} {% endraw %}/Illuminate/View/View.html)  |  &nbsp;
