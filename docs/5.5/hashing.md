@@ -3,22 +3,22 @@ layout: post
 title: hashing
 tag: 5.5
 ---
-# Hashing
+# 雜湊
 
-- [Introduction](#introduction)
-- [Basic Usage](#basic-usage)
+- [介紹](#introduction)
+- [基本用法](#basic-usage)
 
 <a name="introduction"></a>
-## Introduction
+## 介紹
 
-The Laravel `Hash` [facade](/laravel_tw/docs/5.5/facades) provides secure Bcrypt hashing for storing user passwords. If you are using the built-in `LoginController` and `RegisterController` classes that are included with your Laravel application, they will automatically use Bcrypt for registration and authentication.
+Laravel `Hash` [facade](/laravel_tw/docs/5.5/facades) 為儲存使用者密碼而提供安全性 Bcrypt 雜湊化。如果你正使用 Laravel 內建的 `LoginController` 和 `RegisterController` 類別，它們會自動使用 Bcrypt 加密來進行註冊與認證。
 
-> {tip} Bcrypt is a great choice for hashing passwords because its "work factor" is adjustable, which means that the time it takes to generate a hash can be increased as hardware power increases.
+> {tip} 對於需要雜湊化的密碼來說，Bcrypt 會是個最佳的選擇，因為它的「加密係數」是可被調整的。這也代表著每次加密的時間可以隨著硬體的升級而再加長。
 
 <a name="basic-usage"></a>
-## Basic Usage
+## 基本用法
 
-You may hash a password by calling the `make` method on the `Hash` facade:
+你可以透過呼叫 `Hash` facade 上的 `make` 方法來雜湊密碼：
 
     <?php
 
@@ -31,14 +31,14 @@ You may hash a password by calling the `make` method on the `Hash` facade:
     class UpdatePasswordController extends Controller
     {
         /**
-         * Update the password for the user.
+         * 更新使用者的密碼。
          *
          * @param  Request  $request
          * @return Response
          */
         public function update(Request $request)
         {
-            // Validate the new password length...
+            // 驗證新密碼的長度...
 
             $request->user()->fill([
                 'password' => Hash::make($request->newPassword)
@@ -46,23 +46,23 @@ You may hash a password by calling the `make` method on the `Hash` facade:
         }
     }
 
-The `make` method also allows you to manage the work factor of the bcrypt hashing algorithm using the `rounds` option; however, the default is acceptable for most applications:
+`make` 方法還可以讓你使用 `rounds` 選項來管理 bcrypt 雜湊演算法的加密係數。然而，大部分的應用程式只需要用到預設值：
 
     $hashed = Hash::make('password', [
         'rounds' => 12
     ]);
 
-#### Verifying A Password Against A Hash
+#### 根據雜湊值驗證密碼
 
-The `check` method allows you to verify that a given plain-text string corresponds to a given hash. However, if you are using the `LoginController` [included with Laravel](/laravel_tw/docs/5.5/authentication), you will probably not need to use this directly, as this controller automatically calls this method:
+`check` 方法可以讓你去驗證給定的純文字字串是否與給定的雜湊值相符合。然而，如果你是使用 [Laravel 內建的](/laravel_tw/docs/5.5/authentication) `LoginController`，你可能不需要直接使用它，因為這個控制器已經自動呼叫這個方法了：
 
     if (Hash::check('plain-text', $hashedPassword)) {
-        // The passwords match...
+        // 該密碼相符於...
     }
 
-#### Checking If A Password Needs To Be Rehashed
+#### 檢查密碼是否需要重新雜湊
 
-The `needsRehash` function allows you to determine if the work factor used by the hasher has changed since the password was hashed:
+`needsRehash` 函式可以讓你檢查已雜湊的密碼所使用的加密係數是否有被變動：
 
     if (Hash::needsRehash($hashed)) {
         $hashed = Hash::make('plain-text');
